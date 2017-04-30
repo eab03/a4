@@ -1,0 +1,44 @@
+{
+    "Crema Cafe": {
+        "id" : 0,
+        "location": "Cambridge",
+        "tags" : ["coffee","$$"],
+        "place_link" : "https://www.cremacambridge.com/",
+        "place_image" : "http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg"
+    },
+    "Elephant Nature Park": {
+        "id" : 0,
+        "location": "Chiang Mai",
+        "tags" : ["outdoors","photography","$$"],
+        "place_link" : "https://www.elephantnaturepark.org/",
+        "place_image" : "https://www.elephantnaturepark.org/enp/images/os_imagegallery_154/original/026g0091.jpg"
+    },
+    "Singapore Botanic Gardens": {
+        "id": 2,
+        "location": "Singapore",
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "https://www.sbg.org.sg/",
+        "place_image" : "http://worldtoptop.com/wp-content/uploads/2011/05/national_botanic_orchid_garden_singapore.jpg"
+    },
+    "Radio Bean": {
+        "id": 3,
+        "location": "Burlington",
+        "tags" : ["coffee","cocktails","food","music","$$"],
+        "place_link" : "https://www.radiobean.com/",
+        "place_image" : "http://7d.blogs.com/sitd/images/2008/01/02/asnowydayattheradiobe.jpg"
+    },
+    "Boston Public Garden": {
+        "id": 4,
+        "location": "Boston",
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "https://www.boston.gov/parks/public-garden",
+        "place_image" : "https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg"
+    },
+    "Peabody Museum of Archaeology & Ethnography at Harvard University": {
+        "id": 5,
+        "location": "Cambridge",
+        "tags" : ["museum","art","indoors","$"],
+        "place_link" : "https://www.peabody.harvard.edu/",
+        "place_image" : "https://www.peabody.harvard.edu/files/Encounters_gallery.jpg"
+    }
+}
