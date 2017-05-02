@@ -16,14 +16,16 @@ class PlaceController extends Controller
     */
     public function index(Request $request) {
 
-        $location=[];
+        $locations=[];
         $newPlaces=[];
 
-        $locations = Location::orderBy('created_at', 'ascending')->get(); # Query DB
+        $locations = Location::orderBy('created_at', 'descending')->get(); # Query DB
+        $threeLocations = $locations->sortBy('created_at')->take(3); # Query existing Collection
+
         $newPlaces = Place::orderBy('created_at', 'descending')->limit(3)->get(); # Query DB
 
         return view('places.index')->with([
-            'locations' => $locations,
+            'locations' => $threeLocations,
             'newPlaces' => $newPlaces,
         ]);
     }
@@ -33,7 +35,16 @@ class PlaceController extends Controller
     * /places/show
     */
     public function showPlace(Request $request)  {
-        return view('places.show');
+        $places=[];
+
+        $locations = Location::orderBy('created_at', 'descending')->get(); # Query DB
+
+        $places = Place::orderBy('created_at', 'descending')->get(); # Query DB
+
+        return view('places.show')->with([
+            'locations' => $locations,
+            'places' => $places,
+        ]);
     }
 
     /**
@@ -94,6 +105,20 @@ class PlaceController extends Controller
     */
     public function deletePlace(Request $request)  {
         return view('places.delete');
+    }
+
+    /**
+    * GET
+    * /locations/search
+    */
+    public function showLocation(Request $request) {
+        $locations=[];
+
+        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
+
+        return view('locations.show')->with([
+            'locations' => $locations,
+        ]);
     }
 
     /**

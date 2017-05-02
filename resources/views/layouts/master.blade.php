@@ -28,10 +28,10 @@
     	<header>
 
 			<nav id="topnav">
-				<ul>
-					<li><a href='/'>Home</a></li>
-					<li><a href='/places/search'>Search</a></li>
+				<ul class='tileHorizontal'>
 					<li><a href='/places/new'>Add a Place</a></li>
+					<li><a href='/places/search'>Search</a></li>
+					<li><a href='/places'>Home</a></li>
 				</ul>
 			</nav>
 

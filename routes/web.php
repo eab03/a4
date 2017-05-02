@@ -23,8 +23,14 @@ Route::get('/places', 'PlaceController@index');
 # Get route to show an individual place
 Route::get('/places/show', 'PlaceController@showPlace');
 
+# Get route to show an individual place
+Route::get('/places/show{id}', 'PlaceController@showPlace');
+
 # Get route to show form to search page
 Route::get('/places/search', 'PlaceController@searchPlace');
+
+# Get route to show form to search page
+Route::get('/places/search{id}', 'PlaceController@searchPlace');
 
 # Get route to show a form to create a new place
 Route::get('/places/new', 'PlaceController@createNewPlace');
@@ -45,8 +51,16 @@ Route::get('/places/delete/', 'PlaceController@confirmDeletionPlace');
 Route::post('/places/delete', 'PlaceController@deletePlace');
 
 
-
 // Locations
+
+# Get route to show an individual place
+Route::get('/locations/show', 'PlaceController@showLocation');
+
+# Get route to show an individual place
+Route::get('/locations/show{id}', 'PlaceController@showLocation');
+
+# Get route to a search page
+Route::get('locations/search{id}', 'PlaceController@searchLocation');
 
 # Get route to a search page
 Route::get('locations/search', 'PlaceController@searchLocation');
