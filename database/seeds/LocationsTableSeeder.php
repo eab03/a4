@@ -17,6 +17,7 @@ class LocationsTableSeeder extends Seeder
             ['Burlington', 'Vermont', 'United States'],
             ['Cambridge', 'Massachusetts', 'United States'],
             ['Boston', 'Massachusetts', 'United States'],
+            ['Shelburne', 'Vermont', 'United States'],
             ['Chiang Mai', ' ', 'Thailand'],
             ['Singapore', ' ', 'Singapore']
         ];

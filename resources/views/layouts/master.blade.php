@@ -4,7 +4,7 @@
 
 <head>
 	<title>
-		@yield('title', 'Happenings')
+		@yield('title', 'Places to Go, Things to Do!')
 	</title>
 
 	<meta charset="utf-8">
@@ -18,30 +18,38 @@
     @stack('head')
 
 </head>
-<body>
 
+<body>
 	<div id='content'>
 		@if(Session::get('message') != null)
 			<div class='message'>{{ Session::get('message') }}</div>
 		@endif
 
-    <header>
+    	<header>
 
-		<h1>So Many Things To Do!</h1>
+			<nav id="topnav">
+				<ul>
+					<li><a href='/'>Home</a></li>
+					<li><a href='/places/search'>Search</a></li>
+					<li><a href='/places/new'>Add a Place</a></li>
+				</ul>
+			</nav>
 
-    </header>
+			<h1>So Many Things To Do!</h1>
 
-            <section>
-                @yield('content')
-            </section>
+	    </header>
 
-            <footer>
-                &copy; {{ date('Y') }} &nbsp;&nbsp;
-            </footer>
+	    <section>
+	        @yield('content')
+	    </section>
 
-        </div>
+        <footer>
+            &copy; {{ date('Y') }} &nbsp;&nbsp;
+        </footer>
 
-        @stack('body')
+    </div><!--close div content-->
 
-    </body>
-    </html>
+    @stack('body')
+
+</body>
+</html>

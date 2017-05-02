@@ -6,19 +6,19 @@
         "place_link" : "https://www.cremacambridge.com/",
         "place_image" : "http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg"
     },
-    "Elephant Nature Park": {
-        "id" : 0,
-        "location": "Chiang Mai",
-        "tags" : ["outdoors","photography","$$"],
-        "place_link" : "https://www.elephantnaturepark.org/",
-        "place_image" : "https://www.elephantnaturepark.org/enp/images/os_imagegallery_154/original/026g0091.jpg"
-    },
-    "Singapore Botanic Gardens": {
-        "id": 2,
-        "location": "Singapore",
+    "Lake Champlain": {
+        "id" : 1,
+        "location": "Burlington",
         "tags" : ["outdoors","photography","$"],
-        "place_link" : "https://www.sbg.org.sg/",
-        "place_image" : "http://worldtoptop.com/wp-content/uploads/2011/05/national_botanic_orchid_garden_singapore.jpg"
+        "place_link" : "",
+        "place_image" : "https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg"
+    },
+    "Shelburne Farms": {
+        "id": 2,
+        "location": "Shelburne",
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "http://www.shelburnefarms.org/",
+        "place_image" : "http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg"
     },
     "Radio Bean": {
         "id": 3,
