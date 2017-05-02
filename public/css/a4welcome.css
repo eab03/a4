@@ -1,46 +1,15 @@
 html {
+    background-attachment: fixed;
     background-color: #2c3e50;
-    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
-/* Adapted from foobooks.css example code */
-
-/*----------------------------------------------------
-http://www.paulirish.com/2012/box-sizing-border-box-ftw/
------------------------------------------------------*/
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-/* End Box Sizing */
-
-
-/*----------------------------------------------------
-http://nicolasgallagher.com/micro-clearfix-hack/
------------------------------------------------------*/
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.cf:after {
-    clear: both;
-}
-
-.cf {
-    *zoom: 1; /* For IE 6/7 only */
-}
-/* End clearfix */
-
-
-header {
-    color: #2c3e50;
-    background-color: coral;
-    height: 50px;
-}
+/* background-image code: http://sixrevisions.com/css/responsive-background-image/ */
+/* background-image source: https://pixabay.com/en/scrabble-game-board-game-words-243192/ */
 
 body {
     background-color: #FFF;
@@ -54,75 +23,24 @@ body {
     width: 65%;
 }
 
-header #topnav {
-    margin-top: 2.5em;
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-nav a:link, nav a:visited, nav a:active, nav a:hover {
-    color: #FFF;
-    font-size: 1.5em;
-    text-decoration:none;
-}
-
-nav a:hover {
-    color: #2c3e50;
-}
-
-nav li {
+nav .tileHorizontal li {
     display: inline-block;
     float: right;
     margin-right: 1.5em;
-    margin-top: .5em;
 }
 
-/* styling for welcome.blade.php page */
-
-div.intro {
-    clear: both;
-    margin-top: 5em;
-    text-align: center;
+.horizontal li {
+    float: left;
 }
 
-div.intro h1 {
-    font-size: 3em;
-}
-
-div.intro h2 {
-    font-size: 1.5em;
-}
-
-div.intro a {
-    font-size: 2em;
-}
-
-/* styling for places/index.blade.php */
-
-#newPlaces {
-    margin-top: 1.5em;
-}
-
-#newPlaces h2, #newLocations h2 {
-    margin-left: 1em;
-}
-
-#newLocations {
-    margin-top: 2.5em;
-}
-
-.truncate {
-    width:100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.location h3 {
-    font-size: 1.5em;
-}
-
-img {
-    height: 120px;
-    width: 120px;
+.horizontal h3 {
+    font-size: 1em;
 }
 
 /* styling for form elements */

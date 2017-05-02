@@ -14,12 +14,12 @@ class LocationsTableSeeder extends Seeder
     {
         # Array of locations to add
         $locations = [
-            ['Burlington', 'Vermont', 'United States'],
-            ['Cambridge', 'Massachusetts', 'United States'],
-            ['Boston', 'Massachusetts', 'United States'],
-            ['Shelburne', 'Vermont', 'United States'],
-            ['Chiang Mai', ' ', 'Thailand'],
-            ['Singapore', ' ', 'Singapore']
+            ['Burlington', 'Vermont', 'United States', ''],
+            ['Cambridge', 'Massachusetts', 'United States', 'http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg'],
+            ['Boston', 'Massachusetts', 'United States', ''],
+            ['Shelburne', 'Vermont', 'United States',''],
+            ['Chiang Mai', ' ', 'Thailand', ''],
+            ['Singapore', ' ', 'Singapore', '']
         ];
 
         # Initiate a new timestamp we can use for created_at/updated_at fields
@@ -37,6 +37,7 @@ class LocationsTableSeeder extends Seeder
                 'city' => $location[0],
                 'state' => $location[1],
                 'country' => $location[2],
+                'location_image' => $location[3],
             ]);
         }
     }

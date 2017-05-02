@@ -74,11 +74,14 @@ Route::post('/locations/new', 'PlaceController@storeNewLocation');
 # Get route to show a form to edit an existing place
 Route::get('/locations/edit', 'PlaceController@editLocation');
 
+# Get route to show a form to edit an existing place
+Route::get('/locations/edit{id}', 'PlaceController@editLocation');
+
 # Post route to process the form to save edits to a place
 Route::post('/locations/edit', 'PlaceController@saveEditsLocation');
 
 # Get route to confirm deletion of location
-Route::get('/locations/delete', 'PlaceController@confirmDeletionLocation');
+Route::get('/locations/delete{id}', 'PlaceController@confirmDeletionLocation');
 
 # Post route to actually destroy the location
 Route::post('/locations/delete', 'PlaceController@deleteLocation');

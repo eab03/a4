@@ -153,7 +153,19 @@ class PlaceController extends Controller
     * Display the form to add a new place
     */
     public function editLocation(Request $request) {
-        return view('locations.edit');
+
+        $locations=[];
+
+        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
+            if(is_null($locations)) {
+                Session::flash('message', 'The location you are looking for was not found.');
+                return redirect('/locations/search');
+        }
+
+        # Results in an array like this: $tagsForThisBook => ['novel','fiction','classic'];
+        return view('locations.edit')->with([
+            'locations' => $locations,
+        ]);
     }
 
     /**
@@ -162,8 +174,30 @@ class PlaceController extends Controller
     * Display the form to add a new place
     */
     public function saveEditsLocation(Request $request) {
-        return view('locations.edit');
-    }
+        # Custom error message
+        $messages = [
+            'location_id.not_in' => 'Location not selected.',
+        ];
+        $this->validate($request, [
+            'city' => 'required|min:2|alpha',
+            'state' => 'min:2|alpha',
+            'country' => 'min:2|alpha',
+            'location_image' => 'url',
+            'id' => 'not_in:0'
+        ], $messages);
+
+        $location = Location::find($request->id);
+        # Edit book in the database
+        $location->city = $request->city;
+        $Location->state = $request->state;
+        $location->country = $request->country;
+        $location->id = $request->id;
+
+        $location->save();
+
+        Session::flash('message', 'Your changes to '.$location->city.' were saved.');
+        return redirect('/locations/show/'.$request->id);
+        }
 
     /**
     * GET

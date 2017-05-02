@@ -13,6 +13,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css"  integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
+	<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="/css/a4.css" type="text/css">
 
     @stack('head')
@@ -28,14 +29,12 @@
     	<header>
 
 			<nav id="topnav">
-				<ul class='tileHorizontal'>
+				<ul>
 					<li><a href='/places/new'>Add a Place</a></li>
 					<li><a href='/places/search'>Search</a></li>
 					<li><a href='/places'>Home</a></li>
 				</ul>
 			</nav>
-
-			<h1>So Many Things To Do!</h1>
 
 	    </header>
 
@@ -44,7 +43,7 @@
 	    </section>
 
         <footer>
-            &copy; {{ date('Y') }} &nbsp;&nbsp;
+
         </footer>
 
     </div><!--close div content-->
