@@ -2,6 +2,8 @@
 
 @section('content')
 
+ @foreach($places as $place)
+
     <div class='place cf'>
 
         <h1>{{ $place->place_name }}</h1>
@@ -19,4 +21,5 @@
 
     </div>
 
+@endforeach
 @endsection

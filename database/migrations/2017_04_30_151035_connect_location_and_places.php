@@ -31,7 +31,7 @@ class ConnectLocationAndPlaces extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('places', function (Blueprint $table) {
             # ref: http://laravel.com/docs/migrations#dropping-indexes
             # combine tablename + fk field name + the word "foreign"
             $table->dropForeign('places_location_id_foreign');
