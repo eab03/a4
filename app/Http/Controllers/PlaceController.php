@@ -17,31 +17,29 @@ class PlaceController extends Controller
     public function index(Request $request) {
 
         $locations=[];
-        $places=[];
+        $newPlaces=[];
 
         $locations = Location::orderBy('created_at', 'descending')->limit(3)->get(); # Query DB
 
-        $places = Place::orderBy('created_at', 'descending')->limit(3)->get(); # Query DB
+        $places = Place::orderBy('created_at', 'descending')->get(); # Query DB
+        $newPlaces = $places->sortByDesc('created_at')->take(3); # Query existing Collection
 
         return view('places.index')->with([
             'locations' => $locations,
-            'places' => $places,
+            'newPlaces' => $newPlaces,
         ]);
     }
 
     /**
     * GET
-    * /places/show/{id}
+    * /books/{id}
     */
     public function showPlace($id) {
-
         $place = Place::find($id);
-
         if(!$place) {
-            Session::flash('message', 'The place you are looking for could not be found.');
-            return redirect('places/showall');
+            Session::flash('message', 'The place you requested could not be found.');
+            return redirect('/places/show');
         }
-
         return view('places.show')->with([
             'place' => $place,
         ]);
@@ -67,6 +65,10 @@ class PlaceController extends Controller
     * /places/search
     */
     public function searchPlace(Request $request) {
+
+        $locations = [];
+        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
+
         # Start with an empty array of search results; places that
         # match our search query will get added to this array
         $searchResults = [];
@@ -85,20 +87,21 @@ class PlaceController extends Controller
             $places = json_decode($placesRawData, true);
             # Loop through all the place data, looking for matches
 
-            foreach($places as $placeName => $place) {
+
+            foreach($places as $name => $place) {
 
                 # Case sensitive boolean check for a match
                 if($request->has('caseSensitive')) {
-                    $match = $title == $searchPlace;
+                    $match = $name == $searchPlace;
                 }
                 # Case insensitive boolean check for a match
                 else {
-                    $match = strtolower($title) == strtolower($searchPlace);
+                    $match = strtolower($name) == strtolower($searchPlace);
                 }
 
                 # If it was a match, add it to our results
                 if($match) {
-                    $searchResults[$placeName] = $place;
+                    $searchResults[$name] = $place;
                 }
             }
         }
@@ -106,7 +109,8 @@ class PlaceController extends Controller
         return view('places.search')->with([
             'searchPlace' => $searchPlace,
             'caseSensitive' => $request->has('caseSensitive'),
-            'searchResults' => $searchResults
+            'searchResults' => $searchResults,
+            'locations' => $locations
         ]);
     }
 
@@ -117,14 +121,14 @@ class PlaceController extends Controller
     */
     public function createNewPlace(Request $request) {
 
-        /*$placesForDropdown = Place::getPlacesForDropdown();
+        $placesForDropdown = Place::getPlacesForDropdown();
 
         $tagsForCheckboxes = Tag::getTagsForCheckboxes();
 
         return view('places.new')->with([
             'placesForDropdown' => $placesForDropdown,
             'tagsForCheckboxes' => $tagsForCheckboxes
-        ]);*/
+        ]);
 
         return view('places.new');
     }
@@ -307,19 +311,11 @@ class PlaceController extends Controller
 
         if(!$location) {
             Session::flash('message', 'The location you are looking for could not be found.');
-            return redirect('/locations/showall');
+            return redirect('/locations/show');
         }
         return view('locations.show')->with([
             'location' => $location,
         ]);
-    }
-
-    /**
-    * GET
-    * /locations/search
-    */
-    public function searchLocation(Request $request) {
-        return view('locations.search');
     }
 
     /**
@@ -373,7 +369,7 @@ class PlaceController extends Controller
         $locations = Location::orderBy('city', 'asc')->get(); # Query DB
             if(is_null($locations)) {
                 Session::flash('message', 'The location you are looking for was not found.');
-                return redirect('/locations/search');
+                return redirect('/locations/showall');
         }
         return view('locations.edit')->with([
             'locations' => $locations,
@@ -404,7 +400,7 @@ class PlaceController extends Controller
         $location->save();
 
         Session::flash('message', 'Your changes to '.$location->city.' were saved.');
-        return redirect('/locations/show/'.$request->id);
+        return redirect('/locations/show/{id}'.$request->id);
         }
 
     /**
@@ -412,7 +408,12 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function confirmDeletionLocation(Request $request)  {
-        return view('locations.delete');
+        # Get the book they're attempting to delete
+        $location = Location::find($id);
+        if(!$location) {
+            Session::flash('message', 'Location not found.');
+            return redirect('/locatinos/search');
+        }
     }
 
     /**
@@ -420,7 +421,17 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function deleteLocation(Request $request)  {
-        return view('locations.delete');
+    # Get the book to be deleted
+        $location = Location::find($location->id);
+        if(!$location) {
+            Session::flash('message', 'Deletion failed; place not found.');
+            return redirect('/places/search');
+        }
+        $location->tags()->detach();
+        $location->delete();
+        # Finish
+        Session::flash('message', $location->city.' was deleted.');
+        return redirect('/locations/showall');
     }
 
 }

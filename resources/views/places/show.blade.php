@@ -15,7 +15,7 @@
         <p>Last updated: {{ $place->updated_at }}</p>
 
         <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
-        <a class='placeAction' href='/places/{{ $place->id }}/delete'><i class='fa fa-trash'></i></a>
+        <a class='placeAction' href='/places/delete/{{ $place->id }}/delete'><i class='fa fa-trash'></i></a>
 
     </div>
 
