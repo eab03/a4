@@ -12,6 +12,7 @@
     <h1>Edit Locations</h1>
 
     <form method='POST' action='/locations/edit'>
+        {{ csrf_field() }}
 
         <p>* Required fields</p>
 
@@ -29,6 +30,7 @@
 
             <label for='location_image'>URL to an image</label>
             <input type='text' name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+
         </div>
 
         <br><input class='btn btn-primary' type='submit' value='Save changes'><br><br>

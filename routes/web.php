@@ -67,9 +67,6 @@ Route::get('/locations/new', 'PlaceController@createNewLocation');
 Route::post('/locations/new', 'PlaceController@storeNewLocation');
 
 # Get route to show a form to edit an existing place
-Route::get('/locations/edit', 'PlaceController@editLocation');
-
-# Get route to show a form to edit an existing place
 Route::get('/locations/edit/{id}', 'PlaceController@editLocation');
 
 # Post route to process the form to save edits to a place

@@ -16,13 +16,11 @@ class PlaceController extends Controller
     */
     public function index(Request $request) {
 
-        $locations=[];
-        $newPlaces=[];
+        $locations = Location::orderBy('updated_at', 'descending')->limit(3)->get(); # Query DB
 
-        $locations = Location::orderBy('created_at', 'descending')->limit(3)->get(); # Query DB
+        $places = Place::orderBy('place_name', 'descending')->get(); # Query DB
 
-        $places = Place::orderBy('created_at', 'descending')->get(); # Query DB
-        $newPlaces = $places->sortByDesc('created_at')->take(3); # Query existing Collection
+        $newPlaces = $places->sortByDesc('updated_at')->take(3); # Query existing Collection
 
         return view('places.index')->with([
             'locations' => $locations,
@@ -35,10 +33,12 @@ class PlaceController extends Controller
     * /books/{id}
     */
     public function showPlace($id) {
+
         $place = Place::find($id);
+
         if(!$place) {
-            Session::flash('message', 'The place you requested could not be found.');
-            return redirect('/places/show');
+            Session::flash('message', 'The place you are looking for could not be found.');
+            return redirect('/places');
         }
         return view('places.show')->with([
             'place' => $place,
@@ -51,9 +51,7 @@ class PlaceController extends Controller
     */
     public function showallPlace(Request $request) {
 
-        $places = [];
-
-        $places = Place::orderBy('location_id', 'asc')->get(); # Query DB
+        $places = Place::orderBy('place_name', 'asc')->get(); # Query DB
 
         return view('places.showall')->with([
             'places' => $places,
@@ -121,58 +119,51 @@ class PlaceController extends Controller
     */
     public function createNewPlace(Request $request) {
 
-        $placesForDropdown = Place::getPlacesForDropdown();
-
-        $tagsForCheckboxes = Tag::getTagsForCheckboxes();
+        $locationsForDropdown = Location::getLocationsForDropdown();
 
         return view('places.new')->with([
-            'placesForDropdown' => $placesForDropdown,
-            'tagsForCheckboxes' => $tagsForCheckboxes
+            'locationsForDropdown' => $locationsForDropdown,
         ]);
-
-        return view('places.new');
     }
-
 
     /**
     * POST
     * /places/new
     * Display the form to add a new place
     */
-    public function storeNewPlace(Request $request) {
 
-        # Custom error message
-        $messages = [
-            'location_id.not_in' => 'Location not selected.',
-        ];
+        public function storeNewPlace(Request $request) {
 
-        $this->validate($request, [
-            'place_name' => 'required|min:1',
-            'place_image' => 'url',
-            'place_link' => 'url',
-            'location_id' => 'not_in:0',
-        ], $messages);
+            # Custom error message
+            $messages = [
+                'location_id.not_in' => 'Location not selected.',
+            ];
 
-        # Add new place to database
-        $place = new Place();
-        $place->place_name = $request->place_name;
-        $place->place_image = $request->place_image;
-        $place->place_link = $request->place_link;
-        $place->location_id = $request->location_id;
-        $place->save();
+            $this->validate($request, [
+                'place_name' => 'required|min:1',
+                'place_image' => 'url',
+                'place_link' => 'url',
+                'location_id' => 'not_in:0',
+            ], $messages);
 
-        # Now handle tags.
-        # Note how the book has to be created (save) first *before* tags can
-        # be added; this is because the tags need a book_id to associate with
-        # and we don't have a book_id until the book is created.
-        $tags = ($request->tags) ?: [];
-        $place->tags()->sync($tags);
-        $place->save();
+            # Add new book to database
+            $place = new Place();
+            $place->place_name = $request->place_name;
+            $place->place_link = $request->place_link;
+            $place->place_image = $request->place_image;
+            $place->location_id = $request->location_id;
+            $place->save();
 
-        Session::flash('message', 'The place '.$request->place_name.' was added.');
-        # Redirect the user to book index
-        return redirect('/places');
-    }
+            # Now handle tags.
+            # Note how the book has to be created (save) first *before* tags can
+            # be added; this is because the tags need a book_id to associate with
+            # and we don't have a book_id until the book is created.
+
+            Session::flash('message', 'The place '.$request->place_name.' was added.');
+
+            # Redirect the user to book index
+            return redirect('/places');
+        }
 
     /**
     * GET
@@ -181,29 +172,20 @@ class PlaceController extends Controller
     */
     public function editPlace($id) {
 
-        $place = Place::with('tags')->find($id);
+        $place = Place::find($id);
 
         if(is_null($place)) {
             Session::flash('message', 'The place you are looking for was not found.');
             return redirect('/places');
         }
 
-        $placesForDropdown = Place::getPlacesForDropdown();
+        $locationsForDropdown = Location::getLocationsForDropdown();
 
-        $tagsForCheckboxes = Tag::getTagsForCheckboxes();
-        # Create a simple array of just the tag names for tags associated with this book;
-        # will be used in the view to decide which tags should be checked off
-        $tagsForThisPlace = [];
-        foreach($place->tags as $tag) {
-            $tagsForThisPlace[] = $tag->name;
-        }
         # Results in an array like this: $tagsForThisBook => ['novel','fiction','classic'];
         return view('places.edit')->with([
             'id' => $id,
             'place' => $place,
-            'placesForDropdown' => $placesForDropdown,
-            'tagsForCheckboxes' => $tagsForCheckboxes,
-            'tagsForThisPlace' => $tagsForThisPlace,
+            'locationsForDropdown' => $locationsForDropdown,
         ]);
     }
 
@@ -233,21 +215,6 @@ class PlaceController extends Controller
         $place->place_link = $request->place_link;
         $place->location_id = $request->location_id;
 
-        # If there were tags selected...
-        if($request->tags) {
-            $tags = $request->tags;
-        }
-
-        # If there were no tags selected (i.e. no tags in the request)
-        # default to an empty array of tags
-        else {
-            $tags = [];
-
-        }
-
-        # Above if/else could be condensed down to this: $tags = ($request->tags) ?: [];
-        # Sync tags
-        $place->tags()->sync($tags);
         $place->save();
         Session::flash('message', 'Your changes to '.$place->place_name.' were saved.');
         return redirect('/places/edit/'.$request->id);
@@ -262,7 +229,7 @@ class PlaceController extends Controller
         $place = Place::find($id);
         if(!$place) {
             Session::flash('message', 'Place not found.');
-            return redirect('/places/showall');
+            return redirect('/places');
         }
 
         return view('places.delete')->with('place', $place);
@@ -277,13 +244,12 @@ class PlaceController extends Controller
     $place = Place::find($request->id);
     if(!$place) {
         Session::flash('message', 'Deletion failed; place not found.');
-        return redirect('/places/showall');
+        return redirect('/places');
     }
-    $place->tags()->detach();
     $place->delete();
     # Finish
     Session::flash('message', $place->place_name.' was deleted.');
-    return redirect('/places/showall');
+    return redirect('/places');
 }
 
 
@@ -292,7 +258,6 @@ class PlaceController extends Controller
     * /locations/search
     */
     public function showallLocation(Request $request) {
-        $locations=[];
 
         $locations = Location::orderBy('city', 'asc')->get(); # Query DB
 
@@ -324,10 +289,7 @@ class PlaceController extends Controller
     * Display the form to add a new location
     */
     public function createNewLocation(Request $request) {
-        $locationsForDropdown = Location::getLocationsForDropdown();
-        return view('locations.new')->with([
-            'locationsForDropdown' => $locationsForDropdown,
-        ]);
+        return view('locations.new');
     }
 
     /**
@@ -337,42 +299,55 @@ class PlaceController extends Controller
     */
 
     public function storeNewLocation(Request $request) {
-        # Custom error message
-        $this->validate($request, [
-            'city' => 'required|min:2|alpha',
-            'state' => 'min:2|alpha',
-            'country' => 'min:2|alpha',
-            'location_image' => 'url',
-        ]);
-                # Add new location to database
-            $location = new Location();
-            $location->city = $request->city;
-            $location->state = $request->state;
-            $location->country = $request->country;
-            $location->location_image = $request->location_image;
-            $location->save();
 
-            Session::flash('message', 'The location'.$request->city.' was added.');
-            # Redirect the user to book index
-            return redirect('/locations/showall');
-            }
+        # Custom error message
+        $messages = [
+            'all wrong!'
+        ];
+
+        $this->validate($request, [
+            'city' => 'required|min:1',
+            'state' => 'min:2',
+            'country' => 'min:2',
+            'location_image' => 'url',
+        ], $messages);
+
+        # Add new book to database
+        $location = new Location();
+        $location->city = $request->city;
+        $location->state = $request->state;
+        $location->country = $request->country;
+        $location->location_image = $request->location_image;
+        $location->save();
+
+        # Now handle tags.
+        # Note how the book has to be created (save) first *before* tags can
+        # be added; this is because the tags need a book_id to associate with
+        # and we don't have a book_id until the book is created.
+
+        Session::flash('message', 'The place '.$request->city.' was added.');
+
+        # Redirect the user to book index
+        return redirect('/places');
+    }
 
     /**
     * GET
     * /locations/edit
     * Display the form to add a new place
     */
-    public function editLocation(Request $request) {
+    public function editLocation($id) {
 
-        $locations=[];
+         $location = Location::find($id);
 
-        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
-            if(is_null($locations)) {
+            if(is_null($location)) {
                 Session::flash('message', 'The location you are looking for was not found.');
                 return redirect('/locations/showall');
-        }
+            }
+
         return view('locations.edit')->with([
-            'locations' => $locations,
+            'id' => $id,
+            'location' => $location,
         ]);
     }
 
@@ -383,37 +358,42 @@ class PlaceController extends Controller
     */
     public function saveEditsLocation(Request $request) {
         # Custom error message
+        $messages = [
+            'all wrong!',
+        ];
+
         $this->validate($request, [
-            'city' => 'required|min:2|alpha',
-            'state' => 'min:2|alpha',
-            'country' => 'min:2|alpha',
+            'city' => 'required|min:1',
+            'state' => 'min:2',
+            'country' => 'min:2',
             'location_image' => 'url',
-        ]);
+        ], $messages);
 
         $location = Location::find($request->id);
-        # Edit book in the database
-        $location->city = $request->city;
-        $Location->state = $request->state;
-        $location->country = $request->country;
-        $location->image = $request->location_image;
 
+        # Edit place in the database
+        $location->city = $request->city;
+        $location->state = $request->state;
+        $location->country = $request->country;
+        $location->location_image = $request->location_image;
         $location->save();
 
         Session::flash('message', 'Your changes to '.$location->city.' were saved.');
-        return redirect('/locations/show/{id}'.$request->id);
-        }
+        return redirect('/places'.$request->id);
+    }
 
     /**
     * GET
     * /places/delete
     */
-    public function confirmDeletionLocation(Request $request)  {
+    public function confirmDeletionLocation($id)  {
         # Get the book they're attempting to delete
         $location = Location::find($id);
         if(!$location) {
             Session::flash('message', 'Location not found.');
-            return redirect('/locatinos/search');
+            return redirect('/locations/showall');
         }
+        return view('locations.delete')->with('location', $location);
     }
 
     /**
@@ -425,11 +405,12 @@ class PlaceController extends Controller
         $location = Location::find($location->id);
         if(!$location) {
             Session::flash('message', 'Deletion failed; place not found.');
-            return redirect('/places/search');
+            return redirect('/locations/showall');
         }
-        $location->tags()->detach();
+
         $location->delete();
         # Finish
+
         Session::flash('message', $location->city.' was deleted.');
         return redirect('/locations/showall');
     }

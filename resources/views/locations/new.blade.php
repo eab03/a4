@@ -5,7 +5,7 @@
 @endsection
 
 @push('head')
-    <link href='/css/books.css' rel='stylesheet'>
+    <link href='/css/a4.css' rel='stylesheet'>
 @endpush
 
 
@@ -26,22 +26,10 @@
         <label for='country'> Country</label>
         <input type='text' name='country' id='country' value='{{ old('country', 'United States') }}'>
 
-        <label for='image_link'> Location Image</label>
-        <input type='text' name='image_link' id='image_link' value='{{ old('image_link', 'http://www.barnesandnoble.com/w/green-eggs-and-ham-dr-seuss/1100170349') }}'>
+        <label for='location_image'> Image</label>
+        <input type='text' name='location_image' id='location_image' value='{{ old('location_image', 'http://www.barnesandnoble.com/w/green-eggs-and-ham-dr-seuss/1100170349') }}'>
 
-        <label for='location_id'>* Location:</label>
-        <select id='location_id' name='location_id'>
-            <option value='0'>Choose</option>
-            @foreach($locationsForDropdown as $location_id => $locationCity)
-                <option value='{{ $location_id }}'>
-                    {{ $locationCity }}
-                </option>
-            @endforeach
-        </select>
-
-        @include('errors')
-
-        <input class='btn btn-primary' type='submit' value='Add new book'>
+        <input class='btn btn-primary' type='submit' value='Add new location'>
     </form>
 
 
