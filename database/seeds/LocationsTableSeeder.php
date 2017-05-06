@@ -14,11 +14,11 @@ class LocationsTableSeeder extends Seeder
     {
         # Array of locations to add
         $locations = [
-            ['Burlington', 'Vermont', 'United States', 'https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg'],
-            ['Cambridge', 'Massachusetts', 'United States', 'http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg'],
-            ['Boston', 'Massachusetts', 'United States', 'https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg'],
-            ['Shelburne', 'Vermont', 'United States','http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg'],
-            ['Bangkok', ' ', 'Thailand', 'https://www.google.com/search?q=elephant+nature+park+chiang+mai&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiKjPiAz9PTAhXB1CYKHf16CsEQ_AUICygC&biw=1439&bih=775#tbm=isch&q=bangkok+thailand&imgrc=YA1GoxGTB_IxzM'],
+            ['Burlington', 'VT', 'USA', 'https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg'],
+            ['Cambridge', 'MA', 'USA', 'http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg'],
+            ['Boston', 'MA', 'USA', 'https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg'],
+            ['Shelburne', 'VT', 'USA', 'http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg'],
+            ['Bangkok', ' ', 'Thailand', ''],
             ['Chiang Mai', ' ', 'Thailand', 'https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/43977/SITours/amazing-trekking-at-doi-inthanon-national-park-and-hmong-hill-tribe-in-chiang-mai-393987.jpg'],
             ['Singapore', ' ', 'Singapore', 'http://lghttp.60358.nexcesscdn.net/8046264/images/page/-/100rc/img/cities/Singapore%20hero%20cro.jpg']
         ];

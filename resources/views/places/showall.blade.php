@@ -2,24 +2,35 @@
 
 @section('content')
 
- @foreach($places as $place)
+        @if(count($places) == 0)
+            <span class='exception'>You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a></span>?
+        @else
 
-    <div class='place cf'>
+            <a href="/places/new"><input type='button' value='Add a Place' class='btn btn-primary btn-small'></a>
 
-        <h1>{{ $place->place_name }}</h1>
+         @foreach($places as $place)
 
-        <a href='/places{{ $place->id }}'><img id='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->place_name }}'></a>
+            <div class='place cf'>
 
-        <p><a href='{{ $place->place_link }}'>Check out this Place!</a></p>
+                <h2>{{ $place->name }}</h2>
 
-        <p>Location: {{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
-        <p>Added on: {{ $place->created_at }}</p>
-        <p>Last updated: {{ $place->updated_at }}</p>
+                <a href='/places{{ $place->id }}'><img id='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
 
-        <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
-        <a class='placeAction' href='/places/{{ $place->id }}/delete'><i class='fa fa-trash'></i></a>
+                <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
+                <a class='locationAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
+                <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
-    </div>
+                <br><br>
+                <p><a href='{{ $place->place_link }}'>Website</a></p>
 
-@endforeach
+                <p>Location: {{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
+                <p>Added on: {{ $place->created_at }}</p>
+                <p>Last updated: {{ $place->updated_at }}</p>
+
+                <br>
+
+            </div>
+
+        @endforeach
+    @endif
 @endsection

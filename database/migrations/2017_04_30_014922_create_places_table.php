@@ -24,12 +24,10 @@ class CreatePlacesTable extends Migration
             $table->timestamps();
 
             # The rest of the fields...
-            $table->string('place_name');
+            $table->string('name');
             $table->string('place_image')->nullable();
             $table->string('place_link')->nullable();
             $table->softDeletes();
-
-            # 'tags' field to be added later.
 
         });
     }

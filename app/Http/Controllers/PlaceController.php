@@ -18,7 +18,7 @@ class PlaceController extends Controller
 
         $locations = Location::orderBy('updated_at', 'descending')->limit(3)->get(); # Query DB
 
-        $places = Place::orderBy('place_name', 'descending')->get(); # Query DB
+        $places = Place::orderBy('name', 'descending')->get(); # Query DB
 
         $newPlaces = $places->sortByDesc('updated_at')->take(3); # Query existing Collection
 
@@ -30,28 +30,37 @@ class PlaceController extends Controller
 
     /**
     * GET
-    * /books/{id}
+    * /places/{id}
     */
     public function showPlace($id) {
 
         $place = Place::find($id);
 
+        // Array of associated tag names, which will be shown in the view
+        $tagsForThisPlace = [];
+        foreach($place->tags as $tag) {
+            $tagsForThisPlace[] = $tag->name;
+        }
+
         if(!$place) {
             Session::flash('message', 'The place you are looking for could not be found.');
             return redirect('/places');
         }
-        return view('places.show')->with([
+
+            return view('places.show')->with([
             'place' => $place,
+            'tagsForThisPlace' =>$tagsForThisPlace
         ]);
     }
 
     /**
     * GET
-    * /places/show
+    * /places/showall
     */
     public function showallPlace(Request $request) {
 
-        $places = Place::orderBy('place_name', 'asc')->get(); # Query DB
+        $places = Place::orderBy('name', 'asc')->get(); # Query DB
+
 
         return view('places.showall')->with([
             'places' => $places,
@@ -64,51 +73,42 @@ class PlaceController extends Controller
     */
     public function searchPlace(Request $request) {
 
-        $locations = [];
         $locations = Location::orderBy('city', 'asc')->get(); # Query DB
 
-        # Start with an empty array of search results; places that
-        # match our search query will get added to this array
+        // Array for search results
         $searchResults = [];
-        # Store the searchTerm in a variable for easy access
-        # The second parameter (null) is what the variable
-        # will be set to *if* searchTerm is not in the request.
+
         $searchPlace = $request->input('searchPlace', null);
-        # Only try and search *if* there's a searchTerm
+        // If search input matches list of places
         if($searchPlace) {
-            # Open the places.json data file
-            # database_path() is a Laravel helper to get the path to the database folder
-            # See https://laravel.com/docs/5.4/helpers for other path related helpers
+
+            // Get list of seed places from the json data
             $placesRawData = file_get_contents(database_path().'/places.json');
-            # Decode the place JSON data into an array
-            # Nothing fancy here; just a built in PHP method
             $places = json_decode($placesRawData, true);
-            # Loop through all the place data, looking for matches
 
-
+            // Loop through all the place data to look for a match
             foreach($places as $name => $place) {
 
-                # Case sensitive boolean check for a match
+                // Exact match if case sensitive is checked
                 if($request->has('caseSensitive')) {
                     $match = $name == $searchPlace;
                 }
-                # Case insensitive boolean check for a match
                 else {
                     $match = strtolower($name) == strtolower($searchPlace);
                 }
 
-                # If it was a match, add it to our results
+                // Add name of list of results if there is match
                 if($match) {
                     $searchResults[$name] = $place;
                 }
             }
         }
-        # Return the view, with the searchTerm *and* searchResults (if any)
+
         return view('places.search')->with([
+            'locations' => $locations,
             'searchPlace' => $searchPlace,
             'caseSensitive' => $request->has('caseSensitive'),
             'searchResults' => $searchResults,
-            'locations' => $locations
         ]);
     }
 
@@ -121,8 +121,11 @@ class PlaceController extends Controller
 
         $locationsForDropdown = Location::getLocationsForDropdown();
 
+        $tagsForCheckboxes = Tag::getTagsForCheckboxes();
+
         return view('places.new')->with([
             'locationsForDropdown' => $locationsForDropdown,
+            'tagsForCheckboxes' => $tagsForCheckboxes
         ]);
     }
 
@@ -134,34 +137,32 @@ class PlaceController extends Controller
 
         public function storeNewPlace(Request $request) {
 
-            # Custom error message
+            // Custom error message
             $messages = [
                 'location_id.not_in' => 'Location not selected.',
             ];
 
             $this->validate($request, [
-                'place_name' => 'required|min:1',
+                'name' => 'required|min:1',
                 'place_image' => 'url',
                 'place_link' => 'url',
                 'location_id' => 'not_in:0',
             ], $messages);
 
-            # Add new book to database
+            // Add new place to the database
             $place = new Place();
-            $place->place_name = $request->place_name;
+            $place->name = $request->name;
             $place->place_link = $request->place_link;
             $place->place_image = $request->place_image;
             $place->location_id = $request->location_id;
             $place->save();
 
-            # Now handle tags.
-            # Note how the book has to be created (save) first *before* tags can
-            # be added; this is because the tags need a book_id to associate with
-            # and we don't have a book_id until the book is created.
+            $tags = ($request->tags) ?: [];
+            $place->tags()->sync($tags);
+            $place->save();
 
-            Session::flash('message', 'The place '.$request->place_name.' was added.');
+            Session::flash('message', 'The place '.$request->name.' was added.');
 
-            # Redirect the user to book index
             return redirect('/places');
         }
 
@@ -172,7 +173,7 @@ class PlaceController extends Controller
     */
     public function editPlace($id) {
 
-        $place = Place::find($id);
+        $place = Place::with('tags')->find($id);
 
         if(is_null($place)) {
             Session::flash('message', 'The place you are looking for was not found.');
@@ -181,11 +182,20 @@ class PlaceController extends Controller
 
         $locationsForDropdown = Location::getLocationsForDropdown();
 
-        # Results in an array like this: $tagsForThisBook => ['novel','fiction','classic'];
+        $tagsForCheckboxes = Tag::getTagsForCheckboxes();
+
+        // Array of associated tag names, which will be shown in the view
+        $tagsForThisPlace = [];
+        foreach($place->tags as $tag) {
+            $tagsForThisPlace[] = $tag->name;
+    }
+
         return view('places.edit')->with([
             'id' => $id,
             'place' => $place,
             'locationsForDropdown' => $locationsForDropdown,
+            'tagsForCheckboxes' => $tagsForCheckboxes,
+            'tagsForThisPlace' => $tagsForThisPlace,
         ]);
     }
 
@@ -201,7 +211,7 @@ class PlaceController extends Controller
         ];
 
         $this->validate($request, [
-            'place_name' => 'required|min:1',
+            'name' => 'required|min:1',
             'place_image' => 'url',
             'place_link' => 'url',
             'location_id' => 'not_in:0',
@@ -209,14 +219,20 @@ class PlaceController extends Controller
 
         $place = Place::find($request->id);
 
-        # Edit place in the database
-        $place->place_name = $request->place_name;
+        // Edit place in the database
+        $place->name = $request->name;
         $place->place_image = $request->place_image;
         $place->place_link = $request->place_link;
         $place->location_id = $request->location_id;
 
+        // if there are tags, get the tags; if no tags revert to empty array
+        $tags = ($request->tags) ?: [];
+
+        // Sync tags
+        $place->tags()->sync($tags);
         $place->save();
-        Session::flash('message', 'Your changes to '.$place->place_name.' were saved.');
+
+        Session::flash('message', 'Your changes to '.$place->name.' were saved.');
         return redirect('/places/edit/'.$request->id);
     }
 
@@ -225,7 +241,7 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function confirmDeletionPlace($id)  {
-        # Get the book they're attempting to delete
+
         $place = Place::find($id);
         if(!$place) {
             Session::flash('message', 'Place not found.');
@@ -240,15 +256,19 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function deletePlace(Request $request)  {
-    # Get the book to be deleted
+
     $place = Place::find($request->id);
-    if(!$place) {
-        Session::flash('message', 'Deletion failed; place not found.');
-        return redirect('/places');
-    }
-    $place->delete();
-    # Finish
-    Session::flash('message', $place->place_name.' was deleted.');
+
+        if(!$place) {
+            Session::flash('message', 'Deletion failed; place not found.');
+            return redirect('/places');
+        }
+
+        $place->tags()->detach();
+
+        $place->delete();
+
+    Session::flash('message', $place->name.' was deleted.');
     return redirect('/places');
 }
 
@@ -276,7 +296,7 @@ class PlaceController extends Controller
 
         if(!$location) {
             Session::flash('message', 'The location you are looking for could not be found.');
-            return redirect('/locations/show');
+            return redirect('/places');
         }
         return view('locations.show')->with([
             'location' => $location,
@@ -301,9 +321,7 @@ class PlaceController extends Controller
     public function storeNewLocation(Request $request) {
 
         # Custom error message
-        $messages = [
-            'all wrong!'
-        ];
+        $messages = [];
 
         $this->validate($request, [
             'city' => 'required|min:1',
@@ -320,11 +338,6 @@ class PlaceController extends Controller
         $location->location_image = $request->location_image;
         $location->save();
 
-        # Now handle tags.
-        # Note how the book has to be created (save) first *before* tags can
-        # be added; this is because the tags need a book_id to associate with
-        # and we don't have a book_id until the book is created.
-
         Session::flash('message', 'The place '.$request->city.' was added.');
 
         # Redirect the user to book index
@@ -333,7 +346,7 @@ class PlaceController extends Controller
 
     /**
     * GET
-    * /locations/edit
+    * /locations/edit{id}
     * Display the form to add a new place
     */
     public function editLocation($id) {
@@ -357,10 +370,8 @@ class PlaceController extends Controller
     * Display the form to add a new place
     */
     public function saveEditsLocation(Request $request) {
-        # Custom error message
-        $messages = [
-            'all wrong!',
-        ];
+        // Custom error message
+        $messages = [];
 
         $this->validate($request, [
             'city' => 'required|min:1',
@@ -371,7 +382,7 @@ class PlaceController extends Controller
 
         $location = Location::find($request->id);
 
-        # Edit place in the database
+        // Edit location in the database
         $location->city = $request->city;
         $location->state = $request->state;
         $location->country = $request->country;
@@ -379,7 +390,7 @@ class PlaceController extends Controller
         $location->save();
 
         Session::flash('message', 'Your changes to '.$location->city.' were saved.');
-        return redirect('/places'.$request->id);
+        return redirect('/places');
     }
 
     /**
@@ -387,11 +398,11 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function confirmDeletionLocation($id)  {
-        # Get the book they're attempting to delete
+
         $location = Location::find($id);
         if(!$location) {
             Session::flash('message', 'Location not found.');
-            return redirect('/locations/showall');
+            return redirect('/places');
         }
         return view('locations.delete')->with('location', $location);
     }
@@ -401,17 +412,29 @@ class PlaceController extends Controller
     * /places/delete
     */
     public function deleteLocation(Request $request)  {
-    # Get the book to be deleted
-        $location = Location::find($location->id);
-        if(!$location) {
+
+        // Get the location to be deleted
+        $locations = Location::find($request->id);
+
+        $places = Place::orderBy('location_id', 'asc')->get(); # Query DB
+
+            foreach($places as $name => $place) {
+                foreach($locations as $city => $location) {
+                    if($match = $request->id == $place->location_id) {
+                        Session::flash('message', 'Deletion failed; delete .');
+                        return redirect('/locations/showall');
+                    }
+                }
+            }
+
+        if(!$locations) {
             Session::flash('message', 'Deletion failed; place not found.');
             return redirect('/locations/showall');
         }
 
-        $location->delete();
-        # Finish
+        $locations->delete();
 
-        Session::flash('message', $location->city.' was deleted.');
+        Session::flash('message', $locations->city.' was deleted.');
         return redirect('/locations/showall');
     }
 

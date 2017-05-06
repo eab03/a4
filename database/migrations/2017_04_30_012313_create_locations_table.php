@@ -27,10 +27,9 @@ class CreateLocationsTable extends Migration
             $table->string('city');
             $table->string('state')->nullable();
             $table->string('country')->nullable();
+            $table->string('location_concat')->nullable();
             $table->string('location_image')->nullable();
             $table->softDeletes();
-
-            # 'tags' field to be added later.
 
         });
     }

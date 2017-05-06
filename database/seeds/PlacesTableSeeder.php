@@ -35,7 +35,7 @@ class PlacesTableSeeder extends Seeder
              Place::insert([
                  'created_at' => $timestampForThisPlace,
                  'updated_at' => $timestampForThisPlace,
-                 'place_name' => $name,
+                 'name' => $name,
                  'location_id' => $location_id,
                  'place_image' => $place['place_image'],
                  'place_link' => $place['place_link'],

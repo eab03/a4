@@ -9,7 +9,7 @@
 @endpush
 
 @section('content')
-    <h1>Edit Locations</h1>
+    <h1>Edit Location</h1>
 
     <form method='POST' action='/locations/edit'>
         {{ csrf_field() }}
@@ -21,15 +21,19 @@
 
             <label for='city'>* City</label>
             <input type='text' name='city' id='city' value='{{ old('city', $location->city) }}'>
+            <br>
 
             <label for='state'>State</label>
             <input type='text' name='state' id='state' value='{{ old('state', $location->state) }}'>
+            <br>
 
             <label for='country'>Country</label>
             <input type='text' name='country' id='country' value='{{ old('country', $location->country) }}'>
+            <br>
 
             <label for='location_image'>URL to an image</label>
             <input type='text' name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+            <br>
 
         </div>
 

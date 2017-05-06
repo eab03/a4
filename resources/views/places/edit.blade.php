@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit place: {{ $place->place_name}}
+    Edit place: {{ $place->name}}
 @endsection
 
 @push('head')
@@ -10,7 +10,7 @@
 
 @section('content')
     <h1>Edit</h1>
-    <h2>{{ $place->place_name}}</h2>
+    <h2>{{ $place->name}}</h2>
 
     <form method='POST' action='/places/edit'>
         {{ csrf_field() }}
@@ -19,14 +19,17 @@
 
         <input type='hidden' name='id' value='{{$place->id}}'>
 
-        <label for='place_name'>* Place Name</label>
-        <input type='text' name='place_name' id='place_name' value='{{ old('place_name', $place->place_name) }}'>
+        <label for='name'>* Place Name</label>
+        <input type='text' name='name' id='name' value='{{ old('name', $place->name) }}'>
+        <br>
 
         <label for='place_image'> URL to an image</label>
         <input type='text' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
+        <br>
 
-        <label for='place_link'>* Purchase link</label>
+        <label for='place_link'>* Place link</label>
         <input type='text' name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
+        <br>
 
         <label for='location_id'>* Location:</label>
         <select id='location_id' name='location_id'>
@@ -37,9 +40,19 @@
                 </option>
             @endforeach
         </select>
+        <br>
 
         <label>Tags</label>
+            <ul id='tags'>
+                @foreach($tagsForCheckboxes as $id => $name)
+                    <li>
+                        <input type='checkbox' value='{{ $id }}' id='tag_{{ $id }}' name='tags[]'
+                        {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>&nbsp;
+                    <label for='tag_{{ $id }}'>{{ $name }}</label></li>
+                @endforeach
+            </ul>
 
+        @include('errors')
 
         <br><input class='btn btn-primary' type='submit' value='Save changes'><br><br>
 

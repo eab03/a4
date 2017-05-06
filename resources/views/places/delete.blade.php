@@ -13,9 +13,11 @@
 
         <input type='hidden' name='id' value='{{ $place->id }}'?>
 
-        <h2>Are you sure you want to delete <em>{{ $place->place_name }}</em>?</h2>
+        <h2>Are you sure you want to delete:<br><em>{{ $place->name }}</em>?</h2>
 
         <input type='submit' value='Yes, delete this place.' class='btn btn-danger'>
+
+        @include('errors')
 
     </form>
 

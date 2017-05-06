@@ -13,7 +13,7 @@
 
         <input type='hidden' name='id' value='{{ $location->id }}'?>
 
-        <h2>Are you sure you want to delete <em>{{ $location->city }}</em>?</h2>
+        <h2>Are you sure you want to delete:<br><em>{{ $location->city }}</em>?</h2>
 
         <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>
 
