@@ -4,7 +4,8 @@
 
     <div class='place cf'>
 
-        <h1></h1>
+        <div class="top">
+            <h1></h1>
         <hr>
 
             <h2>{{ $place->name }}</h2>
@@ -16,7 +17,7 @@
                     <p>Notes: </p>
                 </div>
 
-                <div id="placeLeft">
+                <div class="placeLeft">
                     <img class='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'>
 
                     <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>

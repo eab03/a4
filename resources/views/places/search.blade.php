@@ -5,8 +5,10 @@
 @endsection
 
 @section('content')
-    <h1>Search Places</h1>
-    <hr>
+    <div class="top">
+        <h1>Search Places</h1>
+        <hr>
+    </div>
 
     <form method='GET' action='/places/search'>
 

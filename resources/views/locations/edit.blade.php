@@ -9,31 +9,34 @@
 @endpush
 
 @section('content')
-    <h1>Edit Location: {{ $location->city }}</h1>
-    <hr>
+    <div class="top">
+        <h1>Edit Location: <em>{{ $location->city }}</em></h1>
+        <hr>
+    </div>
 
     <form method='POST' action='/locations/edit'>
         {{ csrf_field() }}
 
-        <p>* Required fields</p>
+        <div class="form-group text-entry">
+            <small>* Required fields</small>
+            <br>
 
-        <div class="locationEdits">
             <input type='hidden' name='id' value='{{$location->id}}'>
 
-            <label for='city'>* City</label>
-            <input type='text' name='city' id='city' value='{{ old('city', $location->city) }}'>
+            <label for='city' class="control-label">* City</label>
+            <input type='text' class="form-control" name='city' id='city' value='{{ old('city', $location->city) }}'>
             <br>
 
-            <label for='state'>State</label>
-            <input type='text' name='state' id='state' value='{{ old('state', $location->state) }}'>
+            <label for='state' class="control-label">State</label>
+            <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
             <br>
 
-            <label for='country'>Country</label>
-            <input type='text' name='country' id='country' value='{{ old('country', $location->country) }}'>
+            <label for='country' class="control-label">Country</label>
+            <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
             <br>
 
-            <label for='location_image'>URL to an image</label>
-            <input type='text' name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+            <label for='location_image'class="control-label">URL to an image</label>
+            <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
             <br>
 
         </div>

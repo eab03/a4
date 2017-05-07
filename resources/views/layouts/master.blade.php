@@ -30,8 +30,8 @@
 
 			<nav class="topnav">
 				<ul>
-					<li><a href='/places/new'>Add a Place</a></li>
-					<li><a href='/places/search'>Search</a></li>
+					<li><a href='/places/showall'>Places</a></li>
+					<li><a href='/locations/showall'>Locations</a></li>
 					<li><a href='/places'>Home</a></li>
 				</ul>
 			</nav>

@@ -2,8 +2,11 @@
 
 @section('content')
 
-    <h1>All of Your Places</h1>
-    <hr>
+    <div class="top">
+        <h1>Favorite Places</h1>
+        <a href="/places/new"><input type='button' value='Add a New Place!' class='btn btn-primary btn-small'></a>
+        <hr>
+    </div>
 
         @if(count($places) == 0)
             <span class='exception'>You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a></span>?
@@ -13,7 +16,7 @@
 
             <div class='place cf'>
 
-                <h2>{{ $place->name }}</h2>
+                <h3><a href='/places/show/{{ $place->id }}'>{{ $place->name }}</h3></a>
 
                 <div class="place">
                     <div class="placeAllRight">
@@ -39,6 +42,5 @@
             </div>
 
         @endforeach
-        <a href="/places/new"><input type='button' class="buttonRight" value='Add a Place' class='btn btn-primary btn-small'></a>
     @endif
 @endsection

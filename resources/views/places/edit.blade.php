@@ -9,7 +9,10 @@
 @endpush
 
 @section('content')
-    <h1>Edit: <em>{{ $place->name}}</em></h1>
+    <div class="top">
+        <h1>Edit: <em>{{ $place->name}}</em></h1>
+        <hr>
+    </div>
 
     <form method='POST' action='/places/edit'>
         {{ csrf_field() }}
@@ -23,11 +26,11 @@
             <input type='text' class="form-control" name='name' id='name' value='{{ old('name', $place->name) }}'>
             <br>
 
-            <label for='place_link' class="control-label">* Place link</label>
+            <label for='place_link' class="control-label">Website</label>
             <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
             <br>
 
-            <label for='place_image' class="control-label"> URL to an image</label>
+            <label for='place_image' class="control-label">Image Link</label>
             <input type='text' class="form-control" name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
             <br>
         </div>
@@ -47,18 +50,20 @@
 
         <fieldset class="form-check checkbox">
             <legend>Tags</legend>
-                 @foreach($tagsForCheckboxes as $id => $name)
-                     <label for='tag_{{ $id }}' class="control-label" >
-                         <input
-                         type='checkbox'
-                         class="form-check-input"
-                         value='{{ $id }}'
-                         id='tag_{{ $id }}'
-                         name='tags[]'
-                         {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>
-                         {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;
-                     </label>
-                 @endforeach
+                <div class="tags">
+                     @foreach($tagsForCheckboxes as $id => $name)
+                         <label for='tag_{{ $id }}' class="control-label" >
+                             <input
+                             type='checkbox'
+                             class="form-check-input"
+                             value='{{ $id }}'
+                             id='tag_{{ $id }}'
+                             name='tags[]'
+                             {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>
+                             {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;
+                         </label>
+                     @endforeach
+                </div
         </fieldset>
 
         @include('errors')

@@ -7,7 +7,7 @@ html {
 header {
     color: #2c3e50;
     background-color: coral;
-    height: 50px;
+    height: 3em;
 }
 
 body {
@@ -137,7 +137,7 @@ h3 {
     margin-right: 1em;
 }
 
-.imgShowOne {
+.imgShowOne, img {
     height: 175px;
     margin-right: 1em;
     width: 175px;
@@ -149,89 +149,45 @@ section#wrapper {
     margin-left: 1em;
 }
 
-div.placeLeft a {
-    font-size: 1.5em;
+div.placeLeft a, div.placeAllLeft a {
+    font-size: 1.25em;
 }
 
-div.placeLeft{
-    width: 30%;
-}
-
-div.placeRight {
-    border: 1.5px solid turquoise;
-    float: right;
-    height: 175px;
-    margin-left: 1.5em;
-    margin-right: 1em;
-    min-width: 175px;
-    padding: 1em;
-    overflow: scroll;
-    top: 0;
-    white-space: wrap;
-    width: 55%;
-}
-
-div.placeAllLeft {
+div.placeLeft, div.placeAllLeft{
     width: 35%;
 }
 
-div.placeAllRight {
-    border: 1px solid turquoise;
+div.placeRight, div.placeAllRight {
+    border: 1.5px solid turquoise;
     float: right;
+    margin-left: 1em;
     margin-right: 1em;
-    padding: 1em;
-    height: 125px;
-    width: 55%;
     overflow: scroll;
+    padding: 1em;
+    top: 0;
     white-space: wrap;
-    text-overflow: ellipsis;
+    width: 55%
 }
 
-input#btnRight {
-    float: right;
-    margin-bottom:10px;
+div.placeRight {
+    height: 175px;
+    min-width: 175px;
+}
+
+div.placeAllRight {
+    height: 125px;
 }
 
 /* styling for form elements */
-.form-group {
+.form-group, .form-check {
     padding: 0 0 2.5px 15px;
 }
 
-.radios {
-    padding-bottom: 15px;
+.checkbox label.control-label {
+    font-size: 1.25em;
 }
 
-legend, label {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: -10px;
-}
-
-.radios legend {
-    margin-bottom: 1px;
-}
-
-.checkbox legend {
-    margin-bottom: -15px;
-}
-
-label:first-child {
-    color: #2c3e50;
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.checkbox label.control-label:last-child {
-    margin-top: -15px;
-}
-
-/* set unique id for text box */
-#enterWord {
-    height: 40px;
-    width: 200px;
-}
-
-.control-label, #enterWord {
+legend, .control-label {
     color: grey;
     font-size: 1.75em;
     font-weight: normal;
@@ -244,7 +200,7 @@ p.form-control-static {
     text-align: left;
 }
 
-/* styling for 'calculate' and 'reset' buttons */
+/* styling for buttons */
 .btn {
     margin-top: 30px;
     margin-bottom: 35px;

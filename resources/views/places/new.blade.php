@@ -9,8 +9,10 @@
 @endpush
 
 @section('content')
-    <h1>Add a New Place!</h1>
-    <hr>
+    <div class="top">
+        <h1>Add a New Place!</h1>
+        <hr>
+    </div>
 
     <form method='POST' action='/places/new'>
         {{ csrf_field() }}
@@ -46,9 +48,9 @@
         </div>
 
         <fieldset class="form-check checkbox">
-            <legend>Tags</legend><br>
+            <legend>Tags</legend>
                 @foreach($tagsForCheckboxes as $id => $name)
-                    <label for='tag_{{ $id }}'>
+                    <label for='tag_{{ $id }}' class="control-label">
                     <input
                     type='checkbox'
                     class="form-check-input"

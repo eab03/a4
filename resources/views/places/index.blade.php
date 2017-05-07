@@ -9,8 +9,10 @@
 @endsection
 
 @section('content')
-    <h1>My Recent Places and Locations</h1>
-    <hr>
+    <div class="top">
+        <h1>My Recent Places and Locations</h1>
+        <hr>
+    </div>
 
     @if(count($newPlaces) > 0)
         <section id='newPlaces'>

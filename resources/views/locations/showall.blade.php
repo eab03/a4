@@ -3,8 +3,11 @@
 @section('content')
 
 <section id='locationsShow' class='cf'>
-    <h1>Your Cities</h1>
-    <hr>
+    <div class="top">
+        <h1>Favorite Locations</h1>
+        <a href="/locations/new"><input type='button' value='Add a New Location!' class='btn btn-primary btn-small'></a>
+        <hr>
+    </div>
 
     @if(count($locations) == 0)
         You don't have any favorite places yet; would you like to <a href='/locations/new'>add one</a>?
