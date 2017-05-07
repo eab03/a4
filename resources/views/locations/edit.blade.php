@@ -9,7 +9,8 @@
 @endpush
 
 @section('content')
-    <h1>Edit Location</h1>
+    <h1>Edit Location: {{ $location->city }}</h1>
+    <hr>
 
     <form method='POST' action='/locations/edit'>
         {{ csrf_field() }}

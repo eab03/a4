@@ -3,7 +3,9 @@
 @section('content')
 
 <section id='locationsShow' class='cf'>
-    <h2>Your Cities</h2>
+    <h1>Your Cities</h1>
+    <hr>
+
     @if(count($locations) == 0)
         You don't have any favorite places yet; would you like to <a href='/locations/new'>add one</a>?
     @else
@@ -12,8 +14,8 @@
             <div class='location cf'>
                 <ul>
                     <li>
-                        <a href='/locations/show{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h3></a>
-                        <a href='/locations/show{{ $location->id }}'><img class='locationImg' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
+                        <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h3></a>
+                        <a href='/locations/show/{{ $location->id }}'><img class='imgShowAll' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
 
                         <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
                         <a class='locationAction' href='/locations/show/{{ $location->id }}'><i class='fa fa-eye'></i></a>

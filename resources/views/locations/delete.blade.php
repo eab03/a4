@@ -6,7 +6,9 @@
 
 @section('content')
 
-    <h1>Confirm deletion</h1>
+    <h1>Confirm Deletion</h1>
+    <hr>
+
     <form method='POST' action='/locations/delete'>
 
         {{ csrf_field() }}

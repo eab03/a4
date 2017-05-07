@@ -8,9 +8,9 @@
     <link href='/css/a4.css' rel='stylesheet'>
 @endpush
 
-
 @section('content')
     <h1>Add a New Location!</h1>
+    <hr>
 
     <form method='POST' action='/locations/new'>
         {{ csrf_field() }}

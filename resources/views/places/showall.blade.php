@@ -2,11 +2,12 @@
 
 @section('content')
 
+    <h1>All of Your Places</h1>
+    <hr>
+
         @if(count($places) == 0)
             <span class='exception'>You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a></span>?
         @else
-
-            <a href="/places/new"><input type='button' value='Add a Place' class='btn btn-primary btn-small'></a>
 
          @foreach($places as $place)
 
@@ -14,23 +15,30 @@
 
                 <h2>{{ $place->name }}</h2>
 
-                <a href='/places{{ $place->id }}'><img id='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
+                <div class="place">
+                    <div class="placeAllRight">
+                        <p>Notes:</p>
+                    </div>
 
-                <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
-                <a class='locationAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
-                <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
+                    <div class="placeAllLeft">
+                        <a href='/places/show/{{ $place->id }}'><img class='imgShowAll' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
 
-                <br><br>
-                <p><a href='{{ $place->place_link }}'>Website</a></p>
+                        <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
+                        <a class='locationAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
+                        <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
-                <p>Location: {{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
-                <p>Added on: {{ $place->created_at }}</p>
-                <p>Last updated: {{ $place->updated_at }}</p>
+                        <br><br>
+                        <p><a href='{{ $place->place_link }}'>Website</a></p>
 
-                <br>
-
+                        <p>Location: {{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
+                        <p>Last updated: {{ $place->updated_at->diffForHumans()}}</p>
+                        <br>
+                        <hr>
+                    </div>
+                </div>
             </div>
 
         @endforeach
+        <a href="/places/new"><input type='button' class="buttonRight" value='Add a Place' class='btn btn-primary btn-small'></a>
     @endif
 @endsection

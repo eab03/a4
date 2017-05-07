@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit place: {{ $place->name}}
+    Edit Place: {{ $place->name}}
 @endsection
 
 @push('head')
@@ -9,48 +9,57 @@
 @endpush
 
 @section('content')
-    <h1>Edit</h1>
-    <h2>{{ $place->name}}</h2>
+    <h1>Edit: <em>{{ $place->name}}</em></h1>
 
     <form method='POST' action='/places/edit'>
         {{ csrf_field() }}
 
-        <p>* Required fields</p>
+        <div class="form-group text-entry">
+            <p>* Required fields</p>
 
-        <input type='hidden' name='id' value='{{$place->id}}'>
+            <input type='hidden' name='id' value='{{$place->id}}'>
 
-        <label for='name'>* Place Name</label>
-        <input type='text' name='name' id='name' value='{{ old('name', $place->name) }}'>
-        <br>
+            <label for='name' class="control-label">* Place Name</label>
+            <input type='text' class="form-control" name='name' id='name' value='{{ old('name', $place->name) }}'>
+            <br>
 
-        <label for='place_image'> URL to an image</label>
-        <input type='text' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
-        <br>
+            <label for='place_link' class="control-label">* Place link</label>
+            <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
+            <br>
 
-        <label for='place_link'>* Place link</label>
-        <input type='text' name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
-        <br>
+            <label for='place_image' class="control-label"> URL to an image</label>
+            <input type='text' class="form-control" name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
+            <br>
+        </div>
 
-        <label for='location_id'>* Location:</label>
-        <select id='location_id' name='location_id'>
-            <option value='0'>Choose</option>
-            @foreach($locationsForDropdown as $location_id => $locationCity)
-                <option value='{{ $location_id }}' {{ ($place->location_id == $location_id) ? 'SELECTED' : '' }}>
-                    {{ $locationCity }}
-                </option>
-            @endforeach
-        </select>
-        <br>
-
-        <label>Tags</label>
-            <ul id='tags'>
-                @foreach($tagsForCheckboxes as $id => $name)
-                    <li>
-                        <input type='checkbox' value='{{ $id }}' id='tag_{{ $id }}' name='tags[]'
-                        {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>&nbsp;
-                    <label for='tag_{{ $id }}'>{{ $name }}</label></li>
+        <div class="form-group dropdown">
+            <label for='location_id' class="control-label">* Location</label>
+            <select class="form-control" id='location_id' name='location_id'>
+                <option value='0'>Choose</option>
+                @foreach($locationsForDropdown as $location_id => $locationCity)
+                    <option value='{{ $location_id }}' {{ ($place->location_id == $location_id) ? 'SELECTED' : '' }}>
+                        {{ $locationCity }}
+                    </option>
                 @endforeach
-            </ul>
+            </select>
+            <br>
+        </div>
+
+        <fieldset class="form-check checkbox">
+            <legend>Tags</legend>
+                 @foreach($tagsForCheckboxes as $id => $name)
+                     <label for='tag_{{ $id }}' class="control-label" >
+                         <input
+                         type='checkbox'
+                         class="form-check-input"
+                         value='{{ $id }}'
+                         id='tag_{{ $id }}'
+                         name='tags[]'
+                         {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>
+                         {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;
+                     </label>
+                 @endforeach
+        </fieldset>
 
         @include('errors')
 

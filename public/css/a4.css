@@ -1,6 +1,38 @@
 html {
     background-color: #2c3e50;
     position: relative;
+    min-height: 100%;
+}
+
+header {
+    color: #2c3e50;
+    background-color: coral;
+    height: 50px;
+}
+
+body {
+    background-color: #FFF;
+    border: 25px solid turquoise;
+    border-radius: 5px;
+    font-family: 'EB Garamond', serif;
+    font-weight: normal;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    min-width: 300px;
+    padding: .5em 1.5em 4.5em 1.5em;
+    position: relative;
+    width: 65%;
+}
+
+footer {
+    background-color: #2c3e50;
+    bottom:0;
+    height:25px;
+    left:0;
+    padding: 5px;
+    position: absolute;
+    text-align:center;
+    width:100%;
 }
 
 /* Adapted from foobooks.css example code */
@@ -36,23 +68,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 /* End clearfix */
 
 
-header {
-    color: #2c3e50;
-    background-color: coral;
-    height: 50px;
-}
-
-body {
-    background-color: #FFF;
-    border: 25px solid turquoise;
-    border-radius: 5px;
-    font-family: 'EB Garamond', serif;
-    font-style: normal;
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-    width: 65%;
-}
+/* header and navigation */
 
 header #topnav {
     margin-top: 2.5em;
@@ -92,45 +108,89 @@ div.intro h2 {
 }
 
 div.intro a {
+    font-size: 1.5em;
+}
+
+/* typography styling */
+
+h2 {
     font-size: 2em;
 }
 
-/* styling for places/index.blade.php */
-
-#newPlaces {
-    margin-top: 1.5em;
-}
-
-#newPlaces h2, #newLocations h2 {
-    margin-left: 1em;
-}
-
-#newLocations {
-    margin-top: 2.5em;
+h3 {
+    font-size: 1.5em;
 }
 
 .truncate {
+    font-size: 1.1em;
     width:100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.location h3 {
+/* image styling */
+
+.imgShowAll {
+    height: 125px;
+    width: 125px;
+    margin-right: 1em;
+}
+
+.imgShowOne {
+    height: 175px;
+    margin-right: 1em;
+    width: 175px;
+}
+
+/* styling for places/index.blade.php */
+
+section#wrapper {
+    margin-left: 1em;
+}
+
+div.placeLeft a {
     font-size: 1.5em;
 }
 
-img {
-    height: 120px;
-    width: 120px;
+div.placeLeft{
+    width: 30%;
 }
 
-/* styling for show pages */
+div.placeRight {
+    border: 1.5px solid turquoise;
+    float: right;
+    height: 175px;
+    margin-left: 1.5em;
+    margin-right: 1em;
+    min-width: 175px;
+    padding: 1em;
+    overflow: scroll;
+    top: 0;
+    white-space: wrap;
+    width: 55%;
+}
 
+div.placeAllLeft {
+    width: 35%;
+}
 
+div.placeAllRight {
+    border: 1px solid turquoise;
+    float: right;
+    margin-right: 1em;
+    padding: 1em;
+    height: 125px;
+    width: 55%;
+    overflow: scroll;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
 
-
-
+input#btnRight {
+    float: right;
+    margin-bottom:10px;
+}
 
 /* styling for form elements */
 .form-group {

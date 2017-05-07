@@ -4,26 +4,39 @@
 
     <div class='place cf'>
 
-        <h1>{{ $place->name }}</h1>
+        <h1></h1>
+        <hr>
 
-        <a href='/places{{ $place->id }}'><img id='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
+            <h2>{{ $place->name }}</h2>
+            <h3>{{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</h3>
 
-        <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
-        <a class='placeAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
-        <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
+            <div class='place'>
 
-        <br><br>
-        <p><a href='{{ $place->place_link }}'>Website</a></p>
-        <p>Location: {{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
-        <p>Added on: {{ $place->created_at }}</p>
-        <p>Last updated: {{ $place->updated_at }}</p>
+                <div class="placeRight">
+                    <p>Notes: </p>
+                </div>
 
-        <label>Tags</label>
-            <ul id='tags'>
-                @foreach($tagsForThisPlace as $id => $name)
-                    <li>{{ $name }}</li>
-                @endforeach
-            </ul>
+                <div id="placeLeft">
+                    <img class='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'>
+
+                    <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
+                    <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
+
+                    <br><br>
+                    <p><a href='{{ $place->place_link }}'>Website</a></p>
+
+                    <p>Added on: {{ $place->created_at }}</p>
+                    <p>Last updated: {{ $place->updated_at }}</p>
+                    <p>Tags:
+                        @foreach($tagsForThisPlace as $id => $name)
+                            {{ $name }} &nbsp
+                        @endforeach
+                    </p>
+
+                </div>
+
+            </div>
+        <a href="/places/showall"><input type='button' id="btnRight" value='Show All Places' class='btn btn-primary btn-small'></a>
 
     </div>
 

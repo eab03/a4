@@ -28,7 +28,7 @@
 
     	<header>
 
-			<nav id="topnav">
+			<nav class="topnav">
 				<ul>
 					<li><a href='/places/new'>Add a Place</a></li>
 					<li><a href='/places/search'>Search</a></li>
@@ -38,12 +38,11 @@
 
 	    </header>
 
-	    <section>
+	    <section id="wrapper">
 	        @yield('content')
 	    </section>
 
         <footer>
-
         </footer>
 
     </div><!--close div content-->

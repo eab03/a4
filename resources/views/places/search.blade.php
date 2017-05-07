@@ -10,19 +10,17 @@
 
     <form method='GET' action='/places/search'>
 
-        <h2>Search for a Place</h2>
-        <label for='searchPlace'>Place Name</label>
-        <input type='text' name='searchPlace' id='searchPlace' value='{{ $searchPlace or '' }}'>
-        <br>
-        <input type='checkbox' name='caseSensitive' {{ ($caseSensitive) ? 'CHECKED' : '' }} >
-        <label>case sensitive</label>
+        <div class="form-group text-entry">
+            <label for='searchPlace' class="control-label">Place Name</label>
+            <input type='text' class="form-control" name='searchPlace' id='searchPlace' placeholder="Crema Cafe" value='{{ $searchPlace or '' }}'>
+        </div>
 
-        <br>
+        <div class="form-check checkbox">
+            <input type='checkbox' class="form-check-input" name='caseSensitive' value='{{ ($caseSensitive) ? 'CHECKED' : '' }}'>
+            <label for='caseSenstive' class="form-check-label">Case Sensitive</label>
+        </div>
 
-        <input type='submit' value='Search for a Place' class='btn btn-primary btn-small'>
-
-        <h2>Search all Places</h2>
-        <a href="/places/showall"><input type='button' value='Search All Places' class='btn btn-primary btn-small'></a>
+        <input type='submit' value='Search' class='btn btn-primary btn-small'>
 
         @if($searchPlace != null)
             <h2>Results for query: <em>{{ $searchPlace }}</em></h2>
@@ -43,9 +41,10 @@
             @endif
         @endif
 
-        <br><br>
-
     </form>
+
+    <h2>Help!</h2>
+    <a href="/places/showall"><input type='button' value='Search All Places' class='btn btn-primary btn-small'></a>
 
 
 @endsection
