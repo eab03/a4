@@ -5,7 +5,7 @@
     <div class="top">
         <h1>Favorite Places</h1>
         <a href="/places/new"><input type='button' value='Add a New Place!' class='btn btn-primary btn-small'></a>
-        <hr>
+        <a href="/places/search"><input type='button' value='Search for a Place!' class='btn btn-primary btn-small'></a>
     </div>
 
         @if(count($places) == 0)

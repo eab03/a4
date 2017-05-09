@@ -27,6 +27,7 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->string('place_image')->nullable();
             $table->string('place_link')->nullable();
+            $table->text('place_notes')->nullable();
             $table->softDeletes();
 
         });

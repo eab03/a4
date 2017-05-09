@@ -5,7 +5,7 @@
     <div class='locations' class='cf'>
         <div class="top">
             <h1>{{ $location->city }}</h1>
-            <a href="/places/search"><input type='button' value='Search for a Place' class='btn btn-primary btn-small'></a>
+            <a href="/places/search"><input type='button' value='Search for a Place' class='btn btn-info btn-small'></a>
             <hr>
         </div>
 

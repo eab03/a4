@@ -61,7 +61,6 @@ class PlaceController extends Controller
 
         $places = Place::orderBy('name', 'asc')->get(); # Query DB
 
-
         return view('places.showall')->with([
             'places' => $places,
         ]);
@@ -73,7 +72,7 @@ class PlaceController extends Controller
     */
     public function searchPlace(Request $request) {
 
-        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
+        $places = Place::orderBy('name', 'asc')->get(); # Query DB
 
         // Array for search results
         $searchResults = [];
@@ -105,10 +104,10 @@ class PlaceController extends Controller
         }
 
         return view('places.search')->with([
-            'locations' => $locations,
             'searchPlace' => $searchPlace,
             'caseSensitive' => $request->has('caseSensitive'),
             'searchResults' => $searchResults,
+            'places' => $places,
         ]);
     }
 
@@ -144,8 +143,9 @@ class PlaceController extends Controller
 
             $this->validate($request, [
                 'name' => 'required|min:1',
-                'place_image' => 'url',
+                'place_image' => 'url|max:191',
                 'place_link' => 'url',
+                'place_notes' => 'text',
                 'location_id' => 'not_in:0',
             ], $messages);
 
@@ -154,6 +154,7 @@ class PlaceController extends Controller
             $place->name = $request->name;
             $place->place_link = $request->place_link;
             $place->place_image = $request->place_image;
+            $place->place_notes = $request->place_notes;
             $place->location_id = $request->location_id;
             $place->save();
 
@@ -212,8 +213,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:1',
-            'place_image' => 'url',
+            'place_image' => 'url|max:191',
             'place_link' => 'url',
+            'place_notes' => 'text',
             'location_id' => 'not_in:0',
         ], $messages);
 
@@ -223,6 +225,7 @@ class PlaceController extends Controller
         $place->name = $request->name;
         $place->place_image = $request->place_image;
         $place->place_link = $request->place_link;
+        $place->place_notes = $request->place_notes;
         $place->location_id = $request->location_id;
 
         // if there are tags, get the tags; if no tags revert to empty array

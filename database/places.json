@@ -4,41 +4,47 @@
         "location": "Cambridge",
         "tags" : ["coffee","$$"],
         "place_link" : "https://www.cremacambridge.com/",
-        "place_image" : "http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg"
+        "place_image" : "http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg",
+        "place_notes" : "Good coffee!"
     },
     "Lake Champlain": {
         "id" : 1,
         "location": "Burlington",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "",
-        "place_image" : "https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg"
+        "place_image" : "https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg",
+        "place_notes" : "Lovely sunsets."
     },
     "Shelburne Farms": {
         "id": 2,
         "location": "Shelburne",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "http://www.shelburnefarms.org/",
-        "place_image" : "http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg"
+        "place_image" : "http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg",
+        "place_notes" : "Play with baby goats!"
     },
     "Radio Bean": {
         "id": 3,
         "location": "Burlington",
         "tags" : ["coffee","cocktails","food","music","$$"],
         "place_link" : "https://www.radiobean.com/",
-        "place_image" : "http://7d.blogs.com/sitd/images/2008/01/02/asnowydayattheradiobe.jpg"
+        "place_image" : "http://7d.blogs.com/sitd/images/2008/01/02/asnowydayattheradiobe.jpg",
+        "place_notes" : "Check out the music!"
     },
     "Boston Public Garden": {
         "id": 4,
         "location": "Boston",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "https://www.boston.gov/parks/public-garden",
-        "place_image" : "https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg"
+        "place_image" : "https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg",
+        "place_notes" : "Bring a picnic, but watch out for the squirrels!"
     },
     "Peabody Museum of Archaeology & Ethnography at Harvard University": {
         "id": 5,
         "location": "Cambridge",
         "tags" : ["museum","art","indoors","$"],
         "place_link" : "https://www.peabody.harvard.edu/",
-        "place_image" : "https://www.peabody.harvard.edu/files/Encounters_gallery.jpg"
+        "place_image" : "https://www.peabody.harvard.edu/files/Encounters_gallery.jpg",
+        "place_notes" : "Great place to go on a rainy day."
     }
 }

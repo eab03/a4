@@ -6,6 +6,7 @@
 
         <div class="top">
             <h1></h1>
+            <a href="/places/showall"><input type='button' id="btnRight" value='Show All Places' class='btn btn-primary btn-small'></a>
         <hr>
 
             <h2>{{ $place->name }}</h2>
@@ -37,8 +38,6 @@
                 </div>
 
             </div>
-        <a href="/places/showall"><input type='button' id="btnRight" value='Show All Places' class='btn btn-primary btn-small'></a>
-
     </div>
 
 @endsection

@@ -23,6 +23,7 @@
         </div>
 
         <input type='submit' value='Search' class='btn btn-primary btn-small'>
+        <a href="/places/showall"><input type='button' value='Help! Search All Places!' class='btn btn-info  btn-small'></a>
 
         @if($searchPlace != null)
             <h2>Results for query: <em>{{ $searchPlace }}</em></h2>
@@ -44,9 +45,5 @@
         @endif
 
     </form>
-
-    <h2>Help!</h2>
-    <a href="/places/showall"><input type='button' value='Search All Places' class='btn btn-primary btn-small'></a>
-
 
 @endsection
