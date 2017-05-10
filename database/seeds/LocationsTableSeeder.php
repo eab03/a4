@@ -18,9 +18,9 @@ class LocationsTableSeeder extends Seeder
             ['Cambridge', 'MA', 'USA', 'http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg'],
             ['Boston', 'MA', 'USA', 'https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg'],
             ['Shelburne', 'VT', 'USA', 'http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg'],
-            ['Bangkok', ' ', 'Thailand', ''],
-            ['Chiang Mai', ' ', 'Thailand', 'https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/43977/SITours/amazing-trekking-at-doi-inthanon-national-park-and-hmong-hill-tribe-in-chiang-mai-393987.jpg'],
-            ['Singapore', ' ', 'Singapore', 'http://lghttp.60358.nexcesscdn.net/8046264/images/page/-/100rc/img/cities/Singapore%20hero%20cro.jpg']
+            ['Bangkok', '', 'Thailand', ''],
+            ['Chiang Mai', '', 'Thailand', 'https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/43977/SITours/amazing-trekking-at-doi-inthanon-national-park-and-hmong-hill-tribe-in-chiang-mai-393987.jpg'],
+            ['Singapore', '', 'Singapore', 'http://lghttp.60358.nexcesscdn.net/8046264/images/page/-/100rc/img/cities/Singapore%20hero%20cro.jpg']
         ];
 
         # Initiate a new timestamp we can use for created_at/updated_at fields
