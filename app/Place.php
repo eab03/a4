@@ -3,14 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Place extends Model
 {
+    use SoftDeletes;
+
     public function location() {
     # Book belongs to Author
     # Define an inverse one-to-many relationship.
     return $this->belongsTo('App\Location');
-}
+    }
 
     public function tags()
     {
@@ -28,6 +31,4 @@ class Place extends Model
         }
         return $placesForDropdown;
     }
-
-
 }

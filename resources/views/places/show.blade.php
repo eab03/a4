@@ -15,7 +15,7 @@
             <div class='place'>
 
                 <div class="placeRight">
-                    <p>Notes: </p>
+                    <p>Notes: {{ $place->place_notes}} </p>
                 </div>
 
                 <div class="placeLeft">

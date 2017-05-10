@@ -20,7 +20,7 @@
 
                 <div class="place">
                     <div class="placeAllRight">
-                        <p>Notes:</p>
+                        <p>Notes: {{ $place->place_notes }}</p>
                     </div>
 
                     <div class="placeAllLeft">
