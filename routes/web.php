@@ -82,19 +82,19 @@ Route::post('/locations/delete', 'PlaceController@deleteLocation');
 * Log viewer
 * (only accessible locally)
 */
-if(config('app.env') == 'local') {
+//if(config('app.env') == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-    if(App::environment('local')) {
+    //if(App::environment('local')) {
 
-        Route::get('/drop', function() {
+        //Route::get('/drop', function() {
 
-            DB::statement('DROP database a4');
-            DB::statement('CREATE database a4');
+            //DB::statement('DROP database a4');
+            //DB::statement('CREATE database a4');
 
-            return 'Dropped a4; created a4.';
-        });
+            //return 'Dropped a4; created a4.';
+        //});
 
-    };
+    //};
 
-}
+//}

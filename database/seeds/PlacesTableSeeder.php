@@ -39,6 +39,7 @@ class PlacesTableSeeder extends Seeder
                  'location_id' => $location_id,
                  'place_image' => $place['place_image'],
                  'place_link' => $place['place_link'],
+                 'place_notes' => $place['place_notes'],
              ]);
          }
      }
