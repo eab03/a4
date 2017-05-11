@@ -5,12 +5,9 @@
     <div class='place cf'>
 
         <div class="top">
-            <h1></h1>
+            <h1>{{ $place->name }}</h1>
             <a href="/places/showall"><input type='button' id="btnRight" value='Show All Places' class='btn btn-primary btn-small'></a>
         <hr>
-
-            <h2>{{ $place->name }}</h2>
-            <h3>{{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</h3>
 
             <div class='place'>
 
@@ -25,8 +22,10 @@
                     <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
                     <br><br>
+
                     <p><a href='{{ $place->place_link }}'>Website</a></p>
 
+                    <p>{{ $place->location->city }}, {{ $place->location->state}}, {{ $place->location->country}}</p>
                     <p>Added on: {{ $place->created_at }}</p>
                     <p>Last updated: {{ $place->updated_at }}</p>
                     <p>Tags:

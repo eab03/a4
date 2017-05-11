@@ -10,7 +10,11 @@
 
 @section('content')
     <div class="top">
-        <h1>Edit Location: <em>{{ $location->city }}</em></h1>
+        @if( $location->state !=null)
+            <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h1>
+        @else
+            <h1>{{ $location->city }}, {{ $location->country}}</h1>
+        @endif
         <hr>
     </div>
 

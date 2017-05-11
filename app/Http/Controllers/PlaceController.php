@@ -143,9 +143,9 @@ class PlaceController extends Controller
 
             $this->validate($request, [
                 'name' => 'required|min:1',
-                'place_image' => 'sometimes|url|max:191',
-                'place_link' => 'sometimes|url',
-                'place_notes' => 'sometimes|text',
+                'place_image' => 'nullable|url|max:191',
+                'place_link' => 'nullable|url',
+                'place_notes' => 'nullable|alpha_num',
                 'location_id' => 'not_in:0',
             ], $messages);
 
@@ -213,9 +213,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:1',
-            'place_image' => 'sometimes|url|max:191',
-            'place_link' => 'sometimes|url',
-            'place_notes' => 'sometimes|text',
+            'place_image' => 'nullable|url|max:191',
+            'place_link' => 'nullable|url',
+            'place_notes' => 'nullable|text',
             'location_id' => 'not_in:0',
         ], $messages);
 
@@ -295,6 +295,7 @@ class PlaceController extends Controller
     */
     public function showLocation($id) {
 
+        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
         $location = Location::find($id);
 
         if(!$location) {
@@ -303,6 +304,7 @@ class PlaceController extends Controller
         }
         return view('locations.show')->with([
             'location' => $location,
+            'locations' => $locations,
         ]);
     }
 
@@ -328,9 +330,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'city' => 'required|min:1',
-            'state' => 'sometimes|min:2',
-            'country' => 'sometimes|min:2',
-            'location_image' => 'sometimes|url',
+            'state' => 'nullable|min:2',
+            'country' => 'required|min:2',
+            'location_image' => 'nullable|url',
         ], $messages);
 
         # Add new book to database
@@ -378,9 +380,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'city' => 'required|min:1',
-            'state' => 'sometimes|min:2',
-            'country' => 'sometimes|min:2',
-            'location_image' => 'sometimes|url',
+            'state' => 'nullable|min:2',
+            'country' => 'required|min:2',
+            'location_image' => 'nullable|url',
         ], $messages);
 
         $location = Location::find($request->id);

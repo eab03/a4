@@ -25,12 +25,12 @@
             <input type='text' class="form-control" name='name' id='name' placeholder='Cafe Crema' value='{{ old('name', '') }}'>
             <br>
 
-            <label for='place_link' class='control-label'>Web Link</label>
-            <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', 'https://www.cremacambridge.com/') }}'>
+            <label for='place_link' class='control-label'>Website</label>
+            <input type='text' class="form-control" name='place_link' id='place_link' placeholder='https://www.cremacambridge.com/' value= '{{ old('place_link')}}'>
             <br>
 
             <label for='place_image' class='control-label'>Image</label>
-            <input type='text' class="form-control" class='imgOne' name='image_link' id='image_link' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', value='{{ old('image_link', '') }}'>
+            <input type='text' class="form-control" class='imgOne' name='image_link' id='image_link' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', value='{{ old('place_image', '') }}'>
             <br>
         </div>
 
@@ -38,9 +38,9 @@
             <label for='location_id' class="control-label">* Location</label>
             <select class="form-control" id='location_id' name='location_id'>
             <option value='0'>Choose</option>
-                @foreach($locationsForDropdown as $location_id => $locationCity)
+                @foreach($locationsForDropdown as $location_id => $location)
                     <option value='{{ $location_id }}'>
-                        {{ $locationCity }}
+                        {{ $location }}
                     </option>
                 @endforeach
             </select>

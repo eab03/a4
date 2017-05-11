@@ -16,7 +16,12 @@
 
             <div class='location cf'>
 
-                <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h3></a>
+                @if($location->state != null)
+                    <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h3></a>
+                @else($location->state = null)
+                    <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->country}}</h3></a>
+                @endif
+
                 <a href='/locations/show/{{ $location->id }}'><img class='imgShowAll' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
 
                 <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>

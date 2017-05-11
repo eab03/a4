@@ -4,13 +4,17 @@
 
     <div class='locations' class='cf'>
         <div class="top">
-            <h1>{{ $location->city }}</h1>
+            @if( $location->state !=null)
+                <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h1>
+            @else
+                <h1>{{ $location->city }}, {{ $location->country}}</h1>
+            @endif
+
             <a href="/places/search"><input type='button' value='Search for a Place' class='btn btn-info btn-small'></a>
             <hr>
         </div>
 
         <div>
-            <h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h3>
             <img class='imgShowOne' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'>
 
             <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>

@@ -32,7 +32,11 @@
         @else
             @foreach($locations as $location)
                 <ul>
-                    <li class='truncate'><a href='locations/show/{{ $location->id }}'>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</a> ...updated {{ $location->updated_at->diffForHumans()}}</li>
+                    @if( $location->state !=null)
+                        <li class='truncate'><a href='locations/show/{{ $location->id }}'>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</a> ...updated {{ $location->updated_at->diffForHumans()}}</li>
+                    @else
+                        <li class='truncate'><a href='locations/show/{{ $location->id }}'>{{ $location->city }}, {{ $location->country }}</a> ...updated {{ $location->updated_at->diffForHumans()}}</li>
+                    @endif
                 </ul>
             @endforeach
         @endif

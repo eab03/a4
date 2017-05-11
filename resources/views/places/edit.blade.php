@@ -39,9 +39,9 @@
             <label for='location_id' class="control-label">* Location</label>
             <select class="form-control" id='location_id' name='location_id'>
                 <option value='0'>Choose</option>
-                @foreach($locationsForDropdown as $location_id => $locationCity)
+                @foreach($locationsForDropdown as $location_id => $location)
                     <option value='{{ $location_id }}' {{ ($place->location_id == $location_id) ? 'SELECTED' : '' }}>
-                        {{ $locationCity }}
+                        {{ $location }}
                     </option>
                 @endforeach
             </select>
