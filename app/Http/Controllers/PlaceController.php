@@ -49,7 +49,7 @@ class PlaceController extends Controller
 
             return view('places.show')->with([
             'place' => $place,
-            'tagsForThisPlace' =>$tagsForThisPlace
+            'tagsForThisPlace' => $tagsForThisPlace
         ]);
     }
 
@@ -143,9 +143,9 @@ class PlaceController extends Controller
 
             $this->validate($request, [
                 'name' => 'required|min:1',
-                'place_image' => 'url|max:191',
-                'place_link' => 'url',
-                'place_notes' => 'text',
+                'place_image' => 'sometimes|url|max:191',
+                'place_link' => 'sometimes|url',
+                'place_notes' => 'sometimes|text',
                 'location_id' => 'not_in:0',
             ], $messages);
 
@@ -213,9 +213,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:1',
-            'place_image' => 'url|max:191',
-            'place_link' => 'url',
-            'place_notes' => 'text',
+            'place_image' => 'sometimes|url|max:191',
+            'place_link' => 'sometimes|url',
+            'place_notes' => 'sometimes|text',
             'location_id' => 'not_in:0',
         ], $messages);
 
@@ -328,9 +328,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'city' => 'required|min:1',
-            'state' => 'min:2',
-            'country' => 'min:2',
-            'location_image' => 'url',
+            'state' => 'sometimes|min:2',
+            'country' => 'sometimes|min:2',
+            'location_image' => 'sometimes|url',
         ], $messages);
 
         # Add new book to database
@@ -378,9 +378,9 @@ class PlaceController extends Controller
 
         $this->validate($request, [
             'city' => 'required|min:1',
-            'state' => 'min:2',
-            'country' => 'min:2',
-            'location_image' => 'url',
+            'state' => 'sometimes|min:2',
+            'country' => 'sometimes|min:2',
+            'location_image' => 'sometimes|url',
         ], $messages);
 
         $location = Location::find($request->id);
