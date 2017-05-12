@@ -34,9 +34,10 @@
 
                 @foreach($searchResults as $name => $place)
                     <div class='place'>
-                        <h3>{{ $name }}</h3>
                         <img src='{{ $place['place_image']}}'>
-                        <p>{{ $place['location']}}<p>
+                        @foreach($locations as $location)
+                        <p>{{ $place['location'] }}<p>
+                        @endforeach
                         <a href='{{ $place['place_link'] }}'>Website</a></p>
                     </div>
                 @endforeach

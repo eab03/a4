@@ -7,6 +7,7 @@ use App\Place;
 use App\Location;
 use App\Tag;
 use Session;
+use Input;
 
 class PlaceController extends Controller
 {
@@ -71,7 +72,7 @@ class PlaceController extends Controller
     * /places/search
     */
     public function searchPlace(Request $request) {
-
+        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
         $places = Place::orderBy('name', 'asc')->get(); # Query DB
 
         // Array for search results
@@ -108,6 +109,7 @@ class PlaceController extends Controller
             'caseSensitive' => $request->has('caseSensitive'),
             'searchResults' => $searchResults,
             'places' => $places,
+            'locations' => $places,
         ]);
     }
 

@@ -14,24 +14,17 @@
         <hr>
     </div>
 
-    <form method='POST' action='/places/edit'>
+    <form method='POST' name="editForm" action='/places/edit'>
         {{ csrf_field() }}
 
-        <div class="form-group text-entry">
-            <p>* Required fields</p>
+        <small>* Required fields</small>
+        <br>
 
-            <input type='hidden' name='id' value='{{$place->id}}'>
+        <input type='hidden' name='id' value='{{$place->id}}'>
 
-            <label for='name' class="control-label">* Place Name</label>
+        <div class="text-entry">
+            <label for='name' class='control-label'>* Place Name</label>
             <input type='text' class="form-control" name='name' id='name' value='{{ old('name', $place->name) }}'>
-            <br>
-
-            <label for='place_link' class="control-label">Website</label>
-            <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
-            <br>
-
-            <label for='place_image' class="control-label">Image Link</label>
-            <input type='text' class="form-control" name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
             <br>
         </div>
 
@@ -45,6 +38,21 @@
                     </option>
                 @endforeach
             </select>
+            <br>
+        </div>
+
+        <div class="text-entry">
+            <label for='place_notes' class='control-label'>Notes</label>
+            <textarea class="form-control" name='place_notes' id='place_notes'rows=2 form="editForm" value='{{ old('place_notes', $place->place_notes) }}'></textarea>
+        </div>
+
+        <div class="text-entry">
+            <label for='place_link' class='control-label'>Website</label>
+            <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
+            <br>
+
+            <label for='place_image' class='control-label'>Image</label>
+            <input type='text' class="form-control" class='imgOne' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
             <br>
         </div>
 

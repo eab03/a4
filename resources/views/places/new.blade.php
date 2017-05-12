@@ -17,20 +17,12 @@
     <form method='POST' action='/places/new'>
         {{ csrf_field() }}
 
-        <div class="form-group text-entry">
-            <small>* Required fields</small>
-            <br>
+        <small>* Required fields</small>
+        <br>
 
+        <div class="text-entry">
             <label for='name' class='control-label'>* Place Name</label>
             <input type='text' class="form-control" name='name' id='name' placeholder='Cafe Crema' value='{{ old('name', '') }}'>
-            <br>
-
-            <label for='place_link' class='control-label'>Website</label>
-            <input type='text' class="form-control" name='place_link' id='place_link' placeholder='https://www.cremacambridge.com/' value= '{{ old('place_link')}}'>
-            <br>
-
-            <label for='place_image' class='control-label'>Image</label>
-            <input type='text' class="form-control" class='imgOne' name='image_link' id='image_link' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', value='{{ old('place_image', '') }}'>
             <br>
         </div>
 
@@ -44,6 +36,21 @@
                     </option>
                 @endforeach
             </select>
+            <br>
+        </div>
+
+        <div class="text-entry">
+            <label for='place_notes' class='control-label'>Notes</label>
+            <textarea name='place_notes' rows=2 class="form-control" id='place_notes' placeholder='Type Notes Here', value='{{ old('place_notes', '') }}'></textarea>
+        </div>
+
+        <div class="text-entry">
+            <label for='place_link' class='control-label'>Website</label>
+            <input type='text' class="form-control" name='place_link' id='place_link' placeholder='https://www.cremacambridge.com/' value= '{{ old('place_link', '') }}'>
+            <br>
+
+            <label for='place_image' class='control-label'>Image</label>
+            <input type='text' class="form-control" class='imgOne' name='place_image' id='place_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', value='{{ old('place_image', '') }}'>
             <br>
         </div>
 

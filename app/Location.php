@@ -19,9 +19,12 @@ class Location extends Model
         # Organize the authors into an array where the key = author id and value = author name
         $locationsForDropdown = [];
             foreach($locations as $location) {
-                $locationsForDropdown[$location->id] = $location->city. " ".$location->state. " ".$location->country;
+                if($location->state != null) {
+                    $locationsForDropdown[$location->id] = $location->city. ", ".$location->state. ", ".$location->country;
+                } else {
+                    $locationsForDropdown[$location->id] = $location->city. ", ".$location->country;
+                }
             }
             return $locationsForDropdown;
     }
-
 }
