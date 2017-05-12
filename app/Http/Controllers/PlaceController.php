@@ -7,7 +7,6 @@ use App\Place;
 use App\Location;
 use App\Tag;
 use Session;
-use Input;
 
 class PlaceController extends Controller
 {
@@ -147,7 +146,7 @@ class PlaceController extends Controller
                 'name' => 'required|min:1',
                 'place_image' => 'nullable|url|max:191',
                 'place_link' => 'nullable|url',
-                'place_notes' => 'nullable|alpha_num',
+                'place_notes' => 'nullable',
                 'location_id' => 'not_in:0',
             ], $messages);
 
@@ -217,7 +216,7 @@ class PlaceController extends Controller
             'name' => 'required|min:1',
             'place_image' => 'nullable|url|max:191',
             'place_link' => 'nullable|url',
-            'place_notes' => 'nullable|text',
+            'place_notes' => 'nullable',
             'location_id' => 'not_in:0',
         ], $messages);
 
@@ -238,7 +237,7 @@ class PlaceController extends Controller
         $place->save();
 
         Session::flash('message', 'Your changes to '.$place->name.' were saved.');
-        return redirect('/places/edit/'.$request->id);
+        return redirect('/places/show/'.$request->id);
     }
 
     /**

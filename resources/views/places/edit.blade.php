@@ -43,7 +43,7 @@
 
         <div class="text-entry">
             <label for='place_notes' class='control-label'>Notes</label>
-            <textarea class="form-control" name='place_notes' id='place_notes'rows=2 form="editForm" value='{{ old('place_notes', $place->place_notes) }}'></textarea>
+            <textarea class="form-control" name='place_notes' id='place_notes' rows=2 form="editForm" value='{{ (old('place_notes') ? old('place_notes') : $place->place_notes) }}'>{{ old('place_notes', $place->place_notes) }}</textarea>
         </div>
 
         <div class="text-entry">
