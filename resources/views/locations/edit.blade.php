@@ -15,6 +15,7 @@
     </div>
 
     <form method='POST' action='/locations/edit'>
+
         {{ csrf_field() }}
 
         <div class="form-group text-entry">

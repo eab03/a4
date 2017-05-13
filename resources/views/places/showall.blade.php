@@ -22,7 +22,7 @@
         <hr>
 
         @if(count($places) == 0)
-            <p><span class='exception'>You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a></span></p>?
+            <p><span class='exception'>You don't have any favorite places yet; would you like to <a href='/places/new'>add one?</a></span></p>
         @else
 
              @foreach($places as $place)
