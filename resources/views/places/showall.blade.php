@@ -33,45 +33,34 @@
             </div><!--close bootstrap row-->
         @else
 
-            @foreach($places as $place)
-                <div class='row'>
-                    <div class='col-sm-12 col-md-12 col-lg-12'>
-                        <a href='/places/show/{{ $place->id }}'><h3>{{ $place->name }}</h3></a>
-                    </div>
-                </div><!--close bootstrap row-->
-
-                <div class='row'>
+            <div class='row'>
+                @foreach($places as $place)
                     <div class='col-sm-6 col-md-6 col-lg-6'>
-                        <a href='/places/show/{{ $place->id }}'><img class='imgShowAll' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
+                        <div id="placenames">
+                            <a href='/places/show/{{ $place->id }}'><h3>{{ $place->name }}</h3></a>
+                            <a href='/places/show/{{ $place->id }}'><img class='imgShowAll' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
 
-                        <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
-                        <a class='placeAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
-                        <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
+                            <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
+                            <a class='placeAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
+                            <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
-                        <br><br>
-                        <a href='{{ $place->place_link }}'>Website</a>
-                        <br><br>
+                            <br><br>
+                            @if( $place->location->state !=null)
+                                <p>{{ $place->location->city }}, {{ $place->location->state }}, {{ $place->location->country }}</p>
+                            @else
+                                <p>{{ $place->location->city }}, {{ $place->location->country }}</p>
+                            @endif
 
-                        @if( $place->location->state !=null)
-                            <p>Location: {{ $place->location->city }}, {{ $place->location->state }}, {{ $place->location->country }}</p>
-                        @else
-                            <p>Location: {{ $place->location->city }}, {{ $place->location->country }}</p>
-                        @endif
-
-                        <p>Last updated: {{ $place->updated_at->diffForHumans() }}</p>
-                        <br>
-                    </div>
-
-                    <div class='col-sm-6 col-md-6 col-lg-6'>
-                        <div id='notesAll'>
-                            <p><strong>Notes:</strong> {{ $place->place_notes }}</p>
+                            <a href='{{ $place->place_link }}'>Website</a>
+                            <br><br>
+                            <hr>
                         </div>
                     </div>
 
-                </div><!--close bootstrap row-->
-                <hr>
+                @endforeach
 
-            @endforeach
+            </div><!--close bootstrap row-->
+
         @endif
 
     </section><!--close section places-->

@@ -17,9 +17,10 @@
             </div>
             <div class='col-sm-5 col-md-5 col-lg-3'>
                 <a href='/locations/showall'><input type='button' value='Show all Locations' class='btn btn-primary btn-small'></a>
-                <hr>
             </div>
         </div><!-- close bootstrap row-->
+        <hr>
+        <br>
     </section><!--close section top-->
 
 

@@ -29,7 +29,7 @@
     	<header>
 
 			<nav class="topnav">
-				<div class='row top'>
+				<div class='row'>
 					<div class='col-sm-12 col-md-12 col-lg-12'>
 						<ul>
 							<li><a href='/locations/showall'>Locations</a></li>
@@ -37,8 +37,8 @@
 							<li><a href='/places'>Home</a></li>
 						</ul>
 					</div>
-				</div>	
-			</nav>
+				</div><!--close bootstrap row-->
+			</nav><!--close navigation-->
 
 	    </header>
 

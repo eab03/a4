@@ -32,19 +32,17 @@
                     </div><!--close bootstrap row-->
                 @else
 
-                    @foreach($locations as $location)
-                        <div class='row'>
-                            <div class='col-sm-12 col-md-12 col-lg-12'>
-                                @if($location->state != null)
-                                    <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h3></a>
-                                @else($location->state = null)
-                                    <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->country }}</h3></a>
-                                @endif
-                            </div>
-                        </div><!--close bootstrap row-->
+                    <div class='row'>
+                        @foreach($locations as $location)
+                            <div class='col-sm-4 col-md-4 col-lg-4'>
+                                <div id="locationnames">
+                                    @if($location->state != null)
+                                        <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h3></a>
+                                    @else($location->state = null)
+                                        <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->country }}</h3></a>
+                                    @endif
+                                </div>
 
-                        <div class='row'>
-                            <div class='col-sm-12 col-md-12 col-lg-12'>
                                 <a href='/locations/show/{{ $location->id }}'><img class='imgShowAll' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
 
                                 <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
@@ -53,9 +51,9 @@
                                 <br><br>
                                 <hr>
                             </div>
-                        </div><!--close bootstrap row-->
 
-                    @endforeach
+                        @endforeach
+                    </div><!--close bootstrap row-->
                 @endif
 
             </div>

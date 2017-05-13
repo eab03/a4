@@ -15,9 +15,11 @@
         <hr>
     </section><!--close section top-->
 
-    <section id='newPlaces'>
-        <div class='row'>
-            <div class='col-sm-12 col-md-12 col-lg-12'>
+
+    <div class='row'>
+        <div class='col-sm-8 col-md-8 col-lg-8'>
+
+            <section id='newPlaces'>
 
                 <h2>Places</h2>
 
@@ -33,14 +35,11 @@
                     @endforeach
                 @endif
 
-            </div>
-        </div><!--close bootstrap row-->
+                <br>
 
-    </section> <!-- close section newPlaces-->
+            </section> <!-- close section newPlaces-->
 
-    <section id='newLocations'>
-        <div class='row'>
-            <div class='col-sm-12 col-md-12 col-lg-12'>
+            <section id='newLocations'>
 
                 <h2>Locations</h2>
 
@@ -58,9 +57,9 @@
                     @endforeach
                 @endif
 
+            </section><!-- close section newLocations-->
+
             </div>
         </div><!--close bootstrap row-->
-
-    </section><!-- close section newLocations-->
 
 @endsection
