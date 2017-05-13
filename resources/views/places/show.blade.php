@@ -6,9 +6,8 @@
 
 @section('content')
 
-    <div class='container'>
-
-        <div class='row top'>
+    <section class='top'>
+        <div class='row'>
             <div class='col-sm-8 col-md-9 col-lg-9'>
                 <h1>{{ $place->name }}</h1>
             </div>
@@ -17,22 +16,24 @@
             </div>
         </div><!--close bootstrap row-->
         <hr>
+    </section><!--close section top-->
 
+    <section class='places'>
         <div class='row'>
-            <div class='col-sm-6 col-md-6 col-lg-8'>
+            <div class='col-sm-6 col-md-6 col-lg-6'>
                 <img class='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'>
 
                 <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
                 <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
                 <br><br>
-
-                <p><a href='{{ $place->place_link }}'>Website</a></p>
+                <a href='{{ $place->place_link }}'>Website</a>
+                <br><br>
 
                 @if( $place->location->state !=null)
-                    <p class='bold'>{{ $place->location->city }}, {{ $place->location->state }}, {{ $place->location->country }}</p>
+                    <p> Location: {{ $place->location->city }}, {{ $place->location->state }}, {{ $place->location->country }}</p>
                 @else
-                    <p class='bold'>{{ $place->location->city }}, {{ $place->location->country }}</p>
+                    <p> Location: {{ $place->location->city }}, {{ $place->location->country }}</p>
                 @endif
 
                 <p>Added on: {{ $place->created_at }}</p>
@@ -40,20 +41,21 @@
 
                 <p>Tags:
                     @foreach($tagsForThisPlace as $id => $name)
+
                         {{ $name }} &nbsp
                     @endforeach
                 </p>
+                <br>
 
             </div>
 
-            <div class='col-sm-6 col-md-6 col-lg-4'>
-                <div class='notes'>
-                    <p><span class='bold'>Notes:</span> {{ $place->place_notes }}</p>
+            <div class='col-sm-6 col-md-6 col-lg-6'>
+                <div id='notesOne'>
+                    <p><strong>Notes:</strong> {{ $place->place_notes }}</p>
                 </div>
             </div>
 
         </div><!--close bootstrap row-->
-
-    </div><!--close container-->
+    </section><!--close section places-->
 
 @endsection

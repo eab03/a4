@@ -6,9 +6,8 @@
 
 @section('content')
 
-    <div class='container'>
-
-        <div class='row top'>
+    <section class='top'>
+        <div class='row'>
             <div class='col-sm-8 col-md-9 col-lg-9'>
                 <h1>Search Places</h1>
             </div>
@@ -17,42 +16,58 @@
             </div>
         </div><!--close bootstrap row-->
         <hr>
+    </section>
 
-        <form method='GET' action='/places/search'>
+    <!--form for searching for a place-->
+    <div class='row'>
+        <div class='col-sm-12 col-md-12 col-lg-12'>
 
-            <div class='form-group text-entry'>
-                <label for='searchPlace' class='control-label'>Place Name</label>
-                <input type='text' class='form-control' name='searchPlace' id='searchPlace' placeholder='Crema Cafe' value='{{ $searchPlace or '' }}'>
-            </div>
+            <form method='GET' action='/places/search'>
 
-            <div class='form-check checkbox'>
-                <input type='checkbox' class='form-check-input' name='caseSensitive' value='{{ ($caseSensitive) ? 'CHECKED' : '' }}'>
-                <label for='caseSenstive' class='form-check-label'>Case Sensitive</label>
-            </div>
+                <div class='form-group text-entry'>
+                    <label for='searchPlace' class='control-label'>Place Name</label>
+                    <input type='text' class='form-control' name='searchPlace' id='searchPlace' placeholder='Crema Cafe' value='{{ $searchPlace or '' }}'>
+                </div>
 
-            <input type='submit' value='Search' class='btn btn-primary btn-small'>
+                <div class='form-check checkbox'>
+                    <input type='checkbox' class='form-check-input' name='caseSensitive' value='{{ ($caseSensitive) ? 'CHECKED' : '' }}'>
+                    <label for='caseSenstive' class='form-check-label'>Case Sensitive</label>
+                </div>
+
+                <input type='submit' value='Search' class='btn btn-primary btn-small'>
+
+            </form><!--close form-->
+
+        </div>
+    </div><!--close div row-->
+
+    <!--display query results-->
+    <div class='row'>
+        <div class='col-sm-12 col-md-12 col-lg-12'>
 
             @if($searchPlace != null)
+                <hr>
                 <h2>Results for query: <em>{{ $searchPlace }}</em></h2>
+                <br>
 
                 @if(count($searchResults) == 0)
                     <div class='exception'>
-                        <p>No matches found.</p>
+                        No matches found.
                     </div>
                 @else
 
                     @foreach($searchResults as $name => $place)
-                        <div class='place'>
+                        <section class='places' id='queryResults'>
                             <img src='{{ $place['place_image'] }}'>
-                            <a href='{{ $place['place_link'] }}'>Website</a></p>
-                        </div>
+                                <br><br>
+                                <a href='{{ $place['place_link'] }}'>Website</a></p>
+                        </section>
                     @endforeach
 
                 @endif
             @endif
 
-        </form><!-- close form-->
-
-    </div><!-- close div container-->
+        <div>
+    </div>
 
 @endsection

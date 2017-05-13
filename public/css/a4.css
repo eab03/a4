@@ -1,8 +1,23 @@
+/* https://v4-alpha.getbootstrap.com/layout/overview/ */
+
 html {
     background-color: #2c3e50;
     position: relative;
     min-height: 100%;
 }
+
+/* Adapted from foobooks.css example code */
+
+/*----------------------------------------------------
+http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+-----------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/* End Box Sizing */
 
 header {
     color: #2c3e50;
@@ -24,6 +39,11 @@ body {
     width: 65%;
 }
 
+div.container {
+    margin-bottom: 50px;
+    width: 100%;
+}
+
 footer {
     background-color: #2c3e50;
     bottom:0;
@@ -34,39 +54,6 @@ footer {
     text-align:center;
     width:100%;
 }
-
-/* Adapted from foobooks.css example code */
-
-/*----------------------------------------------------
-http://www.paulirish.com/2012/box-sizing-border-box-ftw/
------------------------------------------------------*/
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-/* End Box Sizing */
-
-
-/*----------------------------------------------------
-http://nicolasgallagher.com/micro-clearfix-hack/
------------------------------------------------------*/
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.cf:after {
-    clear: both;
-}
-
-.cf {
-    *zoom: 1; /* For IE 6/7 only */
-}
-/* End clearfix */
-
 
 /* header and navigation */
 
@@ -143,45 +130,25 @@ h3 {
     width: 175px;
 }
 
-/* styling for places/index.blade.php */
-
-div.container {
-    width: 100%;
-
-}
-
-section#wrapper {
-    margin-left: 1em;
-}
-
-div.placeLeft a, div.placeAllLeft a {
-    font-size: 1.25em;
-}
-
-div.placeLeft, div.placeAllLeft{
-    width: 35%;
-}
-
-div.placeRight, div.placeAllRight {
-    border: 1.5px solid turquoise;
-    float: right;
-    margin-left: 1em;
-    margin-right: 1em;
+/* additional styling */
+div#notesOne, div#notesAll {
+    border: 1px solid turquoise;
     overflow: scroll;
     padding: 1em;
-    top: 0;
-    white-space: wrap;
-    width: 55%;
-    word-wrap:break-word;
+    width: 85%;
 }
 
-div.placeRight {
+div#notesOne {
     height: 175px;
-    min-width: 175px;
 }
 
-div.placeAllRight {
+div#notesAll {
     height: 125px;
+
+}
+
+div.floatRight {
+    float:right;
 }
 
 /* styling for form elements */
@@ -224,19 +191,6 @@ div.error li {
     font-weight: bold;
 }
 
-/* styling for the 'alert' box */
-div.alert.alert-success {
-    padding: .75em;
-    width: 100%;
-}
-
-div.alert.alert-success p {
-    font-size: 1.75em;
-    text-align: center;
-}
-
-/* https://v4-alpha.getbootstrap.com/layout/overview/ */
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px) {
     body {
@@ -247,22 +201,16 @@ div.alert.alert-success p {
     h1, legend, label, label:first-child {
         font-size: 1.5em;
     }
-    #enterWord {
-        height: 30px;
-        width: 175px;
-        margin-bottom: -10px;
-    }
-    .control-label, #enterWord, .radios label.control-label, .checkbox label.control-label {
+
+    .control-label, label.control-label, .checkbox label.control-label {
         font-size: 1.5em;
     }
-    .radios {
-        padding-bottom: 10px;
-    }
-    input#calculate_btn.btn-primary.btn-small {
+
+    input.btn-primary.btn-small {
         margin-top: 17.5px;
         margin-bottom: 15px;
     }
-    p.form-control-static, div.error li, input#calculate_btn.btn-primary.btn-small, div.alert.alert-success p {
+    p.form-control-static, div.error li, input.btn-primary.btn-small {
         font-size: 1.1em !important;
         font-weight: normal;
     }
@@ -278,11 +226,11 @@ div.alert.alert-success p {
     h1 {
         font-size: 2em;
     }
-    input#calculate_btn.btn-primary.btn-small {
+    input.btn-primary.btn-small {
         margin-top: 20px;
         margin-bottom: 12.5px;
     }
-    p.form-control-static, div.error li, input#calculate_btn.btn-primary.btn-small, div.alert.alert-success p {
+    p.form-control-static, div.error li, input.btn-primary.btn-small, div.alert.alert-success p {
         font-size: 1.25em !important;
         font-weight: normal;
     }

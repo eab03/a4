@@ -5,22 +5,37 @@
 @endsection
 
 @section('content')
-    <div class="top">
-        <h1>Confirm Deletion</h1>
+
+    <section class='top'>
+        <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-12'>
+                <h1>Confirm Deletion</h1>
+            </div>
+        </div><!--close bootstrap row-->
         <hr>
-    </div>
+    </section>
 
-    <form method='POST' action='/locations/delete'>
+    <!--form for deleting a single location-->
+    <div class='row'>
+        <div class='col-sm-12 col-md-12 col-lg-12'>
 
-        {{ csrf_field() }}
+            <form method='POST' action='/locations/delete'>
+                {{ csrf_field() }}
 
-        <input type='hidden' name='id' value='{{ $location->id }}'?>
+                <input type='hidden' name='id' value='{{ $location->id }}'?>
 
-        <h2>Are you sure you want to delete:<br><em>{{ $location->city }}</em>?</h2>
+                @if( $location->state !=null)
+                    <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</em>?</h2>
+                @else
+                    <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->country}}</em>?</h2>
+                @endif
 
-        <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>
-        <a href="/locations/show/{{ $location->id }}"><input type='button' value='No. Return to "{{ $location->city }}".' class='btn btn-primary btn-small'></a>
+                <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>&nbsp &nbsp &nbsp &nbsp
+                <a href='/locations/show/{{ $location->id }}'><input type='button' value='No. Return to '{{ $location->city }}'.' class='btn btn-primary'></a>
 
-    </form>
+            </form><!-- close form-->
+
+        </div>
+    </div><!-- close bootstrap row-->
 
 @endsection

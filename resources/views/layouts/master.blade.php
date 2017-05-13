@@ -29,18 +29,22 @@
     	<header>
 
 			<nav class="topnav">
-				<ul>
-					<li><a href='/places/showall'>Places</a></li>
-					<li><a href='/locations/showall'>Locations</a></li>
-					<li><a href='/places'>Home</a></li>
-				</ul>
+				<div class='row top'>
+					<div class='col-sm-12 col-md-12 col-lg-12'>
+						<ul>
+							<li><a href='/locations/showall'>Locations</a></li>
+							<li><a href='/places/showall'>Places</a></li>
+							<li><a href='/places'>Home</a></li>
+						</ul>
+					</div>
+				</div>	
 			</nav>
 
 	    </header>
 
-	    <section id="wrapper">
+	    <div class='container'>
 	        @yield('content')
-	    </section>
+	    </div>
 
         <footer>
         </footer>

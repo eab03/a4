@@ -6,26 +6,33 @@
 
 @section('content')
 
-    <div class='locations' class='cf'>
-        <div class="top">
-            @if( $location->state !=null)
-                <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h1>
-            @else
-                <h1>{{ $location->city }}, {{ $location->country}}</h1>
-            @endif
+    <section class='top'>
+        <div class='row'>
+            <div class='col-sm-7 col-md-8 col-lg-9'>
+                @if( $location->state !=null)
+                    <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h1>
+                @else
+                    <h1>{{ $location->city }}, {{ $location->country }}</h1>
+                @endif
+            </div>
+            <div class='col-sm-5 col-md-5 col-lg-3'>
+                <a href='/locations/showall'><input type='button' value='Show all Locations' class='btn btn-primary btn-small'></a>
+                <hr>
+            </div>
+        </div><!-- close bootstrap row-->
+    </section><!--close section top-->
 
-            <a href="/places/search"><input type='button' value='Search for a Place' class='btn btn-info btn-small'></a>
-            <hr>
-        </div>
 
-        <div>
-            <img class='imgShowOne' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'>
+    <section class='locations'>
+        <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-12'>
+                <img class='imgShowOne' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'>
 
-            <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
-            <a class='locationAction' href='/locations/delete/{{ $location->id }}'><i class='fa fa-trash'></i></a>
-        </div>
+                <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
+                <a class='locationAction' href='/locations/delete/{{ $location->id }}'><i class='fa fa-trash'></i></a>
+            </div>
+        </div><!--close bootstrap row-->
 
-        <a href="/locations/showall"><input type='button' value='Show all Locations' class='btn btn-primary btn-small'></a>
-    </div>
+    </section>
 
 @endsection

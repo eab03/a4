@@ -5,47 +5,58 @@
 @endsection
 
 @section('content')
-    <div class="top">
-        @if( $location->state !=null)
-            <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</h1>
-        @else
-            <h1>{{ $location->city }}, {{ $location->country}}</h1>
-        @endif
-        <hr>
-    </div>
 
-    <form method='POST' action='/locations/edit'>
+    <section class='top'>
+        <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-12'>
 
-        {{ csrf_field() }}
+                @if( $location->state !=null)
+                    <h1>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h1>
+                @else
+                    <h1>{{ $location->city }}, {{ $location->country }}</h1>
+                @endif
+                <hr>
+            </div>
+        </div><!--close bootstrap row-->
+    </section><!--close section top-->
 
-        <div class="form-group text-entry">
-            <small>* Required fields</small>
-            <br>
+    <!--form for editing a single location-->
+    <div class='row'>
+        <div class='col-sm-12 col-md-12 col-lg-12'>
 
-            <input type='hidden' name='id' value='{{$location->id}}'>
+            <form method='POST' action='/locations/edit'>
+                {{ csrf_field() }}
 
-            <label for='city' class="control-label">* City</label>
-            <input type='text' class="form-control" name='city' id='city' value='{{ old('city', $location->city) }}'>
-            <br>
+                <div class="form-group text-entry">
 
-            <label for='state' class="control-label">State</label>
-            <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
-            <br>
+                    <small>* Required fields</small>
+                    <br><br>
 
-            <label for='country' class="control-label">Country</label>
-            <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
-            <br>
+                    <input type='hidden' name='id' value='{{ $location->id }}'>
 
-            <label for='location_image'class="control-label">URL to an image</label>
-            <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
-            <br>
+                    <label for='city' class="control-label">* City</label>
+                    <input type='text' class="form-control" name='city' id='city' value='{{ old('city', $location->city) }}'>
+                    <br>
+
+                    <label for='state' class="control-label">State</label>
+                    <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
+                    <br>
+
+                    <label for='country' class="control-label">Country</label>
+                    <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
+                    <br>
+
+                    <label for='location_image 'class="control-label">Image (URL)</label>
+                    <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+
+                </div><!-- close form group-->
+
+                <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp &nbsp &nbsp &nbsp
+                <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
+
+            </form><!-- close form-->
 
         </div>
-
-        <br><input class='btn btn-primary' type='submit' value='Save changes'><br><br>
-
-    </form>
-
-
+    </div><!-- close bootstrap row-->
 
 @endsection
