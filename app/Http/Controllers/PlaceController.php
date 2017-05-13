@@ -13,71 +13,78 @@ class PlaceController extends Controller
     /**
     * GET
     * /places/
+    * Home page that lists 3 recent places and locations
     */
     public function index(Request $request) {
 
-        $locations = Location::orderBy('updated_at', 'descending')->limit(3)->get(); # Query DB
+        $locations = Location::orderBy('updated_at', 'descending')->limit(3)->get();
 
-        $places = Place::orderBy('name', 'descending')->get(); # Query DB
+        $places = Place::orderBy('name', 'descending')->get();
 
-        $newPlaces = $places->sortByDesc('updated_at')->take(3); # Query existing Collection
+        $newPlaces = $places->sortByDesc('updated_at')->take(3);
 
         return view('places.index')->with([
             'locations' => $locations,
             'newPlaces' => $newPlaces,
         ]);
-    }
+    } # close function
 
     /**
     * GET
-    * /places/{id}
+    * /places/show/{id}
+    * Show informaiton for one place
     */
     public function showPlace($id) {
 
         $place = Place::find($id);
 
-        // Array of associated tag names, which will be shown in the view
-        $tagsForThisPlace = [];
-        foreach($place->tags as $tag) {
-            $tagsForThisPlace[] = $tag->name;
-        }
-
         if(!$place) {
             Session::flash('message', 'The place you are looking for could not be found.');
-            return redirect('/places');
-        }
+            return redirect('/places/showall');
+        } else {
 
-            return view('places.show')->with([
+            // Array of associated tag names, which will be shown in the view
+            $tagsForThisPlace = [];
+            foreach($place->tags as $tag) {
+                $tagsForThisPlace[] = $tag->name;
+            }
+        } # end if/else statements
+
+        return view('places.show')->with([
             'place' => $place,
             'tagsForThisPlace' => $tagsForThisPlace
         ]);
-    }
+    } # close function
 
     /**
     * GET
     * /places/showall
+    * Show list of all places
     */
     public function showallPlace(Request $request) {
 
-        $places = Place::orderBy('name', 'asc')->get(); # Query DB
+        $places = Place::orderBy('name', 'asc')->get();
 
         return view('places.showall')->with([
             'places' => $places,
         ]);
-    }
+    } # close function
 
     /**
     * GET
     * /places/search
+    * Search query for one place
     */
     public function searchPlace(Request $request) {
-        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
-        $places = Place::orderBy('name', 'asc')->get(); # Query DB
+
+        $locations= Location::orderBy('city', 'asc')->get();
+        $places = Place::orderBy('name', 'asc')->get();
 
         // Array for search results
         $searchResults = [];
 
         $searchPlace = $request->input('searchPlace', null);
+
         // If search input matches list of places
         if($searchPlace) {
 
@@ -96,26 +103,26 @@ class PlaceController extends Controller
                     $match = strtolower($name) == strtolower($searchPlace);
                 }
 
-                // Add name of list of results if there is match
+                // If a match, add name to list of search results
                 if($match) {
                     $searchResults[$name] = $place;
                 }
-            }
-        }
+            } # end foreach loop
+        } # end if statement
 
         return view('places.search')->with([
-            'searchPlace' => $searchPlace,
             'caseSensitive' => $request->has('caseSensitive'),
-            'searchResults' => $searchResults,
-            'places' => $places,
             'locations' => $places,
+            'places' => $places,
+            'searchPlace' => $searchPlace,
+            'searchResults' => $searchResults,
         ]);
-    }
+    } # close function
 
     /**
     * GET
     * /places/new
-    * Display the form to add a new place
+    * Display a form to add a new place
     */
     public function createNewPlace(Request $request) {
 
@@ -127,51 +134,50 @@ class PlaceController extends Controller
             'locationsForDropdown' => $locationsForDropdown,
             'tagsForCheckboxes' => $tagsForCheckboxes
         ]);
-    }
+    } # close function
 
     /**
     * POST
     * /places/new
-    * Display the form to add a new place
+    * Display a form to add and save new place
     */
+    public function storeNewPlace(Request $request) {
 
-        public function storeNewPlace(Request $request) {
+        // Custom error message
+        $messages = [
+            'location_id.not_in' => 'Location not selected.',
+        ];
 
-            // Custom error message
-            $messages = [
-                'location_id.not_in' => 'Location not selected.',
-            ];
+        $this->validate($request, [
+            'name' => 'required|min:1',
+            'place_image' => 'nullable|url|max:191',
+            'place_link' => 'nullable|url',
+            'place_notes' => 'nullable|max:1000',
+            'location_id' => 'not_in:0',
+        ], $messages);
 
-            $this->validate($request, [
-                'name' => 'required|min:1',
-                'place_image' => 'nullable|url|max:191',
-                'place_link' => 'nullable|url',
-                'place_notes' => 'nullable',
-                'location_id' => 'not_in:0',
-            ], $messages);
+        // Add new place to the database
+        $place = new Place();
+        $place->name = $request->name;
+        $place->place_link = $request->place_link;
+        $place->place_image = $request->place_image;
+        $place->place_notes = $request->place_notes;
+        $place->location_id = $request->location_id;
+        $place->save();
 
-            // Add new place to the database
-            $place = new Place();
-            $place->name = $request->name;
-            $place->place_link = $request->place_link;
-            $place->place_image = $request->place_image;
-            $place->place_notes = $request->place_notes;
-            $place->location_id = $request->location_id;
-            $place->save();
+        $tags = ($request->tags) ?: [];
+        $place->tags()->sync($tags);
+        $place->save();
 
-            $tags = ($request->tags) ?: [];
-            $place->tags()->sync($tags);
-            $place->save();
+        Session::flash('message', 'The place '.$request->name.' was added.');
 
-            Session::flash('message', 'The place '.$request->name.' was added.');
-
-            return redirect('/places');
-        }
+        return redirect('/places');
+    } # close function
 
     /**
     * GET
     * /places/edit/{id}
-    * Display the form to add a new place
+    * Display a form to edit place fields
     */
     public function editPlace($id) {
 
@@ -179,7 +185,7 @@ class PlaceController extends Controller
 
         if(is_null($place)) {
             Session::flash('message', 'The place you are looking for was not found.');
-            return redirect('/places');
+            return redirect('/places/showall');
         }
 
         $locationsForDropdown = Location::getLocationsForDropdown();
@@ -190,23 +196,23 @@ class PlaceController extends Controller
         $tagsForThisPlace = [];
         foreach($place->tags as $tag) {
             $tagsForThisPlace[] = $tag->name;
-    }
+        }
 
         return view('places.edit')->with([
             'id' => $id,
-            'place' => $place,
             'locationsForDropdown' => $locationsForDropdown,
+            'place' => $place,
             'tagsForCheckboxes' => $tagsForCheckboxes,
             'tagsForThisPlace' => $tagsForThisPlace,
         ]);
-    }
+    } # close function
 
     /**
     * POST
     * /places/edit
-    * Display the form to add a new place
     */
     public function saveEditsPlace(Request $request) {
+
         # Custom error message
         $messages = [
             'location_id.not_in' => 'Location not selected.',
@@ -216,7 +222,7 @@ class PlaceController extends Controller
             'name' => 'required|min:1',
             'place_image' => 'nullable|url|max:191',
             'place_link' => 'nullable|url',
-            'place_notes' => 'nullable',
+            'place_notes' => 'nullable|max:1000',
             'location_id' => 'not_in:0',
         ], $messages);
 
@@ -237,23 +243,25 @@ class PlaceController extends Controller
         $place->save();
 
         Session::flash('message', 'Your changes to '.$place->name.' were saved.');
-        return redirect('/places/show/'.$request->id);
-    }
+        return redirect('/places/edit/'.$request->id);
+    } # close function
 
     /**
     * GET
     * /places/delete
+    * Show page to delete a place
     */
     public function confirmDeletionPlace($id)  {
 
         $place = Place::find($id);
+
         if(!$place) {
             Session::flash('message', 'Place not found.');
-            return redirect('/places');
+            return redirect('/places/showall');
         }
 
         return view('places.delete')->with('place', $place);
-    }
+    } # close function
 
     /**
     * POST
@@ -261,25 +269,27 @@ class PlaceController extends Controller
     */
     public function deletePlace(Request $request)  {
 
-    $place = Place::find($request->id);
+        $place = Place::find($request->id);
 
-        if(!$place) {
-            Session::flash('message', 'Deletion failed; place not found.');
-            return redirect('/places');
-        }
+            if(!$place) {
+                Session::flash('message', 'Deletion failed; place not found.');
+                return redirect('/places');
+            }
 
-        $place->tags()->detach();
+            $place->tags()->detach();
 
-        $place->delete();
+            $place->delete();
 
-    Session::flash('message', $place->name.' was deleted.');
-    return redirect('/places');
-}
+        Session::flash('message', $place->name.' was deleted.');
+        return redirect('/places');
+    } # close function
 
+    //////////////////////////////////////////////////////////////
 
     /**
     * GET
-    * /locations/search
+    * /locations/showall
+    * Show all locations
     */
     public function showallLocation(Request $request) {
 
@@ -288,40 +298,40 @@ class PlaceController extends Controller
         return view('locations.showall')->with([
             'locations' => $locations,
         ]);
-    }
+    } # close function
 
     /**
     * GET
     * /locations/{id}
+    * Show information for a single location
     */
     public function showLocation($id) {
 
-        $locations = Location::orderBy('city', 'asc')->get(); # Query DB
+        $locations = Location::orderBy('city', 'asc')->get();
         $location = Location::find($id);
 
         if(!$location) {
             Session::flash('message', 'The location you are looking for could not be found.');
-            return redirect('/places');
+            return redirect('/locations/showall');
         }
         return view('locations.show')->with([
             'location' => $location,
             'locations' => $locations,
         ]);
-    }
+    } # close function
 
     /**
     * GET
     * /locations/new
-    * Display the form to add a new location
+    * Display a form to add a new location
     */
     public function createNewLocation(Request $request) {
         return view('locations.new');
-    }
+    } # close function
 
     /**
     * POST
     * /locations/new
-    * Display the form to add a new location
     */
 
     public function storeNewLocation(Request $request) {
@@ -336,7 +346,7 @@ class PlaceController extends Controller
             'location_image' => 'nullable|url',
         ], $messages);
 
-        # Add new book to database
+        // Add a new location to the database
         $location = new Location();
         $location->city = $request->city;
         $location->state = $request->state;
@@ -346,36 +356,35 @@ class PlaceController extends Controller
 
         Session::flash('message', 'The place '.$request->city.' was added.');
 
-        # Redirect the user to book index
         return redirect('/places');
-    }
+    } # close function
 
     /**
     * GET
     * /locations/edit{id}
-    * Display the form to add a new place
+    * Display a form to edit location fields
     */
     public function editLocation($id) {
 
          $location = Location::find($id);
 
-            if(is_null($location)) {
-                Session::flash('message', 'The location you are looking for was not found.');
-                return redirect('/locations/showall');
-            }
+        if(is_null($location)) {
+            Session::flash('message', 'The location you are looking for was not found.');
+            return redirect('/locations/showall');
+        }
 
         return view('locations.edit')->with([
             'id' => $id,
             'location' => $location,
         ]);
-    }
+    } # close function
 
     /**
     * POST
     * /locations/edit
-    * Display the form to add a new place
     */
     public function saveEditsLocation(Request $request) {
+
         // Custom error message
         $messages = [];
 
@@ -397,21 +406,24 @@ class PlaceController extends Controller
 
         Session::flash('message', 'Your changes to '.$location->city.' were saved.');
         return redirect('/places');
-    }
+    } # close function
 
     /**
     * GET
     * /places/delete
+    * Display page with option to delete location
     */
     public function confirmDeletionLocation($id)  {
 
         $location = Location::find($id);
+
         if(!$location) {
             Session::flash('message', 'Location not found.');
             return redirect('/places');
         }
+
         return view('locations.delete')->with('location', $location);
-    }
+    } # function
 
     /**
     * POST
@@ -429,19 +441,18 @@ class PlaceController extends Controller
                     if($match = $request->id == $place->location_id) {
                         Session::flash('message', 'Deletion failed; delete .');
                         return redirect('/locations/showall');
-                    }
-                }
-            }
+                    } # end if statement
+                } # end foreach loop
+            } #end foreach loop
 
         if(!$locations) {
             Session::flash('message', 'Deletion failed; place not found.');
             return redirect('/locations/showall');
-        }
+        } #end if statement
 
         $locations->delete();
 
         Session::flash('message', $locations->city.' was deleted.');
         return redirect('/locations/showall');
-    }
-
-}
+    } # close function
+} # close PlaceController

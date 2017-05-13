@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
 @section('title')
-    New Location
+    Create a New Place
 @endsection
 
-@push('head')
-    <link href='/css/a4.css' rel='stylesheet'>
-@endpush
-
 @section('content')
-    <div class="top">
-        <h1>Add a New Place!</h1>
-        <hr>
+
+<div class='container'>
+
+    <div class='row top'>
+        <div class='col-sm-12 col-md-12 col-lg-12'>
+            <h1>Add a New Place!</h1>
+        </div>
     </div>
 
     <form method='POST' action='/places/new'>
@@ -41,7 +41,7 @@
 
         <div class="text-entry">
             <label for='place_notes' class='control-label'>Notes</label>
-            <textarea name='place_notes' rows=2 class="form-control" id='place_notes' placeholder='Type Notes Here', value='{{ old('place_notes', '') }}'></textarea>
+            <textarea name='place_notes' rows=2 class="form-control" id='place_notes' placeholder='Type Notes Here'>{{ old('place_notes', '') }}</textarea>
         </div>
 
         <div class="text-entry">

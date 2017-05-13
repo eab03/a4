@@ -4,10 +4,6 @@
     New Location
 @endsection
 
-@push('head')
-    <link href='/css/a4.css' rel='stylesheet'>
-@endpush
-
 @section('content')
     <div class="top">
         <h1>Add a New Location!</h1>

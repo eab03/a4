@@ -145,6 +145,11 @@ h3 {
 
 /* styling for places/index.blade.php */
 
+div.container {
+    width: 100%;
+
+}
+
 section#wrapper {
     margin-left: 1em;
 }
@@ -166,7 +171,8 @@ div.placeRight, div.placeAllRight {
     padding: 1em;
     top: 0;
     white-space: wrap;
-    width: 55%
+    width: 55%;
+    word-wrap:break-word;
 }
 
 div.placeRight {

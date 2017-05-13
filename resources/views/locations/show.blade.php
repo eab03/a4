@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    Show One Location
+@endsection
+
 @section('content')
 
     <div class='locations' class='cf'>

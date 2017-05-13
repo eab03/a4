@@ -4,10 +4,6 @@
     Edit Locations
 @endsection
 
-@push('head')
-    <link href='/css/a4.css' rel='stylesheet'>
-@endpush
-
 @section('content')
     <div class="top">
         @if( $location->state !=null)

@@ -14,7 +14,7 @@
         <hr>
     </div>
 
-    <form method='POST' name="editForm" action='/places/edit'>
+    <form method='POST' action='/places/edit'>
         {{ csrf_field() }}
 
         <small>* Required fields</small>
@@ -43,10 +43,8 @@
 
         <div class="text-entry">
             <label for='place_notes' class='control-label'>Notes</label>
-            <textarea class="form-control" name='place_notes' id='place_notes' rows=2 form="editForm" value='{{ (old('place_notes') ? old('place_notes') : $place->place_notes) }}'>{{ old('place_notes', $place->place_notes) }}</textarea>
-        </div>
+            <input type='text' class="form-control" name='place_notes' id='place_notes' value='{{ old('place_notes', $place->place_notes) }}'>
 
-        <div class="text-entry">
             <label for='place_link' class='control-label'>Website</label>
             <input type='text' class="form-control" name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
             <br>

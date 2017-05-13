@@ -1,14 +1,11 @@
 @extends('layouts.master')
 
-@push('head')
-    <link href='/css/a4.css' rel='stylesheet'>
-@endpush
-
 @section('title')
-    My Recent Places!
+    Recent Places and Locations
 @endsection
 
 @section('content')
+
     <div class="top">
         <h1>My Recent Places and Locations</h1>
         <hr>
