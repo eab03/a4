@@ -26,17 +26,15 @@
                     <input type='hidden' name='id' value='{{ $location->id }}'>
 
                     @if( $location->state !=null)
-                        <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</em>?</h2>
+                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</em>?</h2>
                     @else
-                        <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->country}}</em>?</h2>
+                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->country}}</em>?</h2>
                     @endif
 
-                    <br><br>
+                    <br><br><br>
                     <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/locations/show/{{ $locations->id }}' class='btn btn-info' role='button'>No. Return to '{{ $location->city }}'.</a>
-
+                    <a href='/locations/show/{{ $location->id }}' class='btn btn-info' role='button'>No. Return to '{{ $location->city }}'.</a>
                 </form><!-- close form-->
-
             </div>
         </div><!-- close bootstrap row-->
     </div><!--close section form-->
