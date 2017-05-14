@@ -29,7 +29,7 @@
                         <br><br>
 
                         <label for='city' class='control-label'>* City</label>
-                        <input type='text' class='form-control' name='city' id='title' placeholder='Cambridge' value='{{ old('city', '') }}'>
+                        <input type='text' class='form-control' name='city' id='city' placeholder='Cambridge' value='{{ old('city', '') }}'>
                         <br>
                         <label for='state' class='control-label'> State</label>
                         <input type='text' class='form-control' name='state' id='state' placeholder='MA' value='{{ old('state', '') }}'>

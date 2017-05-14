@@ -16,7 +16,7 @@
     </section><!--close section top-->
 
     <!--form for searching for a place-->
-    <div class='form'>
+    <div class='form'><!--new div-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -42,7 +42,7 @@
     </div><!--close divform-->
 
     <!--display query results-->
-    <section class='places'><!--new section-->
+    <div class='places'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -56,21 +56,20 @@
                             No matches found.
                         </div>
                     @else
-                        <div class='col-sm-6 col-md-6 col-lg-6'>
-                            @foreach($searchResults as $name => $place)
-                                @foreach($locations as $location)
+                        @foreach($searchResults as $name => $place)
+                            @foreach($locations as $location)
+                                <div class='col-sm-6 col-md-6 col-lg-6'>
+                                    @if($place['location'] == $location->city)
+                                        <img class='img-one' src='{{ $place['place_image'] }}'>
+                                        <br>
 
-                                @if($place['location'] == $location->city)
-                                    <img class='img-one' src='{{ $place['place_image'] }}'>
-                                    <br>
+                                        @if( $location->state !=null)
+                                            <p class="results"><strong>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</strong></p>
+                                        @else
+                                            <p class="results">{{ $location->city }}, {{ $location->country }}</strong></p>
+                                        @endif
 
-                                    @if( $location->state !=null)
-                                        <p class="results"><strong>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</strong></p>
-                                    @else
-                                        <p class="results">{{ $location->city }}, {{ $location->country }}</strong></p>
-                                    @endif
-
-                                    <a class="results" href='{{ $place['place_link'] }}'>Website</a>
+                                        <a class="results" href='{{ $place['place_link'] }}'>Website</a>
                                 </div>
 
                                 <div class='col-sm-6 col-md-6 col-lg-6'>
@@ -86,8 +85,8 @@
                         @endforeach
                     @endif
                 @endif
-            <div>
+            </div>
         </div><!--close bootstrap row-->
-    </section><!--close section places-->
+    </div><!--close section places-->
 
 @endsection
