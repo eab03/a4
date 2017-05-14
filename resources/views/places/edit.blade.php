@@ -16,7 +16,7 @@
     </section><!--close section top-->
 
     <!--form for editing indiividual place record-->
-    <section class='form'><!--new section-->
+    <div class='form'><!--new div-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -87,6 +87,6 @@
 
             </div>
         </div><!--close bootstrap row-->
-    </section><!--close section form-->
+    </div><!--close div form-->
 
 @endsection

@@ -100,7 +100,7 @@ div.exception {
 
 /*https://jbkflex.wordpress.com/2012/01/16/truncating-longer-page-titles-with-an-ellipsis-html5-mobile-web-app/*/
 
-.truncate, #placenames h3, .locationnames h3 {
+.truncate, .placenames h3, .locationnames h3 {
     font-size: 1.15em;
     width:100%;
     white-space: nowrap;

@@ -12,7 +12,7 @@
                 <h1>Favorite Locations</h1>
             </div>
             <div class='col-sm-4 col-md-3 col-lg-3'>
-                <a href='/locations/new'><input type='button' value='Add a New Location!' class='btn btn-primary'></a>
+                <a href='/locations/new'><h3>Add a New Location!<h3></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>

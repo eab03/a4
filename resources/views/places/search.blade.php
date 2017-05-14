@@ -16,7 +16,7 @@
     </section><!--close section top-->
 
     <!--form for searching for a place-->
-    <section class='form'>
+    <div class='form'>
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -39,7 +39,7 @@
 
             </div>
         </div><!--close bootstrap row-->
-    </section><!--close section form-->
+    </div><!--close divform-->
 
     <!--display query results-->
     <section class='places'><!--new section-->

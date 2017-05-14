@@ -8,11 +8,11 @@
 
     <section class='top'><!--new section-->
         <div class='row'><!--new bootrap row-->
-            <div class='col-sm-8 col-md-9 col-lg-9'>
+            <div class='col-sm-7 col-md-8 col-lg-8'>
                 <h1>Favorite Places</h1>
             </div>
-            <div class='col-sm-4 col-md-3 col-lg-3'>
-                <a href='/places/new'><input type='button' value='Add a New Place!' class='btn btn-primary'></a>
+            <div class='col-sm-5 col-md-4 col-lg-4'>
+                <a href='/places/new'><h3>Add a New Place!<h3></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>
@@ -29,7 +29,7 @@
             @else
                 @foreach($places as $place)
                     <div class='col-sm-4 col-md-4 col-lg-4'>
-                        <div id="placenames">
+                        <div class="placenames">
 
                             <a href='/places/show/{{ $place->id }}'><h3>{{ $place->name }}</h3></a>
                             <a href='/places/show/{{ $place->id }}'><img class='img-all' src='{{ $place->place_image }}' alt='Image for {{ $place->name }}'></a>

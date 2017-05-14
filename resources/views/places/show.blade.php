@@ -53,6 +53,6 @@
             </div>
 
         </div><!--close bootstrap row-->
-    </div><!--close section places-->
+    </div><!--close div places-->
 
 @endsection
