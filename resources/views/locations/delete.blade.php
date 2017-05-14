@@ -33,7 +33,7 @@
 
                     <br><br>
                     <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/locations/show/{{ $location->id }}'><input type='button' value="No. Return to '{{ $location->city }}'." class='btn btn-info'></a>
+                    <a href='/locations/show/{{ $place->id }}' class='btn btn-info' role='button'>No. Return to '{{ $location->city }}'.</a>
 
                 </form><!-- close form-->
 

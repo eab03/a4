@@ -29,7 +29,7 @@
 
                     <br><br>
                     <input type='submit' value='Yes, delete this place.' class='btn btn-danger'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/places/show/{{ $place->id }}'><input type='button' value="No. Go back to '{{ $place->name }}'." class='btn btn-info'></a>
+                    <a href='/places/show/{{ $place->id }}' class='btn btn-info' role='button'>No. Go back to '{{ $place->name }}'.</a>
 
                     @include('errors')
 

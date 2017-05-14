@@ -52,11 +52,11 @@
                         <br>
 
                         <label for='place_link' class='control-label'>Website</label>
-                        <input type='url' class='form-control' name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
+                        <input type='text' class='form-control' name='place_link' id='place_link' value='{{ old("place_link", $place->place_link) }}'>
                         <br>
 
                         <label for='place_image' class='control-label'>Image (URL)</label>
-                        <input type='url' class='form-control' name='place_image' id='place_image' alt='Image for This Awesome Place" value='{{ old('place_image', $place->place_image) }}'>
+                        <input type='text' class='form-control' name='place_image' id='place_image' value='{{ old("place_image", $place->place_image) }}'>
                         <br>
                     </div>
 

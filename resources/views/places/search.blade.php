@@ -33,7 +33,7 @@
                     <br><br>
 
                     <input type='submit' value='Search' class='btn btn-primary'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/places/showall'><input type='button' value='Go Back to All Places' class='btn btn-info'></a>
+                    <a href='/places/showall' class='btn btn-info' role='button'>Go Back to All Places</a>
 
                 </form><!--close form-->
 
