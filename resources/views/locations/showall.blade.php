@@ -18,7 +18,7 @@
         <hr>
     </section><!--close sectino top-->
 
-    <section class='locations'><!--new section-->
+    <div class='locations'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -51,5 +51,6 @@
 
             </div>
         </div><!-- close boostrap row-->
+    </div><!--close div locations-->
 
 @endsection

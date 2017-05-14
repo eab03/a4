@@ -39,6 +39,6 @@
 
             </div>
         </div><!-- close bootstrap row-->
-    </delete><!--close section form-->
+    </div><!--close section form-->
 
 @endsection
