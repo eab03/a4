@@ -26,7 +26,7 @@
                     <div class='row'>
                         <div class='col-sm-12 col-md-12 col-lg-12'>
                             <div class='exception'>
-                                You don't have any favorite places yet; would you like to <a href='/locations/new'>add one</a>?
+                                You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one</a>?
                             </div>
                         </div>
                     </div><!--close bootstrap row-->

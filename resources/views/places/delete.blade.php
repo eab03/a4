@@ -26,8 +26,9 @@
 
                 <h2>Are you sure you want to delete:<br><em>{{ $place->name }}</em>?</h2>
 
+                <br><br>
                 <input type='submit' value='Yes, delete this place.' class='btn btn-danger'>&nbsp&nbsp&nbsp&nbsp
-                <a href='/places/show/{{ $place->id }}'><input type='button' value="No. Go back to '{{ $place->name }}'." class='btn btn-primary'></a>
+                <a href='/places/show/{{ $place->id }}'><input type='button' value="No. Go back to '{{ $place->name }}'." class='btn btn-info'></a>
 
                 @include('errors')
 

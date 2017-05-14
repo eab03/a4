@@ -31,7 +31,6 @@ body {
 }
 
 div.container {
-    padding-bottom: 20px;
     width: 100%;
 }
 
@@ -82,8 +81,14 @@ small {
     color: red;
 }
 
+div.exception {
+    font-size: 1.5em;
+}
+
 .message {
+    font-size: 1.5em;
     font-weight: bold;
+    margin-bottom: .5em;
 }
 
 

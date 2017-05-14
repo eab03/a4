@@ -30,8 +30,9 @@
                     <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->country}}</em>?</h2>
                 @endif
 
+                <br><br>
                 <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>&nbsp &nbsp &nbsp &nbsp
-                <a href='/locations/show/{{ $location->id }}'><input type='button' value='No. Return to '{{ $location->city }}'.' class='btn btn-primary'></a>
+                <a href='/locations/show/{{ $location->id }}'><input type='button' value="No. Return to '{{ $location->city }}'." class='btn btn-info'></a>
 
             </form><!-- close form-->
 
