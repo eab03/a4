@@ -32,7 +32,7 @@
                     </div>
                     <br><br>
 
-                    <input type='submit' value='Search' class='btn btn-primary'>&nbsp &nbsp &nbsp &nbsp
+                    <input type='submit' value='Search' class='btn btn-primary'>&nbsp; &nbsp; &nbsp; &nbsp;
                     <a href='/places/showall'><input type='button' value='Go Back to All Places' class='btn btn-info'></a>
 
                 </form><!--close form-->

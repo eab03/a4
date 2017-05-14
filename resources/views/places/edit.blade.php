@@ -72,7 +72,7 @@
                                          id='tag_{{ $id }}'
                                          value='{{ $id }}'
                                          {{ (in_array($name, $tagsForThisPlace)) ? 'CHECKED' : '' }}>
-                                         {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                         {{ $name }}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                      </label>
                                  @endforeach
                             </div>

@@ -39,7 +39,7 @@
 
                 <p>Tags:
                     @foreach($tagsForThisPlace as $id => $name)
-                        {{ $name }} &nbsp
+                        {{ $name }} &nbsp;
                     @endforeach
                 </p>
                 <br>

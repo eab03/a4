@@ -70,7 +70,7 @@
                                     name='tags[]'
                                     id='tag_{{ $id }}'
                                     value='{{ $id }}'>
-                                    {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    {{ $name }}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                 </label>
                             @endforeach
                             <br><br>

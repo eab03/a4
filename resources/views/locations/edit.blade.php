@@ -50,7 +50,7 @@
 
                         <label for='location_image 'class="control-label">Image (URL)</label>
                         <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
-                        <br>    
+                        <br>
 
                         <label for='location_notes' class='control-label'>Notes</label>
                         <input type='text' class='form-control' name='location_notes' id='location_notes' value='{{ old('location_notes', $location->location_notes) }}'>
@@ -60,7 +60,7 @@
 
                     @include('errors')
 
-                    <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp &nbsp &nbsp &nbsp
+                    <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp; &nbsp; &nbsp; &nbsp;
                     <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
 
                 </form><!--close form-->
