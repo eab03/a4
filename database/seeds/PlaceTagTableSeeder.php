@@ -22,7 +22,8 @@ class PlaceTagTableSeeder extends Seeder
             'Shelburne Farms' => ['outdoors','photography','$'],
             'Radio Bean' => ['coffee','cocktails','food','music','$$'],
             'Boston Public Garden' => ['outdoors','photography','$'],
-            'Peabody Museum of Archaeology & Ethnography at Harvard University' => ['museum','art','indoors','$']
+            'Peabody Museum of Archaeology & Ethnography at Harvard University' => ['museum','art','indoors','$'],
+            'Sacred Monkey Forest Sanctuary' => ['outdoors', 'photography', '$']
         ];
 
         # Now loop through the above array, creating a new pivot for each book to tag

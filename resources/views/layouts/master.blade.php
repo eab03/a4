@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css"  integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
 	<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="/css/a4.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     @stack('head')
 
@@ -27,20 +29,36 @@
 		@endif
 
     	<header>
+		</header>
 
-			<nav class="topnav">
-				<div class='row'>
-					<div class='col-sm-12 col-md-12 col-lg-12'>
-						<ul>
-							<li><a href='/locations/showall'>Locations</a></li>
-							<li><a href='/places/showall'>Places</a></li>
-							<li><a href='/places'>Home</a></li>
+		<!--https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_dropdown&stacked=h-->
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">WebSiteName</a>
+				</div>
+
+				<ul class="nav navbar-nav">
+				    <li class="active"><a href="/places">Home</a></li>
+				    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Places<span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				          	<li><a href="/places/showall">Show All Places</a></li>
+				          	<li><a href="/places/search">Search Places</a></li>
+				          	<li><a href="/places/new">Add New Place</a></li>
+				        </ul>
+				      	</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						  	<li><a href="/locations/showall">Show All Locations</a></li>
+						  	<li><a href="/locations/new">Add New Location</a></li>
 						</ul>
-					</div>
-				</div><!--close bootstrap row-->
-			</nav><!--close navigation-->
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-	    </header>
+
 
 	    <div class='container'>
 	        @yield('content')

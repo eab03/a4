@@ -8,11 +8,8 @@
 
     <section class='top'>
         <div class='row'>
-            <div class='col-sm-8 col-md-9 col-lg-9'>
+            <div class='col-sm-12 col-md-12 col-lg-12'>
                 <h1>Search Places</h1>
-            </div>
-            <div class='col-sm-4 col-md-3 col-lg-3'>
-                <a href='/places/showall'><input type='button' value='Show All Places' class='btn btn-primary btn-small'></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>
@@ -30,11 +27,13 @@
                 </div>
 
                 <div class='form-check checkbox'>
-                    <input type='checkbox' class='form-check-input' name='caseSensitive' value='{{ ($caseSensitive) ? 'CHECKED' : '' }}'>
-                    <label for='caseSenstive' class='form-check-label'>Case Sensitive</label>
+                    <label><input type='checkbox' class='form-check-input' name='caseSensitive' {{ ($caseSensitive) ? 'CHECKED' : '' }}>
+                    Case Sensitive</label>
                 </div>
 
-                <input type='submit' value='Search' class='btn btn-primary btn-small'>
+                <br><br>
+                <input type='submit' value='Search' class='btn btn-primary'>&nbsp &nbsp &nbsp &nbsp
+                <a href='/places/showall'><input type='button' value='Go Back to All Places' class='btn btn-info'></a>
 
             </form><!--close form-->
 

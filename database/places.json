@@ -46,5 +46,13 @@
         "place_link" : "https://www.peabody.harvard.edu/",
         "place_image" : "https://www.peabody.harvard.edu/files/Encounters_gallery.jpg",
         "place_notes" : "Great place to go on a rainy day."
+    },
+    "Sacred Monkey Forest Sanctuary": {
+        "id": 6,
+        "location": "Ubud",
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "https://www.monkeyforestubud.com/",
+        "place_image" : "https://s-media-cache-ak0.pinimg.com/originals/20/17/47/201747d68d8ca306c9e3d2f03ff6a6f7.jpg",
+        "place_notes" : "Very special place."
     }
 }

@@ -54,7 +54,7 @@
                     <input type='text' class='form-control' name='place_link' id='place_link' placeholder='https://www.cremacambridge.com/' value= '{{ old('place_link', '') }}'>
                     <br>
 
-                    <label for='place_image' class='control-label'>Image</label>
+                    <label for='place_image' class='control-label'>Image (URL)</label>
                     <input type='text' class='form-control' class='imgOne' name='place_image' id='place_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', value='{{ old('place_image', '') }}'>
                     <br>
                 </div>
@@ -72,10 +72,12 @@
                                 {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </label>
                         @endforeach
+                        <br><br>
                 </fieldset>
 
                 @include('errors')
 
+                <br>
                 <input class='btn btn-primary' type='submit' value='Add new place'>
 
             </form><!--close form-->

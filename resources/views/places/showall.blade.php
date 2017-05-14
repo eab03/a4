@@ -8,14 +8,11 @@
 
     <section class='top'>
         <div class='row'>
-            <div class='col-sm-5 col-md-5 col-lg-5'>
+            <div class='col-sm-8 col-md-9 col-lg-9'>
                 <h1>Favorite Places</h1>
             </div>
-            <div class='col-sm-7 col-md-7 col-lg-7'>
-                <div class="floatRight">
-                    <a href='/places/search'><input type='button' value='Search for a Place!' class='btn btn-info'></a>&nbsp &nbsp &nbsp &nbsp
-                    <a href='/places/new'><input type='button' value='Add a New Place!' class='btn btn-primary'></a>
-                </div>
+            <div class='col-sm-4 col-md-3 col-lg-3'>
+                <a href='/places/new'><input type='button' value='Add a New Place!' class='btn btn-info'></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>
@@ -35,7 +32,7 @@
 
             <div class='row'>
                 @foreach($places as $place)
-                    <div class='col-sm-6 col-md-6 col-lg-6'>
+                    <div class='col-sm-4 col-md-4 col-lg-4'>
                         <div id="placenames">
                             <a href='/places/show/{{ $place->id }}'><h3>{{ $place->name }}</h3></a>
                             <a href='/places/show/{{ $place->id }}'><img class='imgShowAll' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>

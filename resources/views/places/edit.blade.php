@@ -43,18 +43,18 @@
                             </option>
                         @endforeach
                     </select>
-                    <br>
                 </div>
 
                 <div class='text-entry'>
                     <label for='place_notes' class='control-label'>Notes</label>
                     <input type='text' class='form-control' name='place_notes' id='place_notes' value='{{ old('place_notes', $place->place_notes) }}'>
+                    <br>
 
                     <label for='place_link' class='control-label'>Website</label>
                     <input type='text' class='form-control' name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
                     <br>
 
-                    <label for='place_image' class='control-label'>Image</label>
+                    <label for='place_image' class='control-label'>Image (URL)</label>
                     <input type='text' class='form-control' class='imgOne' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
                     <br>
                 </div>
@@ -79,7 +79,8 @@
 
                 @include('errors')
 
-                <br><input class='btn btn-primary' type='submit' value='Save changes'><br><br>
+                <br><br>
+                <input class='btn btn-primary' type='submit' value='Save changes'><br><br>
 
             </form><!-- close form-->
 

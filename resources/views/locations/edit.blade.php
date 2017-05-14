@@ -42,7 +42,7 @@
                     <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
                     <br>
 
-                    <label for='country' class="control-label">Country</label>
+                    <label for='country' class="control-label">* Country</label>
                     <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
                     <br>
 
@@ -50,6 +50,8 @@
                     <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
 
                 </div><!-- close form group-->
+
+                @include('errors')
 
                 <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp &nbsp &nbsp &nbsp
                 <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
