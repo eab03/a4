@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <section class='top'>
-        <div class='row'>
+    <section class='top'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
                 @if( $location->state !=null)
@@ -15,50 +15,58 @@
                 @else
                     <h1>{{ $location->city }}, {{ $location->country }}</h1>
                 @endif
-                <hr>
+
             </div>
         </div><!--close bootstrap row-->
+        <hr>
     </section><!--close section top-->
 
     <!--form for editing a single location-->
-    <div class='row'>
-        <div class='col-sm-12 col-md-12 col-lg-12'>
+    <section class='form'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
+            <div class='col-sm-12 col-md-12 col-lg-12'>
 
-            <form method='POST' action='/locations/edit'>
-                {{ csrf_field() }}
+                <form method='POST' action='/locations/edit'>
+                    {{ csrf_field() }}
 
-                <div class="form-group text-entry">
+                    <div class="form-group text-entry">
 
-                    <small>* Required fields</small>
-                    <br><br>
+                        <small>* Required fields</small>
+                        <br><br>
 
-                    <input type='hidden' name='id' value='{{ $location->id }}'>
+                        <input type='hidden' name='id' value='{{ $location->id }}'>
 
-                    <label for='city' class="control-label">* City</label>
-                    <input type='text' class="form-control" name='city' id='city' value='{{ old('city', $location->city) }}'>
-                    <br>
+                        <label for='city' class="control-label">* City</label>
+                        <input type='text' class="form-control" name='city' id='city' value='{{ old('city', $location->city) }}'>
+                        <br>
 
-                    <label for='state' class="control-label">State</label>
-                    <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
-                    <br>
+                        <label for='state' class="control-label">State</label>
+                        <input type='text' class="form-control" name='state' id='state' value='{{ old('state', $location->state) }}'>
+                        <br>
 
-                    <label for='country' class="control-label">* Country</label>
-                    <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
-                    <br>
+                        <label for='country' class="control-label">* Country</label>
+                        <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
+                        <br>
 
-                    <label for='location_image 'class="control-label">Image (URL)</label>
-                    <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+                        <label for='location_image 'class="control-label">Image (URL)</label>
+                        <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+                        <br>    
 
-                </div><!-- close form group-->
+                        <label for='location_notes' class='control-label'>Notes</label>
+                        <input type='text' class='form-control' name='location_notes' id='location_notes' value='{{ old('location_notes', $location->location_notes) }}'>
+                        <br>
 
-                @include('errors')
+                    </div><!--close form group-->
 
-                <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp &nbsp &nbsp &nbsp
-                <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
+                    @include('errors')
 
-            </form><!-- close form-->
+                    <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp &nbsp &nbsp &nbsp
+                    <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
 
-        </div>
-    </div><!-- close bootstrap row-->
+                </form><!--close form-->
+
+            </div>
+        </div><!--close bootstrap row-->
+    </section><!--close section form-->
 
 @endsection

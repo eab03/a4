@@ -112,7 +112,7 @@ class PlaceController extends Controller
 
         return view('places.search')->with([
             'caseSensitive' => $request->has('caseSensitive'),
-            'locations' => $places,
+            'locations' => $locations,
             'places' => $places,
             'searchPlace' => $searchPlace,
             'searchResults' => $searchResults,

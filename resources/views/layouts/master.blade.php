@@ -28,15 +28,14 @@
 			<div class='message'>{{ Session::get('message') }}</div>
 		@endif
 
-    	<header>
-		</header>
+    	<header></header>
 
 		<!--https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_dropdown&stacked=h-->
 
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-light">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">WebSiteName</a>
+					<a class="navbar-brand" href="/">FavePlaces</a>
 				</div>
 
 				<ul class="nav navbar-nav">
@@ -57,8 +56,6 @@
 				</ul>
 			</div>
 		</nav>
-
-
 
 	    <div class='container'>
 	        @yield('content')

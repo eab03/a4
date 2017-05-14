@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <section class='top'>
-        <div class='row'>
+    <section class='top'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
                 <h1>My Recent Places and Locations</h1>
             </div>
@@ -15,51 +15,64 @@
         <hr>
     </section><!--close section top-->
 
-
-    <div class='row'>
-        <div class='col-sm-12 col-md-12 col-lg-12'>
-
-            <section id='newPlaces'>
-
-                <h2>Places</h2>
-
+    <section id='newPlaces'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
+            <div class='col-sm-12 col-md-12 col-lg-12'>
+                <h2>Updated
+                    Places</h2>
+                <br>
                 @if(count($newPlaces) == 0)
                     <div class='exception'>
-                        You don't have any favorite places yet; would you like to <a href='/places/new'>add one?</a>
+                        You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a>?
                     </div>
                 @else
+                    <ul>
                     @foreach($newPlaces as $place)
-                        <ul>
-                            <li class='truncate'><a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> ...updated {{ $place->updated_at->diffForHumans() }}</li>
-                        </ul>
+                        <li class='truncate'><a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> ...updated {{ $place->updated_at->diffForHumans() }}</li>
                     @endforeach
+                    </ul>
                 @endif
+            </div>
+        </div><!--close bootstrap row-->
+        <br>
+    </section> <!--close section newPlaces-->
 
-                <br>
-
-            </section> <!-- close section newPlaces-->
-
-            <section id='newLocations'>
-
-                <h2>Locations</h2>
-
+    <section id='newLocations'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
+            <div class='col-sm-12 col-md-12 col-lg-12'>
+                <h2>New Locations</h2>
                 @if(count($locations) == 0)
-                    <p class='exception'>You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one?</a></p>
+                    <div class='exception'>
+                        You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one?</a>
+                    </div>
                 @else
-                    @foreach($locations as $location)
-                        <ul>
-                            @if( $location->state !=null)
-                                <li class='truncate'><a href='locations/show/{{ $location->id }}'>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</a> ...updated {{ $location->updated_at->diffForHumans()}}</li>
-                            @else
-                                <li class='truncate'><a href='locations/show/{{ $location->id }}'>{{ $location->city }}, {{ $location->country }}</a> ...updated {{ $location->updated_at->diffForHumans()}}</li>
-                            @endif
-                        </ul>
-                    @endforeach
+                    <div class='row'><!--new bootstrap row-->
+                        @foreach($locations as $location)
+                            <div class='col-sm-4 col-md-4 col-lg-4'>
+
+                                <div id="locationnames">
+                                    @if($location->state != null)
+                                        <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h3></a>
+                                    @else($location->state = null)
+                                        <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->country }}</h3></a>
+                                    @endif
+                                </div>
+
+                                <a href='/locations/show/{{ $location->id }}'><img class='img-all' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
+
+                                <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
+                                <a class='locationAction' href='/locations/show/{{ $location->id }}'><i class='fa fa-eye'></i></a>
+                                <a class='locationAction' href='/locations/delete/{{ $location->id }}'><i class='fa fa-trash'></i></a>
+                                <br>
+                                <p>Created: {{ $location->created_at->diffForHumans() }}<p>
+                                <hr>
+
+                            </div>
+                        @endforeach
+                    </div><!--close bootstrap row-->
                 @endif
-
-            </section><!-- close section newLocations-->
-
-        </div>
-    </div><!--close bootstrap row-->
+            </div>
+        </div><!--close bootstrap row-->
+    </section><!--close section newLocations-->
 
 @endsection

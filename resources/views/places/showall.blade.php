@@ -6,42 +6,39 @@
 
 @section('content')
 
-    <section class='top'>
-        <div class='row'>
+    <section class='top'><!--new section-->
+        <div class='row'><!--new bootrap row-->
             <div class='col-sm-8 col-md-9 col-lg-9'>
                 <h1>Favorite Places</h1>
             </div>
             <div class='col-sm-4 col-md-3 col-lg-3'>
-                <a href='/places/new'><input type='button' value='Add a New Place!' class='btn btn-info'></a>
+                <a href='/places/new'><input type='button' value='Add a New Place!' class='btn btn-primary'></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>
     </section><!--close section top-->
 
-    <section class='places'>
-
-        @if(count($places) == 0)
-            <div class='row'>
+    <section class='places'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
+            @if(count($places) == 0)
                 <div class='col-sm-12 col-md-12 col-lg-12'>
                     <div class='exception'>
-                        You don't have any favorite places yet; would you like to <a href='/places/new'>add one?</a>
+                        You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a>?
                     </div>
                 </div>
-            </div><!--close bootstrap row-->
-        @else
-
-            <div class='row'>
+            @else
                 @foreach($places as $place)
                     <div class='col-sm-4 col-md-4 col-lg-4'>
                         <div id="placenames">
+
                             <a href='/places/show/{{ $place->id }}'><h3>{{ $place->name }}</h3></a>
-                            <a href='/places/show/{{ $place->id }}'><img class='imgShowAll' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'></a>
+                            <a href='/places/show/{{ $place->id }}'><img class='img-all' src='{{ $place->place_image }}' alt='Image for {{ $place->name }}'></a>
 
                             <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
                             <a class='placeAction' href='/places/show/{{ $place->id }}'><i class='fa fa-eye'></i></a>
                             <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
+                            <br>
 
-                            <br><br>
                             @if( $place->location->state !=null)
                                 <p>{{ $place->location->city }}, {{ $place->location->state }}, {{ $place->location->country }}</p>
                             @else
@@ -51,15 +48,12 @@
                             <a href='{{ $place->place_link }}'>Website</a>
                             <br><br>
                             <hr>
+
                         </div>
                     </div>
-
                 @endforeach
-
-            </div><!--close bootstrap row-->
-
-        @endif
-
+            @endif
+        </div><!--close bootstrap row-->
     </section><!--close section places-->
 
 @endsection

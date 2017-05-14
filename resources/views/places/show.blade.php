@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <section class='top'>
-        <div class='row'>
+    <section class='top'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
                 <h1>{{ $place->name }}</h1>
             </div>
@@ -15,10 +15,11 @@
         <hr>
     </section><!--close section top-->
 
-    <section class='places' id='oneplace'>
-        <div class='row'>
+    <section class='places' id='oneplace'><!--new section-->
+        <div class='row'><!--new bootstrap row-->
             <div class='col-sm-6 col-md-6 col-lg-6'>
-                <img class='imgShowOne' src='{{ $place->place_image }}' alt='Image {{ $place->name }}'>
+
+                <img class='img-one' src='{{ $place->place_image }}' alt='Image for {{ $place->name }}'>
 
                 <a class='placeAction' href='/places/edit/{{ $place->id }}'><i class='fa fa-pencil'></i></a>
                 <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
@@ -38,7 +39,6 @@
 
                 <p>Tags:
                     @foreach($tagsForThisPlace as $id => $name)
-
                         {{ $name }} &nbsp
                     @endforeach
                 </p>
@@ -53,7 +53,6 @@
             </div>
 
         </div><!--close bootstrap row-->
-
     </section><!--close section places-->
 
 @endsection

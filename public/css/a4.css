@@ -1,23 +1,20 @@
 /* https://v4-alpha.getbootstrap.com/layout/overview/ */
 
 html {
-    background-color: #2F4867;
-    position: relative;
+    background-color: #59759D;
+    box-sizing: border-box;
     min-height: 100%;
+    position: relative;
 }
-
-/* Adapted from foobooks.css example code */
 
 /*----------------------------------------------------
+Box sizing code from class example:
 http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 -----------------------------------------------------*/
-html {
-  box-sizing: border-box;
-}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
-/* End Box Sizing */
 
 body {
     background-color: #FFF;
@@ -47,9 +44,19 @@ footer {
 
 /* header and navigation */
 
-.navbar.navbar-inverse {
-    background-color: #F7EF6A;
-    color: white;
+.container-fluid {
+    border-bottom: 1px solid yellow;
+}
+
+.navbar.navbar-light a {
+    font-size: 1.25em;
+    margin-left: 1em;
+}
+
+a.navbar-brand {
+    color: #1D2731;
+    font-size: 1.5em !important;
+    font-weight: bold;
 }
 
 /* styling for welcome.blade.php page */
@@ -60,7 +67,7 @@ footer {
 }
 
 .intro h1 {
-    font-size: 3em;
+    font-size: 4.75em;
 }
 
 .intro h2, .intro a {
@@ -91,7 +98,6 @@ div.exception {
     margin-bottom: .5em;
 }
 
-
 /*https://jbkflex.wordpress.com/2012/01/16/truncating-longer-page-titles-with-an-ellipsis-html5-mobile-web-app/*/
 
 .truncate, #placenames h3, #locationnames h3 {
@@ -106,38 +112,51 @@ section#oneplace a, section#onelocation a {
     font-size: 1.5em;
 }
 
+.results {
+    font-size: 1.25em;
+}
+
 /* image styling */
 
 img {
-    height: 175px;
-    width: 175px;
+    height: 150px;
+    margin: .25em 1em .5em 0em;
+    width: 150px;
 }
 
-.imgShowOne, img {
+.img-one {
     height: 200px;
-    margin-right: 1em;
+    margin: .25em 1em 1em 0em;
     width: 200px;
 }
 
-.imgShowAll {
+.img-all {
     height: 125px;
+    margin: .25em 1em .5em 0em;
     width: 125px;
-    margin-right: 1em;
 }
 
-.floatright {
-    float:right;
-}
+/* styling for text box in places.show/{{id}}, places.search,
+and locations.show/{{id}} */
 
-/* styling for places/showall */
 div.notes {
-    border: 2px solid #59759D;
     background-color: #59759D;
     color: white;
     height: 200px;
     overflow: scroll;
     padding: 1em;
     width: 85%;
+}
+
+/* styling for form elements */
+
+.control-label {
+    font-size: 1.15em;
+}
+
+legend {
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
 /* styling for error messages */
@@ -148,15 +167,20 @@ div.alert.alert-danger.error li {
     font-style: italic;
 }
 
-/*Extra small devices (portrait phones, less than 576px) */
+/*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575px) {
     body {
+        padding: .5em .5em 3em .5em;
         width: 100%;
 	}
+
+    .intro h1 {
+        font-size: 3.25em;
+    }
+
     div.col-sm-4.col-md-3.col-lg-3 {
         height: 100px;
     }
-
 }
     /*h1, legend, label, label:first-child {
     }
