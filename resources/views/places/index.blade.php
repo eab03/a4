@@ -28,7 +28,7 @@
                 @else
                     <ul>
                     @foreach($newPlaces as $place)
-                        <li class='truncate'><i class='fa fa-star'></i>;&nbsp;&nbsp;<a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> &nbsp; updated {{ $place->updated_at->diffForHumans() }}</li>
+                        <li class='truncate'><i class='fa fa-star'></i>&nbsp;&nbsp;<a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> &nbsp; updated {{ $place->updated_at->diffForHumans() }}</li>
                     @endforeach
                     </ul>
                 @endif

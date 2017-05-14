@@ -12,7 +12,7 @@
                 <h1>Favorite Places</h1>
             </div>
             <div class='col-sm-5 col-md-4 col-lg-4'>
-                <h3><a href='/places/new'>Add a New Place!</a><h3>
+                <a href='/places/new'><h3>Add a New Place!<h3></a>
             </div>
         </div><!--close bootstrap row-->
         <hr>

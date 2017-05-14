@@ -8,10 +8,10 @@
 
     <section class='top'><!--new section-->
         <div class='row'><!--new bootstrap row-->
-            <div class='col-sm-8 col-md-9 col-lg-9'>
+            <div class='col-sm-7 col-md-8 col-lg-8'>
                 <h1>Favorite Locations</h1>
             </div>
-            <div class='col-sm-4 col-md-3 col-lg-3'>
+            <div class='col-sm-5 col-md-4 col-lg-4'>
                 <a href='/locations/new'><h3>Add a New Location!<h3></a>
             </div>
         </div><!--close bootstrap row-->
@@ -29,7 +29,7 @@
                 @else
                     @foreach($locations as $location)
                         <div class='col-sm-4 col-md-4 col-lg-4'>
-                            <div id="locationnames">
+                            <div class="locationnames">
 
                                 @if($location->state != null)
                                     <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h3></a>

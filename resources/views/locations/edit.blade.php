@@ -49,7 +49,7 @@
                         <br>
 
                         <label for='location_image 'class="control-label">Image (URL)</label>
-                        <input type='text' class="form-control" name='location_image' id='location_image' alt='Image for This Awesome Location' value='{{ old('location_image', $location->location_image) }}'>
+                        <input type='url' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
                         <br>
 
                         <label for='location_notes' class='control-label'>Notes</label>

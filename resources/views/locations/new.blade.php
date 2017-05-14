@@ -38,7 +38,7 @@
                         <input type='text' class='form-control' name='country' id='country' placeholder='USA' value='{{ old('country', '') }}'>
                         <br>
                         <label for='location_image' class='control-label'> Image (URL)</label>
-                        <input type='text' class='form-control' name='location_image' id='location_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg' alt='Image for This Awesome Location' value='{{ old('location_image', '') }}'>
+                        <input type='url' class='form-control' name='location_image' id='location_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg' value='{{ old('location_image', '') }}'>
                         <br>
 
                         <div class='text-entry'>

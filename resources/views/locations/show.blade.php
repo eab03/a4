@@ -19,7 +19,7 @@
         <hr>
     </section><!--close section top-->
 
-    <section class='locations' id='onelocation'>
+    <div class='locations'>
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-6 col-md-6 col-lg-6'>
 
@@ -40,6 +40,6 @@
             </div>
 
         </div><!--close bootstrap row-->
-    </section><!--close section locations-->
+    </div><!--close section locations-->
 
 @endsection

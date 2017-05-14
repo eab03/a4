@@ -15,7 +15,7 @@
         <hr>
     </section><!--close section top-->
 
-    <div class='places' id='oneplace'><!--new section-->
+    <div class='places'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-6 col-md-6 col-lg-6'>
 
@@ -25,7 +25,7 @@
                 <a class='placeAction' href='/places/delete/{{ $place->id }}'><i class='fa fa-trash'></i></a>
 
                 <br><br>
-                <a href='{{ $place->place_link }}'>Website</a>
+                <a class="oneplace" href='{{ $place->place_link }}'>Website</a>
                 <br><br>
 
                 @if( $place->location->state !=null)
