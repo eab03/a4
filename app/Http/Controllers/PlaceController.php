@@ -344,6 +344,7 @@ class PlaceController extends Controller
             'state' => 'nullable|min:2',
             'country' => 'required|min:2',
             'location_image' => 'nullable|url',
+            'location_notes' => 'nullable|max:1000',
         ], $messages);
 
         // Add a new location to the database
@@ -352,6 +353,7 @@ class PlaceController extends Controller
         $location->state = $request->state;
         $location->country = $request->country;
         $location->location_image = $request->location_image;
+        $location->location_notes = $request->location_notes;
         $location->save();
 
         Session::flash('message', 'The place '.$request->city.' was added.');
@@ -393,6 +395,7 @@ class PlaceController extends Controller
             'state' => 'nullable|min:2',
             'country' => 'required|min:2',
             'location_image' => 'nullable|url',
+            'location_notes' => 'nullable|max:1000',
         ], $messages);
 
         $location = Location::find($request->id);
@@ -402,6 +405,7 @@ class PlaceController extends Controller
         $location->state = $request->state;
         $location->country = $request->country;
         $location->location_image = $request->location_image;
+        $location->location_notes = $request->location_notes;
         $location->save();
 
         Session::flash('message', 'Your changes to '.$location->city.' were saved.');

@@ -28,6 +28,7 @@ class CreateLocationsTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('location_image')->nullable();
+            $table->text('location_notes')->nullable();
             $table->softDeletes();
 
         });

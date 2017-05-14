@@ -9,7 +9,7 @@
     <section class='intro'>
         <div class='row'>
             <div class='col-sm-12 col-md-12 col-lg-12'>
-                <h1>FavePlaces</h1>
+                <h1>MyFaves!</h1>
                 <br>
                 <img src="http://images.clipartpanda.com/travel-clipart-travelbook.jpg" alt="Fun image">
                 <br>
@@ -19,7 +19,7 @@
                 <br><br><br>
             </div>
         </div><!--close bootstrap row-->
-        
+
     </section><!-- close div container-->
 
 @endsection
