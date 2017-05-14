@@ -23,7 +23,7 @@
                 <form method='POST' action='/places/delete'>
                     {{ csrf_field() }}
 
-                    <input type='hidden' name='id' value='{{ $place->id }}'?>
+                    <input type='hidden' name='id' value='{{ $place->id }}'>
 
                     <h2>Are you sure you want to delete:<br><em>{{ $place->name }}</em>?</h2>
 

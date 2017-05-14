@@ -56,7 +56,7 @@
                         <br>
 
                         <label for='place_image' class='control-label'>Image (URL)</label>
-                        <input type='text' class='form-control' class='imgOne' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
+                        <input type='text' class='form-control' name='place_image' id='place_image' alt='Image for This Awesome Place" value='{{ old('place_image', $place->place_image) }}'>
                         <br>
                     </div>
 

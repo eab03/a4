@@ -22,7 +22,7 @@
     </section><!--close section top-->
 
     <!--form for editing a single location-->
-    <section class='form'><!--new section-->
+    <div class='form'><!--new div-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -49,7 +49,7 @@
                         <br>
 
                         <label for='location_image 'class="control-label">Image (URL)</label>
-                        <input type='text' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
+                        <input type='text' class="form-control" name='location_image' id='location_image' alt='Image for This Awesome Location' value='{{ old('location_image', $location->location_image) }}'>
                         <br>
 
                         <label for='location_notes' class='control-label'>Notes</label>
@@ -67,6 +67,6 @@
 
             </div>
         </div><!--close bootstrap row-->
-    </section><!--close section form-->
+    </div><!--close div form-->
 
 @endsection

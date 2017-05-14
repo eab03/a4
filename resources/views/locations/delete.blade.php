@@ -23,7 +23,7 @@
                 <form method='POST' action='/locations/delete'>
                     {{ csrf_field() }}
 
-                    <input type='hidden' name='id' value='{{ $location->id }}'?>
+                    <input type='hidden' name='id' value='{{ $location->id }}'>
 
                     @if( $location->state !=null)
                         <h2>Are you sure you want to delete:<br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</em>?</h2>

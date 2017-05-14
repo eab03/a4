@@ -16,7 +16,7 @@
     </section><!--close section top-->
 
     <!--form for adding a new location-->
-    <section class='form'><!--new bootstrap section-->
+    <div class='form'><!--new div-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -38,7 +38,7 @@
                         <input type='text' class='form-control' name='country' id='country' placeholder='USA' value='{{ old('country', '') }}'>
                         <br>
                         <label for='location_image' class='control-label'> Image (URL)</label>
-                        <input type='text' class='form-control' name='location_image' id='location_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg' value='{{ old('location_image', '') }}'>
+                        <input type='text' class='form-control' name='location_image' id='location_image' placeholder='http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg' alt='Image for This Awesome Location' value='{{ old('location_image', '') }}'>
                         <br>
 
                         <div class='text-entry'>
@@ -57,6 +57,6 @@
                 </form><!--close form-->
             </div>
         </div><!--close bootstrap row-->
-    </section><!--close section form-->
+    </div><!--close div form-->
 
 @endsection
