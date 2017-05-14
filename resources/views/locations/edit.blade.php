@@ -48,7 +48,7 @@
                         <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
                         <br>
 
-                        <label for='location_image 'class="control-label">Image (URL)</label>
+                        <label for='location_image' class="control-label">Image (URL)</label>
                         <input type='url' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
                         <br>
 
@@ -61,7 +61,7 @@
                     @include('errors')
 
                     <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/locations/showall'><input type='button' value='Go Back to All Locations' class='btn btn-info'></a>
+                    <a href='/locations/showall' class='btn btn-info' role='button'>Return to All Locations</a>
 
                 </form><!--close form-->
 

@@ -16,7 +16,7 @@
     </section><!--close section-->
 
     <!--form for deleting a single location-->
-    <section class='locations'><!--new section-->
+    <div class='form'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -33,12 +33,12 @@
 
                     <br><br>
                     <input type='submit' value='Yes, delete this city.' class='btn btn-danger'>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href='/locations/show/{{ $place->id }}' class='btn btn-info' role='button'>No. Return to '{{ $location->city }}'.</a>
+                    <a href='/locations/show/{{ $locations->id }}' class='btn btn-info' role='button'>No. Return to '{{ $location->city }}'.</a>
 
                 </form><!-- close form-->
 
             </div>
         </div><!-- close bootstrap row-->
-    </section><!--close section locations-->
+    </delete><!--close section form-->
 
 @endsection
