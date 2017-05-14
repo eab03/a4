@@ -15,7 +15,7 @@
         <hr>
     </section><!--close section top-->
 
-    <section class='places' id='oneplace'><!--new section-->
+    <div class='places' id='oneplace'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-6 col-md-6 col-lg-6'>
 
@@ -53,6 +53,6 @@
             </div>
 
         </div><!--close bootstrap row-->
-    </section><!--close section places-->
+    </div><!--close section places-->
 
 @endsection

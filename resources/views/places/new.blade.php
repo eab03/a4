@@ -61,7 +61,7 @@
                     </div>
 
                     <fieldset class='form-check checkbox'>
-                            <legend>Tags</legend>
+                        <legend>Tags</legend>
                             @foreach($tagsForCheckboxes as $id => $name)
                                 <label for='tag_{{ $id }}' class='control-label'>
                                     <input
@@ -70,7 +70,7 @@
                                     name='tags[]'
                                     id='tag_{{ $id }}'
                                     value='{{ $id }}'>
-                                    {{ $name }}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    {{ $name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </label>
                             @endforeach
                             <br><br>
