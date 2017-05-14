@@ -60,7 +60,7 @@
 
                     @include('errors')
 
-                    <br><input class='btn btn-primary' type='submit' value='Save changes'>&nbsp; &nbsp; &nbsp; &nbsp;
+                    <input class='btn btn-primary' type='submit' value='Save changes'>&nbsp; &nbsp; &nbsp; &nbsp;
                     <a href='/locations/showall' class='btn btn-info' role='button'>Return to All Locations</a>
 
                 </form><!--close form-->

@@ -39,19 +39,22 @@
 				</div>
 				<ul class="nav navbar-nav">
 				    <li class="active"><a href="/places">Home</a></li>
-				    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Places<span class="caret"></span></a>
+
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/locations/showall">Show All Locations</a></li>
+							<li><a href="/locations/new">Add New Location</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Places<span class="caret"></span></a>
 				        <ul class="dropdown-menu">
 				          	<li><a href="/places/showall">Show All Places</a></li>
 				          	<li><a href="/places/search">Search Places</a></li>
 				          	<li><a href="/places/new">Add New Place</a></li>
 				        </ul>
-				      	</li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						  	<li><a href="/locations/showall">Show All Locations</a></li>
-						  	<li><a href="/locations/new">Add New Location</a></li>
-						</ul>
-					</li>
+				    </li>
+
 				</ul>
 			</div>
 		</nav>

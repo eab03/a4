@@ -28,7 +28,7 @@
                 @else
                     <ul>
                     @foreach($newPlaces as $place)
-                        <li class='truncate'><i class='fa fa-star'></i>&nbsp;&nbsp;<a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> &nbsp; updated {{ $place->updated_at->diffForHumans() }}</li>
+                        <li class='truncate'><i class='fa fa-star'></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> &nbsp; updated {{ $place->updated_at->diffForHumans() }}</li>
                     @endforeach
                     </ul>
                 @endif
@@ -50,7 +50,7 @@
                         @foreach($locations as $location)
                             <div class='col-sm-4 col-md-4 col-lg-4'>
 
-                                <div class="locations-home">
+                                <div class="locationnames">
                                     @if($location->state != null)
                                         <a href='/locations/show/{{ $location->id }}'><h3>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</h3></a>
                                     @else($location->state = null)

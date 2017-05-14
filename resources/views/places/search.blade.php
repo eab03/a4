@@ -49,16 +49,17 @@
                 @if($searchPlace != null)
                     <hr>
                     <h2>Results for query: <em>{{ $searchPlace }}</em></h2>
-                    <br>
+                    <br><br>
 
                     @if(count($searchResults) == 0)
                         <div class='exception'>
                             No matches found.
                         </div>
                     @else
-                        @foreach($searchResults as $name => $place)
-                            @foreach($locations as $location)
-                                <div class='col-sm-6 col-md-6 col-lg-6'>
+                        <div class='col-sm-6 col-md-6 col-lg-6'>
+                            @foreach($searchResults as $name => $place)
+                                @foreach($locations as $location)
+
                                     @if($place['location'] == $location->city)
                                         <img class='img-one' src='{{ $place['place_image'] }}'>
                                         <br>
@@ -70,19 +71,21 @@
                                         @endif
 
                                         <a class="results" href='{{ $place['place_link'] }}'>Website</a>
-                                </div>
+                                        <br><br><br>
 
-                                <div class='col-sm-6 col-md-6 col-lg-6'>
-                                    <div class='notes'>
-                                        <p><strong>Notes:</strong> {{ $place['place_notes'] }}</p>
-                                    </div>
-                                </div>
+                        </div><!--close left column-->
 
-                                @break;
-                                @endif
+                                        <div class='col-sm-6 col-md-6 col-lg-6'>
+                                            <div class='notes'>
+                                                <p><strong>Notes:</strong> {{ $place['place_notes'] }}</p>
+                                            </div>
+                                        </div><!--close right column-->
 
+                                    @break;
+                                    @endif
+
+                                @endforeach
                             @endforeach
-                        @endforeach
                     @endif
                 @endif
             </div>
