@@ -18,8 +18,7 @@
     <section id='newPlaces'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
-                <h2>Updated
-                    Places</h2>
+                <h2>Updated Places</h2>
                 <br>
                 @if(count($newPlaces) == 0)
                     <div class='exception'>
@@ -41,9 +40,10 @@
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
                 <h2>New Locations</h2>
+                <br>
                 @if(count($locations) == 0)
                     <div class='exception'>
-                        You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one?</a>
+                        You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one</a>?
                     </div>
                 @else
                     <div class='row'><!--new bootstrap row-->

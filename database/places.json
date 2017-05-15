@@ -7,13 +7,13 @@
         "place_image" : "https://s3.amazonaws.com/dwa/Cafe+Crema.jpg",
         "place_notes" : "Good coffee!"
     },
-    "Lake Champlain": {
+    "Singapore Botanic Gardens": {
         "id" : 1,
-        "location": "Burlington",
-        "tags" : ["outdoors","photography","$"],
-        "place_link" : "",
-        "place_image" : "https://s3.amazonaws.com/dwa/Burlington+Lake+Champlain_3.jpg",
-        "place_notes" : "Lovely sunsets."
+        "location": "Singapore",
+        "tags" : ["outdoors","indoors","photography","$$"],
+        "place_link" : "https://www.sbg.org.sg/",
+        "place_image" : "https://s3.amazonaws.com/dwa/Singapore-5.jpg",
+        "place_notes" : "An urban oasis."
     },
     "Shelburne Farms": {
         "id": 2,

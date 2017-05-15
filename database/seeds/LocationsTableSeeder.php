@@ -14,11 +14,11 @@ class LocationsTableSeeder extends Seeder
     {
         # Array of locations to add
         $locations = [
-            ['Burlington', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Burlington.jpg', 'Church Street at night!'],
+            ['Burlington', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Burlington+Lake+Champlain_3.jpg', 'Gorgeous sunsets over Lake Champlain!'],
             ['Cambridge', 'MA', 'USA', 'https://s3.amazonaws.com/dwa/Cambridge.jpg', 'There is usually not this much snow.'],
             ['Boston', 'MA', 'USA', 'https://s3.amazonaws.com/dwa/Boston.jpg', 'Always something going on.'],
-            ['Shelburne', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Shelburne+Farms_2.jpg', 'Beautiful!'],
-            ['Bangkok', '', 'Thailand', 'https://s3.amazonaws.com/dwa/Bangkok_2.jpg', 'Look forward to going back! Awesome street food!'],
+            ['Shelburne', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Shelburne.jpg', 'Apples, Apples, Apples!'],
+            ['Bangkok', '', 'Thailand', 'https://s3.amazonaws.com/dwa/Bangkok.jpg', 'Look forward to going back! Awesome street food!'],
             ['Ubud', 'Bali', 'Indonesia', 'https://s3.amazonaws.com/dwa/Bali.jpg', 'Delightful. And the monkeys!'],
             ['Singapore', '', 'Singapore', 'https://s3.amazonaws.com/dwa/Singapore_3.jpg', 'Interesting place.'],
             ['Gili Meno', 'Lombok', 'Indonesia', 'https://s3.amazonaws.com/dwa/Gili+Meno.jpg', 'Lovely place. No cars are allowed on the island, and all travel takes place by horse cart, boat, bicycle or on foot.']

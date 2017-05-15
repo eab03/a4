@@ -18,7 +18,7 @@ class PlaceTagTableSeeder extends Seeder
         # Note: purposefully omitting the Harry Potter books to demonstrate untagged books
         $places = [
             'Crema Cafe' => ['coffee','$$'],
-            'Lake Champlain' => ['outdoors','photography','$'],
+            'Singapore Botanic Gardens' => ['outdoors','indoors','photography','$$'],
             'Shelburne Farms' => ['outdoors','photography','$'],
             'Radio Bean' => ['coffee','cocktails','food','music','$$'],
             'Boston Public Garden' => ['outdoors','photography','$'],
