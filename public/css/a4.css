@@ -139,8 +139,8 @@ img {
     width: 125px;
 }
 
-/* styling for text box in places.show.{{id}}, places.search,
-and locations.show.{{id}} */
+/* styling for text box in places.show.{id}, places.search,
+and locations.show.{id} */
 
 div.notes {
     background-color: #59759D;

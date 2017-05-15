@@ -8,10 +8,10 @@
 
     <section class='top'><!--new section-->
         <div class='row'><!--new bootrap row-->
-            <div class='col-sm-7 col-md-8 col-lg-8'>
+            <div class='col-sm-7 col-md-7 col-lg-8'>
                 <h1>Favorite Places</h1>
             </div>
-            <div class='col-sm-5 col-md-4 col-lg-4'>
+            <div class='col-sm-5 col-md-5 col-lg-4'>
                 <a class="addnew" href='/places/new'>Add a New Place!</a>
             </div>
         </div><!--close bootstrap row-->

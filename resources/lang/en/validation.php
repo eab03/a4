@@ -114,6 +114,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'place_link' => 'website address',
+        'place_image' => 'image address',
+        'location_image' => 'image address'
+    ],
 
 ];

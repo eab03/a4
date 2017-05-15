@@ -51,11 +51,11 @@
                         <input type='text' class='form-control' name='place_notes' id='place_notes' value='{{ old('place_notes', $place->place_notes) }}'>
                         <br>
 
-                        <label for='place_link' class='control-label'>Website</label>
+                        <label for='place_link' class='control-label'>Website Address (URL)</label>
                         <input type='url' class='form-control' name='place_link' id='place_link' value='{{ old('place_link', $place->place_link) }}'>
                         <br>
 
-                        <label for='place_image' class='control-label'>Image (URL)</label>
+                        <label for='place_image' class='control-label'>Image Address (URL)</label>
                         <input type='url' class='form-control' name='place_image' id='place_image' value='{{ old('place_image', $place->place_image) }}'>
                         <br>
                     </div>
