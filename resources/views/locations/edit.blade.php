@@ -48,7 +48,7 @@
                         <input type='text' class="form-control" name='country' id='country' value='{{ old('country', $location->country) }}'>
                         <br>
 
-                        <label for='location_image' class="control-label">Image (URL)</label>
+                        <label for='location_image' class="control-label">Image Address (URL)</label>
                         <input type='url' class="form-control" name='location_image' id='location_image' value='{{ old('location_image', $location->location_image) }}'>
                         <br>
 
