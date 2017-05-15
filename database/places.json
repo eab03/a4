@@ -4,7 +4,7 @@
         "location": "Cambridge",
         "tags" : ["coffee","$$"],
         "place_link" : "https://www.cremacambridge.com/",
-        "place_image" : "http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Cafe+Crema.jpg",
         "place_notes" : "Good coffee!"
     },
     "Lake Champlain": {
@@ -12,7 +12,7 @@
         "location": "Burlington",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "",
-        "place_image" : "https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Burlington+Lake+Champlain_3.jpg",
         "place_notes" : "Lovely sunsets."
     },
     "Shelburne Farms": {
@@ -20,7 +20,7 @@
         "location": "Shelburne",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "http://www.shelburnefarms.org/",
-        "place_image" : "http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Shelbure+Farms_3.jpg",
         "place_notes" : "Play with baby goats!"
     },
     "Radio Bean": {
@@ -28,7 +28,7 @@
         "location": "Burlington",
         "tags" : ["coffee","cocktails","food","music","$$"],
         "place_link" : "https://www.radiobean.com/",
-        "place_image" : "http://7d.blogs.com/sitd/images/2008/01/02/asnowydayattheradiobe.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Radio+Bean_2.jpg",
         "place_notes" : "Check out the music!"
     },
     "Boston Public Garden": {
@@ -36,23 +36,31 @@
         "location": "Boston",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "https://www.boston.gov/parks/public-garden",
-        "place_image" : "https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Public+Garden.jpg",
         "place_notes" : "Bring a picnic, but watch out for the squirrels!"
     },
-    "Peabody Museum of Archaeology & Ethnography at Harvard University": {
+    "Mount Auburn Cemetery": {
         "id": 5,
         "location": "Cambridge",
-        "tags" : ["museum","art","indoors","$"],
-        "place_link" : "https://www.peabody.harvard.edu/",
-        "place_image" : "https://www.peabody.harvard.edu/files/Encounters_gallery.jpg",
-        "place_notes" : "Great place to go on a rainy day."
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "http://mountauburn.org/",
+        "place_image" : "https://s3.amazonaws.com/dwa/Mt.+Auburn+Cemetery.jpg",
+        "place_notes" : "Peaceful."
     },
     "Sacred Monkey Forest Sanctuary": {
         "id": 6,
         "location": "Ubud",
         "tags" : ["outdoors","photography","$"],
         "place_link" : "https://www.monkeyforestubud.com/",
-        "place_image" : "https://s-media-cache-ak0.pinimg.com/originals/20/17/47/201747d68d8ca306c9e3d2f03ff6a6f7.jpg",
+        "place_image" : "https://s3.amazonaws.com/dwa/Monkey+Forest.jpg",
         "place_notes" : "Very special place."
+    },
+    "Gardens by the Bay": {
+        "id": 7,
+        "location": "Singapore",
+        "tags" : ["outdoors","photography","$"],
+        "place_link" : "http://www.gardensbythebay.com.sg/en.html",
+        "place_image" : "https://s3.amazonaws.com/dwa/Singapore.jpg",
+        "place_notes" : "Very different at night than by day."
     }
 }

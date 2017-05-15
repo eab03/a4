@@ -58,7 +58,7 @@
                                     @endif
                                 </div>
 
-                                <a href='/locations/show/{{ $location->id }}'><img class='img-all' src='{{ $location->location_image }}' alt='Image {{ $location->city }}'></a>
+                                <a href='/locations/show/{{ $location->id }}'><img class='img-all' src='{{ $location->location_image }}' alt='Image for {{ $location->city }}'></a>
 
                                 <a class='locationAction' href='/locations/edit/{{ $location->id }}'><i class='fa fa-pencil'></i></a>
                                 <a class='locationAction' href='/locations/show/{{ $location->id }}'><i class='fa fa-eye'></i></a>

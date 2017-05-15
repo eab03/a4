@@ -443,7 +443,7 @@ class PlaceController extends Controller
             foreach($places as $name => $place) {
                 foreach($locations as $city => $location) {
                     if($match = $request->id == $place->location_id) {
-                        Session::flash('message', 'Deletion failed; delete any associated places first.');
+                        Session::flash('message', "Deletion failed; delete any associated places in '$locations->city' first.");
                         return redirect('/locations/showall');
                     } # end if statement
                 } # end foreach loop

@@ -14,13 +14,14 @@ class LocationsTableSeeder extends Seeder
     {
         # Array of locations to add
         $locations = [
-            ['Burlington', 'VT', 'USA', 'https://c1.staticflickr.com/4/3291/3490513749_6e7c58dc47_b.jpg', 'Great sunsets!'],
-            ['Cambridge', 'MA', 'USA', 'http://www.cambridgelocalfirst.org/wp-content/uploads/2014/09/748_Crema_4.jpg', 'Check out Mt. Auburn Cemetery'],
-            ['Boston', 'MA', 'USA', 'https://previews.123rf.com/images/coleong/coleong0611/coleong061100297/615031-View-of-Boston-Public-Garden-in-spring-Stock-Photo.jpg', 'Summertime fun.'],
-            ['Shelburne', 'VT', 'USA', 'http://inthekitchenwithbronwyn.com/wp-content/uploads/Farm-Barn-at-Shelburne-Farms.jpg', 'Beautiful!'],
-            ['Bangkok', '', 'Thailand', 'https://www.azamaraclubcruises.com/sites/default/files/heros/klong-toey-thailand_3.jpg', 'Look forward to going back! Awesome street food!'],
-            ['Ubud', 'Bali', 'Indonesia', 'https://s-media-cache-ak0.pinimg.com/originals/20/17/47/201747d68d8ca306c9e3d2f03ff6a6f7.jpg', 'Delightful. And the monkeys!'],
-            ['Singapore', '', 'Singapore', 'http://lghttp.60358.nexcesscdn.net/8046264/images/page/-/100rc/img/cities/Singapore%20hero%20cro.jpg', 'Interesting place.']
+            ['Burlington', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Burlington.jpg', 'Church Street at night!'],
+            ['Cambridge', 'MA', 'USA', 'https://s3.amazonaws.com/dwa/Cambridge.jpg', 'There is usually not this much snow.'],
+            ['Boston', 'MA', 'USA', 'https://s3.amazonaws.com/dwa/Boston.jpg', 'Always something going on.'],
+            ['Shelburne', 'VT', 'USA', 'https://s3.amazonaws.com/dwa/Shelburne+Farms_2.jpg', 'Beautiful!'],
+            ['Bangkok', '', 'Thailand', 'https://s3.amazonaws.com/dwa/Bangkok_2.jpg', 'Look forward to going back! Awesome street food!'],
+            ['Ubud', 'Bali', 'Indonesia', 'https://s3.amazonaws.com/dwa/Bali.jpg', 'Delightful. And the monkeys!'],
+            ['Singapore', '', 'Singapore', 'https://s3.amazonaws.com/dwa/Singapore_3.jpg', 'Interesting place.'],
+            ['Gili Meno', 'Lombok', 'Indonesia', 'https://s3.amazonaws.com/dwa/Gili+Meno.jpg', 'Lovely place. No cars are allowed on the island, and all travel takes place by horse cart, boat, bicycle or on foot.']
         ];
 
         # Initiate a new timestamp we can use for created_at/updated_at fields

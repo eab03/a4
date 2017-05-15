@@ -15,7 +15,7 @@
         <hr>
     </section><!--close section top-->
 
-    <div class='places'><!--new section-->
+    <div class='places' id='uniqueplace'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-6 col-md-6 col-lg-6'>
 
@@ -51,6 +51,7 @@
                     <p><strong>Notes:</strong> {{ $place->place_notes }}</p>
                 </div>
             </div>
+            <br>
 
         </div><!--close bootstrap row-->
     </div><!--close div places-->

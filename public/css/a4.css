@@ -24,7 +24,7 @@ body {
     min-width: 300px;
     padding: .5em 1.5em 4.5em 1.5em;
     position: relative;
-    width: 70%;
+    width: 60%;
 }
 
 div.container {
@@ -82,7 +82,7 @@ h2 {
     font-size: 2em;
 }
 
-h3, .addnew {
+h3, .addnew, .oneplace {
     font-size: 1.5em;
 }
 
@@ -99,7 +99,7 @@ div.exception {
 }
 
 .message {
-    font-size: 1.5em;
+    font-size: 1.15em;
     font-weight: bold;
     margin-bottom: .5em;
 }
@@ -112,6 +112,11 @@ div.exception {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+div#uniquelocation a.locationAction i, div#uniqueplace a.placeAction i {
+    font-size: 135%;
+    padding-right: .35em;
 }
 
 /* image styling */
@@ -175,7 +180,7 @@ div.alert.alert-danger.error li {
         font-size: 3.75em;
     }
     h1 {
-        font-size: 1.35em;
+        font-size: 2.25em;
     }
     div.col-sm-4.col-md-3.col-lg-3 {
         height: 100px;
@@ -187,6 +192,9 @@ div.alert.alert-danger.error li {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767px) {
+    body {
+        width: 75%;
+    }
     h1 {
         font-size: 1.75em;
     }
@@ -194,6 +202,10 @@ div.alert.alert-danger.error li {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
+    body {
+        width: 90%
+    }
+
     h1 {
         font-size: 2em;
     }
@@ -201,17 +213,7 @@ div.alert.alert-danger.error li {
 
 /* Large devices (desktops, 992px and up) */
 /*@media (min-width: 992px) and (max-width: 1199px) {
-	body {
-		margin-top: 5%;
-        margin-bottom: 5%;
-	}
-    input#calculate_btn.btn-primary.btn-small {
-        font-size: 1em;
-        margin-top: 20px;
-        margin-bottom: 15px;
-    }
-    div.alert.alert-success p {
-        font-size: 1.25em;
+    body {
     }
 }*/
 
