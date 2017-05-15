@@ -221,7 +221,7 @@ div.alert.alert-danger.error li {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 	body {
-        width: 67.5%;
+        width: 65%;
 	}
 }
 
