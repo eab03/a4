@@ -39,8 +39,7 @@
     <section id='newLocations'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
-                <h2>New Locations</h2>
-                <br>
+                <h2>Updated Locations</h2>
                 @if(count($locations) == 0)
                     <div class='exception'>
                         You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one</a>?
@@ -64,8 +63,7 @@
                                 <a class='locationAction' href='/locations/show/{{ $location->id }}'><i class='fa fa-eye'></i></a>
                                 <a class='locationAction' href='/locations/delete/{{ $location->id }}'><i class='fa fa-trash'></i></a>
                                 <br>
-                                <p>Created: {{ $location->created_at->diffForHumans() }}<p>
-                                <hr>
+                                <p>Updated: {{ $location->updated_at->diffForHumans() }}<p>
 
                             </div>
                         @endforeach

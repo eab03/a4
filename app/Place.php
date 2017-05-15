@@ -7,28 +7,41 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Place extends Model
 {
+
+    /**
+    * Deletion method
+    */
     use SoftDeletes;
 
+    /**
+    * Relationship method
+    * Inverse one-to-many relationship; Place belongs to Location
+    */
     public function location() {
-    # Book belongs to Author
-    # Define an inverse one-to-many relationship.
-    return $this->belongsTo('App\Location');
+        return $this->belongsTo('App\Location');
     }
 
-    public function tags()
-    {
-        # With timetsamps() will ensure the pivot table has its created_at/updated_at fields automatically maintained
+    /**
+    *
+    */
+    public function tags() {
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
-    // Get the places, and put into an array
+
+    /**
+    * Create array of places; the key = place id, the value = place name
+    */
     public static function getPlacesForDropdown() {
+
         $places = Place::orderBy('name', 'ASC')->get();
-        # Organize the authors into an array where the key = author id and value = author name
+
         $placesForDropdown = [];
         foreach($places as $place) {
             $placesForDropdown[$place->id] = $place->name;
         }
+        
         return $placesForDropdown;
+
     }
 }

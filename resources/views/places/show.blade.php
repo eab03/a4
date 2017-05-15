@@ -42,7 +42,6 @@
                         {{ $name }} &nbsp;
                     @endforeach
                 </p>
-                <br>
 
             </div>
 
@@ -51,7 +50,6 @@
                     <p><strong>Notes:</strong> {{ $place->place_notes }}</p>
                 </div>
             </div>
-            <br>
 
         </div><!--close bootstrap row-->
     </div><!--close div places-->

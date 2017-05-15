@@ -32,14 +32,12 @@
                 <p>Added: {{ $location->created_at->diffForHumans() }}</p>
                 <p>Last updated: {{ $location->updated_at->diffForHumans() }}</p>
             </div>
-            <br>
 
             <div class='col-sm-6 col-md-6 col-lg-6'>
                 <div class='notes'>
                     <p><strong>Notes:</strong> {{ $location->location_notes }}</p>
                 </div>
             </div>
-            <br>
 
         </div><!--close bootstrap row-->
     </div><!--close section locations-->
