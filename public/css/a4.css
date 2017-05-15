@@ -18,7 +18,7 @@ http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 
 body {
     background-color: #FFF;
-    border: 25px solid #59759D;
+    border: 25px solid #7A91B1;
     border-radius: 5px;
     margin: 0 auto;
     min-width: 300px;
@@ -45,7 +45,8 @@ footer {
 /* header and navigation */
 
 .container-fluid {
-    border-bottom: 1.25px solid yellow;
+    border-bottom: 3px solid #E7EBF0;
+    padding-bottom: .75em;
 }
 
 .navbar.navbar-light a {
