@@ -18,14 +18,14 @@
     <section id='newPlaces'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
-                <h2>Updated Places</h2>
+                <h2>Places</h2>
                 <br>
                 @if(count($newPlaces) == 0)
                     <div class='exception'>
                         You don't have any favorite places yet; would you like to <a href='/places/new'>add one</a>?
                     </div>
                 @else
-                    <ul>
+                    <ul class='homepage'>
                     @foreach($newPlaces as $place)
                         <li class='truncate'><i class='fa fa-star'></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href='places/show/{{ $place->id }}'>{{ $place->name }}</a> &nbsp; updated {{ $place->updated_at->diffForHumans() }}</li>
                     @endforeach
@@ -39,7 +39,7 @@
     <section id='newLocations'><!--new section-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
-                <h2>Updated Locations</h2>
+                <h2>Locations</h2>
                 @if(count($locations) == 0)
                     <div class='exception'>
                         You don't have any favorite locations yet; would you like to <a href='/locations/new'>add one</a>?

@@ -60,6 +60,11 @@ a.navbar-brand {
     font-weight: bold;
 }
 
+li.truncate {
+    margin-left: -2em;
+    padding-bottom: 10px;
+}
+
 /* styling for welcome.blade.php page */
 
 .intro {
@@ -139,6 +144,15 @@ img {
     width: 125px;
 }
 
+/* styling for places.blade */
+section#newPlaces h2, section#newLocations h2 {
+    margin-bottom: -2px;
+}
+
+section#newLocations h2 {
+    margin-top: -2.5px;
+}
+
 /* styling for text box in places.show.{id}, places.search,
 and locations.show.{id} */
 
@@ -177,10 +191,13 @@ div.alert.alert-danger.error li {
         width: 100%;
 	}
     .intro h1 {
-        font-size: 3.75em;
+        font-size: 3em;
     }
     h1 {
-        font-size: 2.25em;
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.65em;
     }
     div.col-sm-4.col-md-3.col-lg-3 {
         height: 100px;
@@ -196,7 +213,7 @@ div.alert.alert-danger.error li {
         width: 75%;
     }
     h1 {
-        font-size: 1.75em;
+        font-size: 2.25em;
     }
 }
 
@@ -205,9 +222,8 @@ div.alert.alert-danger.error li {
     body {
         width: 95%;
     }
-
     h1 {
-        font-size: 2em;
+        font-size: 2.25em;
     }
 }
 
