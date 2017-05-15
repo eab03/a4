@@ -14,7 +14,7 @@ class PlaceController extends Controller
     /**
     * GET
     * /places
-    * Home page that lists 3 recent places and locations
+    * Home page that lists 3 recently updated places and locations
     */
     public function index(Request $request) {
 
@@ -84,7 +84,7 @@ class PlaceController extends Controller
 
         $searchPlace = $request->input('searchPlace', null);
 
-        // Continue query if there is an entry in the search field
+        # If entry in the search field, continue to query for a match
         if($searchPlace) {
 
             # Seed data from json file
@@ -164,11 +164,12 @@ class PlaceController extends Controller
         $place->location_id = $request->location_id;
         $place->save();
 
+        # If there are tags, get and synch the tags; if no tags revert to empty array
         $tags = ($request->tags) ?: [];
         $place->tags()->sync($tags);
         $place->save();
 
-        Session::flash('message', 'The place '.$request->name.' was added.');
+        Session::flash('message', "The place '$request->name' was added.");
         return redirect('/places');
     }
 
@@ -242,7 +243,7 @@ class PlaceController extends Controller
         $place->tags()->sync($tags);
         $place->save();
 
-        Session::flash('message', 'Your changes to '.$place->name.' were saved.');
+        Session::flash('message', "Your changes to '$place->name' were saved.");
         return redirect('/places/show/'.$request->id);
     }
 
@@ -283,7 +284,7 @@ class PlaceController extends Controller
 
             $place->delete();
 
-        Session::flash('message', "'$place->name'. was deleted.");
+        Session::flash('message', "'$place->name' was deleted.");
         return redirect('/places/showall');
     }
 
@@ -361,7 +362,7 @@ class PlaceController extends Controller
         $location->location_notes = $request->location_notes;
         $location->save();
 
-        Session::flash('message', 'The place '.$request->city.' was added.');
+        Session::flash('message', "The location '$request->city' was added.");
         return redirect('/places');
     }
 
@@ -413,7 +414,7 @@ class PlaceController extends Controller
         $location->location_notes = $request->location_notes;
         $location->save();
 
-        Session::flash('message', 'Your changes to '.$location->city.' were saved.');
+        Session::flash('message', "Your changes to '$location->city' were saved.");
         return redirect('/locations/show/'.$request->id);
     }
 
@@ -462,7 +463,7 @@ class PlaceController extends Controller
 
         $locations->delete();
 
-        Session::flash('message', $locations->city.' was deleted.');
+        Session::flash('message', "'$locations->city' was deleted.");
         return redirect('/locations/showall');
     }
 }

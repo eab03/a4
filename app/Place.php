@@ -28,20 +28,4 @@ class Place extends Model
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
-
-    /**
-    * Create array of places; the key = place id, the value = place name
-    */
-    public static function getPlacesForDropdown() {
-
-        $places = Place::orderBy('name', 'ASC')->get();
-
-        $placesForDropdown = [];
-        foreach($places as $place) {
-            $placesForDropdown[$place->id] = $place->name;
-        }
-        
-        return $placesForDropdown;
-
-    }
 }

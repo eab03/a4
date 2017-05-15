@@ -26,9 +26,9 @@
                     <input type='hidden' name='id' value='{{ $location->id }}'>
 
                     @if( $location->state !=null)
-                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country}}</em>?</h2>
+                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->state }}, {{ $location->country }}</em>?</h2>
                     @else
-                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->country}}</em>?</h2>
+                        <h2>Are you sure you want to delete:<br><br><em>{{ $location->city }}, {{ $location->country }}</em>?</h2>
                     @endif
 
                     <br><br><br>

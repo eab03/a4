@@ -31,14 +31,15 @@ class Location extends Model
         $locationsForDropdown = [];
         foreach($locations as $location) {
             if($location->state != null) {
-                $locationsForDropdown[$location->id] = $location->city. ","
+                $locationsForDropdown[$location->id] = $location->city. ", "
                 .$location->state. ", ".$location->country;
             } else {
-                $locationsForDropdown[$location->id] = $location->city. ","
+                $locationsForDropdown[$location->id] = $location->city. ", "
                 .$location->country;
             }
         }
 
         return $locationsForDropdown;
+
     }
 }

@@ -42,7 +42,7 @@
     </div><!--close divform-->
 
     <!--display query results-->
-    <div class='places'><!--new section-->
+    <div class='places'><!--new div-->
         <div class='row'><!--new bootstrap row-->
             <div class='col-sm-12 col-md-12 col-lg-12'>
 
@@ -90,6 +90,6 @@
                 @endif
             </div>
         </div><!--close bootstrap row-->
-    </div><!--close section places-->
+    </div><!--close div places-->
 
 @endsection
