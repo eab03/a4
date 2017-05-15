@@ -236,3 +236,9 @@ div.alert.alert-danger.error li {
         width: 50%;
     }
 }
+
+@media (min-width: 2000px) {
+    body {
+        width: 45%;
+    }
+}
